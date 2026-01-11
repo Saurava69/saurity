@@ -351,57 +351,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* What Saurity Does NOT Do */}
-      <section className="py-20 bg-white">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="section-heading">What Saurity Does NOT Do</h2>
-            <p className="section-subheading">
-              Honesty matters. Here's what v0.1 deliberately excludes to maintain stability.
-            </p>
-
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-8 mt-8">
-              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                <svg className="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                Intentional Limitations (v0.1)
-              </h3>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="text-yellow-600 font-bold">×</span>
-                  <span>No malware scanning or file integrity monitoring</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-yellow-600 font-bold">×</span>
-                  <span>No 2FA or OAuth (planned for future versions)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-yellow-600 font-bold">×</span>
-                  <span>No CAPTCHA or challenge-response systems</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-yellow-600 font-bold">×</span>
-                  <span>No geolocation or IP reputation services</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-yellow-600 font-bold">×</span>
-                  <span>No email notifications (check logs manually)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-yellow-600 font-bold">×</span>
-                  <span>No dashboard widget (access via Settings → SAURITY)</span>
-                </li>
-              </ul>
-              <p className="mt-4 text-gray-600">
-                These features are excluded to ensure v0.1 is rock-solid and lockout-free. 
-                Advanced features will come in future releases only after proving stability.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-20 bg-primary-600 text-white">
         <div className="container-custom">
@@ -420,7 +369,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Download v0.1
+                Download v1.0.0
               </a>
               <a 
                 href="https://github.com/saurity/saurity#installation" 
@@ -597,6 +546,20 @@ export default function Home() {
               </span>
             </Link>
 
+            <Link href="/firewall" className="feature-card group">
+              <h3 className="text-xl font-semibold mb-2 group-hover:text-primary-600 transition-colors">
+                Advanced Firewall
+              </h3>
+              <p className="text-gray-600 mb-4">
+                SQL injection, XSS protection, and malicious user agent blocking. Enterprise-grade security.
+              </p>
+              <span className="text-primary-600 font-medium">
+                Learn more →
+              </span>
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
             <Link href="/features" className="feature-card group">
               <h3 className="text-xl font-semibold mb-2 group-hover:text-primary-600 transition-colors">
                 All Features
@@ -606,6 +569,30 @@ export default function Home() {
               </p>
               <span className="text-primary-600 font-medium">
                 View all features →
+              </span>
+            </Link>
+
+            <Link href="/blog" className="feature-card group">
+              <h3 className="text-xl font-semibold mb-2 group-hover:text-primary-600 transition-colors">
+                Security Blog
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Latest WordPress security insights, best practices, and industry updates.
+              </p>
+              <span className="text-primary-600 font-medium">
+                Read articles →
+              </span>
+            </Link>
+
+            <Link href="/faq" className="feature-card group">
+              <h3 className="text-xl font-semibold mb-2 group-hover:text-primary-600 transition-colors">
+                FAQ
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Common questions about installation, configuration, compatibility, and troubleshooting.
+              </p>
+              <span className="text-primary-600 font-medium">
+                View FAQ →
               </span>
             </Link>
           </div>
@@ -623,18 +610,6 @@ export default function Home() {
               </span>
             </Link>
 
-            <Link href="/faq" className="feature-card group">
-              <h3 className="text-xl font-semibold mb-2 group-hover:text-primary-600 transition-colors">
-                FAQ
-              </h3>
-              <p className="text-gray-600 mb-4">
-                Common questions about installation, configuration, compatibility, and troubleshooting.
-              </p>
-              <span className="text-primary-600 font-medium">
-                View FAQ →
-              </span>
-            </Link>
-
             <Link href="/vs/wordfence" className="feature-card group">
               <h3 className="text-xl font-semibold mb-2 group-hover:text-primary-600 transition-colors">
                 vs Wordfence
@@ -644,6 +619,18 @@ export default function Home() {
               </p>
               <span className="text-primary-600 font-medium">
                 See comparison →
+              </span>
+            </Link>
+
+            <Link href="/changelog" className="feature-card group">
+              <h3 className="text-xl font-semibold mb-2 group-hover:text-primary-600 transition-colors">
+                Changelog
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Track all updates, new features, and improvements in every Saurity release.
+              </p>
+              <span className="text-primary-600 font-medium">
+                View changelog →
               </span>
             </Link>
           </div>

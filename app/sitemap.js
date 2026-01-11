@@ -1,109 +1,63 @@
-export default function sitemap() {
-  const baseUrl = 'https://saurity.com'
-  const currentDate = new Date().toISOString()
+import { db } from '@/lib/firebase/config'
+import { collection, query, where, getDocs } from 'firebase/firestore'
 
-  return [
-    // Homepage
-    {
-      url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 1.0,
-    },
-    // High Priority Pages
-    {
-      url: `${baseUrl}/features`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/download`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/docs`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/use-cases`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    // Feature Pages
-    {
-      url: `${baseUrl}/login-security`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/rate-limiting`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    // Comparison Pages
-    {
-      url: `${baseUrl}/vs/wordfence`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/vs/sucuri`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/vs/ithemes`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/vs/all-in-one`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    // Content Pages
-    {
-      url: `${baseUrl}/faq`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/changelog`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    // Legal Pages
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: currentDate,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: currentDate,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-  ]
+async function getPublishedPosts() {
+  try {
+    const q = query(
+      collection(db, 'blogPosts'),
+      where('status', '==', 'published')
+    )
+    const snapshot = await getDocs(q)
+    return snapshot.docs.map(doc => {
+      const data = doc.data()
+      return {
+        slug: data.slug,
+        updatedAt: data.updatedAt?.toDate() || data.createdAt?.toDate() || new Date(),
+      }
+    })
+  } catch (error) {
+    console.error('Error fetching posts for sitemap:', error)
+    return []
+  }
+}
+
+export default async function sitemap() {
+  const baseUrl = 'https://saurity.com'
+  
+  // Static pages
+  const staticPages = [
+    '',
+    '/features',
+    '/blog',
+    '/use-cases',
+    '/faq',
+    '/about',
+    '/download',
+    '/changelog',
+    '/firewall',
+    '/login-security',
+    '/rate-limiting',
+    '/vs/wordfence',
+    '/vs/sucuri',
+    '/vs/ithemes',
+    '/vs/all-in-one',
+    '/privacy',
+    '/terms',
+  ].map(route => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: route === '' || route === '/blog' ? 'daily' : 'weekly',
+    priority: route === '' ? 1 : route === '/blog' ? 0.9 : 0.8,
+  }))
+
+  // Get all published blog posts
+  const posts = await getPublishedPosts()
+  const blogPages = posts.map(post => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: post.updatedAt,
+    changeFrequency: 'weekly',
+    priority: 0.7,
+  }))
+
+  return [...staticPages, ...blogPages]
 }
