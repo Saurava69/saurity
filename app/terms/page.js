@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Terms of Service | Saurity',
-  description: 'Terms of service for using Saurity WordPress security plugin.',
+  title: 'Terms of Service | Saurity v1.0.0',
+  description: 'Terms of service for using Saurity v1.0.0 WordPress security plugin - open source, GPL v2 licensed.',
   alternates: {
     canonical: 'https://saurity.com/terms',
   },
@@ -16,7 +16,7 @@ export default function TermsPage() {
           </h1>
           
           <p className="text-gray-600 mb-8">
-            Last Updated: January 7, 2026
+            Last Updated: January 11, 2026 • Version 1.0.0
           </p>
 
           <div className="prose prose-lg max-w-none">
@@ -59,15 +59,16 @@ export default function TermsPage() {
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">Security Limitations</h2>
             <p className="text-gray-700 mb-4">
-              Saurity v0.1 provides login security and basic firewall protection. It does NOT:
+              Saurity v1.0.0 provides comprehensive security features including rate limiting, firewall, IP management, and bot detection. Future versions will add:
             </p>
             <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-2">
-              <li>Scan for malware or backdoors</li>
-              <li>Monitor file integrity</li>
-              <li>Provide 2FA or OAuth (planned for future versions)</li>
-              <li>Replace the need for other security measures</li>
-              <li>Guarantee prevention of all attacks</li>
+              <li>Malware scanning (planned for v2.0+)</li>
+              <li>File integrity monitoring (planned for v2.0+)</li>
+              <li>2FA or OAuth integration (planned for v2.0+)</li>
             </ul>
+            <p className="text-gray-700 mb-4">
+              <strong>Remember:</strong> No security plugin can prevent all attacks. Use Saurity as part of a layered defense strategy.
+            </p>
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">Support</h2>
             <p className="text-gray-700 mb-4">

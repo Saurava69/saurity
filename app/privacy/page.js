@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Privacy Policy | Saurity',
-  description: 'Saurity privacy policy. Learn how we handle data for our WordPress security plugin.',
+  title: 'Privacy Policy | Saurity v1.0.0',
+  description: 'Saurity v1.0.0 privacy policy. Learn how we handle data for our WordPress security plugin - no external data collection, everything stays on your server.',
   alternates: {
     canonical: 'https://saurity.com/privacy',
   },
@@ -20,7 +20,7 @@ export default function PrivacyPage() {
           </h1>
           
           <p className="text-gray-600 mb-8">
-            Last Updated: January 7, 2026
+            Last Updated: January 11, 2026 • Version 1.0.0
           </p>
 
           <div className="prose prose-lg max-w-none">
@@ -32,7 +32,7 @@ export default function PrivacyPage() {
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">Data Collection</h2>
             <p className="text-gray-700 mb-4">
-              <strong>Saurity Plugin (v0.1):</strong>
+              <strong>Saurity Plugin (v1.0.0):</strong>
             </p>
             <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-2">
               <li>Does NOT send any data to external servers</li>

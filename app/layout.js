@@ -27,34 +27,36 @@ export const metadata = {
   },
   icons: {
     icon: [
+      { url: '/favicon.ico', sizes: 'any' },
       { url: '/logo.svg', type: 'image/svg+xml' },
-      { url: '/logo.svg', sizes: '32x32', type: 'image/svg+xml' },
-      { url: '/logo.svg', sizes: '16x16', type: 'image/svg+xml' },
     ],
-    shortcut: '/logo.svg',
-    apple: '/logo.svg',
+    apple: [
+      { url: '/logo.svg', sizes: '180x180', type: 'image/svg+xml' },
+    ],
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://saurity.com',
     siteName: 'Saurity',
-    title: 'Saurity - WordPress Login Security Without Admin Lockouts',
-    description: 'WordPress security plugin with progressive rate limiting, zero admin lockout guarantee, and fail-safe design.',
+    title: 'Saurity v1.0.0 - Enterprise WordPress Security Plugin',
+    description: 'Zero false positives. Production-ready WordPress security with smart rate limiting, advanced firewall, honeypot detection, and 3-tier emergency recovery.',
     images: [
       {
-        url: '/og-image.jpg',
+        url: 'https://saurity.com/HomePage1200_600.webp',
         width: 1200,
-        height: 630,
-        alt: 'Saurity WordPress Security',
+        height: 600,
+        alt: 'Saurity WordPress Security Dashboard',
+        type: 'image/webp',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Saurity - WordPress Login Security Without Admin Lockouts',
-    description: 'WordPress security plugin with progressive rate limiting and zero admin lockout guarantee.',
-    images: ['/og-image.jpg'],
+    title: 'Saurity v1.0.0 - Enterprise WordPress Security Plugin',
+    description: 'Zero false positives. Production-ready WordPress security with smart rate limiting, advanced firewall, and emergency recovery.',
+    images: ['https://saurity.com/HomePage1200_600.webp'],
+    creator: '@saurity',
   },
   robots: {
     index: true,

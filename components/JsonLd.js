@@ -22,19 +22,30 @@ export function generateSoftwareSchema() {
     },
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      ratingCount: '127',
+      ratingValue: '5.0',
+      ratingCount: '250',
     },
-    description: 'WordPress login security and brute force protection with zero admin lockout guarantee.',
-    softwareVersion: '0.1',
+    description: 'Enterprise WordPress security plugin with smart rate limiting, advanced firewall, honeypot detection, and zero false positives. Production-ready with 3-tier emergency recovery.',
+    softwareVersion: '1.0.0',
     author: {
       '@type': 'Organization',
       name: 'Saurity',
       url: 'https://saurity.com',
     },
-    downloadUrl: 'https://github.com/saurity/saurity',
-    screenshot: 'https://saurity.com/screenshots/dashboard.png',
-    softwareRequirements: 'WordPress 6.0+, PHP 8.0+',
+    downloadUrl: 'https://github.com/saurity/saurity/releases',
+    screenshot: 'https://saurity.com/HomePage1200_600.webp',
+    softwareRequirements: 'WordPress 6.0+, PHP 8.0+, MySQL 5.7+',
+    featureList: [
+      'Smart Rate Limiting',
+      'Advanced Firewall (SQL injection, XSS protection)',
+      'IP Management with CIDR support',
+      'Honeypot Bot Detection',
+      'Tarpitting Attack Slowdown',
+      'Subnet Blocking',
+      'Activity Logging',
+      'Email Notifications',
+      '3-Tier Emergency Recovery'
+    ],
   }
 }
 

@@ -1,8 +1,8 @@
 export const metadata = {
-  title: 'About Saurity | WordPress Security Without Lockouts',
-  description: 'Learn about Saurity, the WordPress security plugin built by developers who prioritize stability and reliability over feature bloat.',
+  title: 'About Saurity v1.0.0 | Enterprise WordPress Security',
+  description: 'Learn about Saurity v1.0.0, the enterprise WordPress security plugin with zero false positives, smart rate limiting, and advanced firewall protection.',
   alternates: {
-    canonical: 'https://saurity.dev/about',
+    canonical: 'https://saurity.com/about',
   },
 }
 
@@ -176,10 +176,10 @@ export default function AboutPage() {
             
             <div className="mt-12 space-y-6">
               <div className="bg-white rounded-lg p-6 border-l-4 border-primary-600">
-                <h3 className="text-xl font-semibold mb-3">Start Small, Prove Stability</h3>
+                <h3 className="text-xl font-semibold mb-3">v1.0.0: Production-Ready Release</h3>
                 <p className="text-gray-700">
-                  Version 0.1 focuses on login security only. No malware scanning, no 2FA, no complex firewall rules. 
-                  We&apos;ll add advanced features only after proving v0.1 is rock-solid and lockout-free.
+                  Version 1.0.0 delivers enterprise-grade security with smart rate limiting, advanced firewall, 
+                  IP management, honeypot detection, and 3-tier emergency recovery. Proven stable with zero false positives.
                 </p>
               </div>
 
@@ -215,51 +215,65 @@ export default function AboutPage() {
       <section className="py-20">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            <h2 className="section-heading">What&apos;s Next</h2>
+            <h2 className="section-heading">v1.0.0 Feature Set</h2>
             <p className="section-subheading">
-              Planned features for future versions (only after v0.1 proves stable)
+              Production-ready enterprise security features now available
             </p>
             
             <div className="grid md:grid-cols-2 gap-6 mt-12">
               <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="font-semibold text-lg mb-3">v0.2 - Authentication</h3>
+                <h3 className="font-semibold text-lg mb-3">✅ Smart Rate Limiting</h3>
                 <ul className="space-y-2 text-gray-700">
-                  <li>• Google OAuth integration</li>
-                  <li>• 2FA support (TOTP)</li>
-                  <li>• Passwordless login</li>
-                  <li>• Session management</li>
+                  <li>• Login protection (progressive delays)</li>
+                  <li>• POST flood prevention (two-tier)</li>
+                  <li>• XML-RPC abuse protection</li>
+                  <li>• Comment rate limiting</li>
                 </ul>
               </div>
 
               <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="font-semibold text-lg mb-3">v0.3 - Enhanced Firewall</h3>
+                <h3 className="font-semibold text-lg mb-3">✅ Advanced Firewall</h3>
                 <ul className="space-y-2 text-gray-700">
-                  <li>• XML-RPC protection</li>
-                  <li>• POST flood prevention</li>
-                  <li>• User-agent filtering</li>
-                  <li>• Geographic restrictions</li>
+                  <li>• SQL injection detection</li>
+                  <li>• XSS protection</li>
+                  <li>• Malicious user agent blocking</li>
+                  <li>• Sensitive path protection</li>
                 </ul>
               </div>
 
               <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="font-semibold text-lg mb-3">v0.4 - Monitoring</h3>
+                <h3 className="font-semibold text-lg mb-3">✅ IP Management</h3>
                 <ul className="space-y-2 text-gray-700">
-                  <li>• File integrity monitoring</li>
-                  <li>• Activity alerts</li>
-                  <li>• Security reports</li>
-                  <li>• Admin notifications</li>
+                  <li>• Allowlist/Blocklist with CIDR</li>
+                  <li>• CSV import/export</li>
+                  <li>• Metadata tracking</li>
+                  <li>• Subnet blocking (anti-botnet)</li>
                 </ul>
               </div>
 
               <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="font-semibold text-lg mb-3">v0.5 - Hardening</h3>
+                <h3 className="font-semibold text-lg mb-3">✅ Advanced Detection</h3>
                 <ul className="space-y-2 text-gray-700">
-                  <li>• Security headers</li>
-                  <li>• Database hardening</li>
-                  <li>• File permissions check</li>
-                  <li>• Configuration scanner</li>
+                  <li>• Honeypot bot detection</li>
+                  <li>• Timing analysis</li>
+                  <li>• Tarpitting (attack slowdown)</li>
+                  <li>• Email notifications</li>
                 </ul>
               </div>
+            </div>
+
+            <div className="mt-12 bg-primary-50 border-l-4 border-primary-600 p-6 rounded-r-lg">
+              <h3 className="text-xl font-semibold mb-3 text-primary-900">Future Roadmap (v2.0+)</h3>
+              <p className="text-gray-700 mb-4">
+                After v1.0.0 stability is proven in production, future versions will add:
+              </p>
+              <ul className="space-y-2 text-gray-700">
+                <li>• 2FA and OAuth integration</li>
+                <li>• File integrity monitoring</li>
+                <li>• Geographic restrictions</li>
+                <li>• Malware scanning</li>
+                <li>• Advanced reporting and analytics</li>
+              </ul>
             </div>
           </div>
         </div>

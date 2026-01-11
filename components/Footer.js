@@ -7,11 +7,26 @@ export default function Footer() {
   return (
     <footer className="bg-gray-50 border-t border-gray-200 mt-20">
       <div className="container-custom py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Product */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">v0.1 Features</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">Product</h3>
             <ul className="space-y-3">
+              <li>
+                <Link href="/features" className="text-gray-600 hover:text-primary-600 transition-colors">
+                  Features
+                </Link>
+              </li>
+              <li>
+                <Link href="/use-cases" className="text-gray-600 hover:text-primary-600 transition-colors">
+                  Use Cases
+                </Link>
+              </li>
+              <li>
+                <Link href="/download" className="text-gray-600 hover:text-primary-600 transition-colors">
+                  Download
+                </Link>
+              </li>
               <li>
                 <Link href="/login-security" className="text-gray-600 hover:text-primary-600 transition-colors">
                   Login Security
@@ -22,16 +37,6 @@ export default function Footer() {
                   Rate Limiting
                 </Link>
               </li>
-              <li>
-                <a 
-                  href="https://github.com/saurity/saurity" 
-                  className="text-gray-600 hover:text-primary-600 transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View on GitHub
-                </a>
-              </li>
             </ul>
           </div>
 
@@ -39,6 +44,16 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-gray-900 mb-4">Resources</h3>
             <ul className="space-y-3">
+              <li>
+                <Link href="/faq" className="text-gray-600 hover:text-primary-600 transition-colors">
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link href="/changelog" className="text-gray-600 hover:text-primary-600 transition-colors">
+                  Changelog
+                </Link>
+              </li>
               <li>
                 <a 
                   href="https://github.com/saurity/saurity#readme" 
@@ -51,12 +66,12 @@ export default function Footer() {
               </li>
               <li>
                 <a 
-                  href="https://github.com/saurity/saurity/releases" 
+                  href="https://github.com/saurity/saurity" 
                   className="text-gray-600 hover:text-primary-600 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Download
+                  GitHub
                 </a>
               </li>
               <li>
@@ -72,10 +87,42 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Compare */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Legal</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">Compare</h3>
             <ul className="space-y-3">
+              <li>
+                <Link href="/vs/wordfence" className="text-gray-600 hover:text-primary-600 transition-colors">
+                  vs Wordfence
+                </Link>
+              </li>
+              <li>
+                <Link href="/vs/sucuri" className="text-gray-600 hover:text-primary-600 transition-colors">
+                  vs Sucuri
+                </Link>
+              </li>
+              <li>
+                <Link href="/vs/ithemes" className="text-gray-600 hover:text-primary-600 transition-colors">
+                  vs iThemes
+                </Link>
+              </li>
+              <li>
+                <Link href="/vs/all-in-one" className="text-gray-600 hover:text-primary-600 transition-colors">
+                  vs All In One
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h3 className="font-semibold text-gray-900 mb-4">Company</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link href="/about" className="text-gray-600 hover:text-primary-600 transition-colors">
+                  About
+                </Link>
+              </li>
               <li>
                 <Link href="/privacy" className="text-gray-600 hover:text-primary-600 transition-colors">
                   Privacy Policy
@@ -95,7 +142,7 @@ export default function Footer() {
             <div className="flex items-center space-x-2">
               <Image 
                 src="/logo.svg" 
-                alt="Saurity Logo" 
+                alt="Saurity WordPress Security Plugin - Zero Admin Lockouts" 
                 width={24} 
                 height={24}
                 className="w-6 h-6"
