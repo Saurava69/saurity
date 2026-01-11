@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { 
@@ -10,7 +10,7 @@ import {
 } from 'firebase/auth'
 import { auth } from '@/lib/firebase/config'
 
-export default function AuthManagerPage() {
+function AuthManagerContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [loading, setLoading] = useState(true)
@@ -33,7 +33,6 @@ export default function AuthManagerPage() {
 
     setMode(actionMode)
 
-    // Handle different modes
     if (actionMode === 'verifyEmail') {
       handleEmailVerification(oobCode)
     } else if (actionMode === 'resetPassword') {
@@ -44,7 +43,6 @@ export default function AuthManagerPage() {
     }
   }, [searchParams])
 
-  // Email Verification Handler
   const handleEmailVerification = async (oobCode) => {
     setLoading(true)
     setMessage('Verifying your email...')
@@ -76,7 +74,6 @@ export default function AuthManagerPage() {
     }
   }
 
-  // Password Reset Init Handler
   const handlePasswordResetInit = async (oobCode) => {
     setLoading(true)
 
@@ -99,7 +96,6 @@ export default function AuthManagerPage() {
     }
   }
 
-  // Password Reset Submit Handler
   const handlePasswordReset = async (e) => {
     e.preventDefault()
     setError('')
@@ -141,7 +137,6 @@ export default function AuthManagerPage() {
     }
   }
 
-  // Render based on mode and state
   if (loading && !verifiedEmail) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-primary-50 to-white py-20 flex items-center justify-center">
@@ -164,7 +159,6 @@ export default function AuthManagerPage() {
     <div className="min-h-screen bg-gradient-to-b from-primary-50 to-white py-20">
       <div className="container-custom">
         <div className="max-w-md mx-auto">
-          {/* Header */}
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-4">
               {mode === 'verifyEmail' ? (
@@ -185,7 +179,6 @@ export default function AuthManagerPage() {
             )}
           </div>
 
-          {/* Content Card */}
           <div className="bg-white rounded-lg shadow-lg p-8">
             {message && (
               <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
@@ -199,7 +192,6 @@ export default function AuthManagerPage() {
               </div>
             )}
 
-            {/* Email Verification Success */}
             {mode === 'verifyEmail' && !error && !loading && (
               <div className="text-center py-4">
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-full mb-4">
@@ -211,7 +203,6 @@ export default function AuthManagerPage() {
               </div>
             )}
 
-            {/* Password Reset Form */}
             {mode === 'resetPassword' && verifiedEmail && !error && (
               <form onSubmit={handlePasswordReset} className="space-y-6">
                 <div>
@@ -269,7 +260,6 @@ export default function AuthManagerPage() {
               </form>
             )}
 
-            {/* Action Buttons for Errors */}
             {error && (
               <div className="space-y-3 mt-6">
                 {mode === 'verifyEmail' && (
@@ -288,7 +278,6 @@ export default function AuthManagerPage() {
               </div>
             )}
 
-            {/* Back Link */}
             {!error && (
               <div className="mt-6 text-center">
                 <Link href="/auth/login" className="text-sm text-primary-600 hover:text-primary-700 font-medium">
@@ -300,5 +289,20 @@ export default function AuthManagerPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function AuthManagerPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-b from-primary-50 to-white py-20 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading...</p>
+        </div>
+      </div>
+    }>
+      <AuthManagerContent />
+    </Suspense>
   )
 }

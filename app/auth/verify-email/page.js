@@ -1,13 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { useAuth } from '@/contexts/AuthContext'
 import { applyActionCode } from 'firebase/auth'
 import { auth } from '@/lib/firebase/config'
 
-export default function VerifyEmailPage() {
+function VerifyEmailContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const { currentUser, logout } = useAuth()
@@ -43,17 +43,14 @@ export default function VerifyEmailPage() {
     setMessage('Verifying your email...')
 
     try {
-      // Apply the verification code
       await applyActionCode(auth, oobCode)
       
-      // Reload user to get updated verification status
       if (auth.currentUser) {
         await auth.currentUser.reload()
       }
 
       setMessage('Email verified successfully! Redirecting to login...')
       
-      // Redirect to login after 2 seconds
       setTimeout(() => {
         router.push('/auth/login')
       }, 2000)
@@ -79,7 +76,6 @@ export default function VerifyEmailPage() {
     setMessage('')
 
     try {
-      // Reload user to get latest verification status
       await currentUser.reload()
       
       if (currentUser.emailVerified) {
@@ -128,7 +124,6 @@ export default function VerifyEmailPage() {
     }
   }
 
-  // Show loading state while auto-verifying from email link
   if (autoVerifying) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-primary-50 to-white py-20 flex items-center justify-center">
@@ -146,14 +141,13 @@ export default function VerifyEmailPage() {
   }
 
   if (!currentUser) {
-    return null // Will redirect
+    return null
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-primary-50 to-white py-20">
       <div className="container-custom">
         <div className="max-w-md mx-auto">
-          {/* Header */}
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-4">
               <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -161,11 +155,10 @@ export default function VerifyEmailPage() {
               </svg>
             </div>
             <h1 className="text-4xl font-bold text-gray-900 mb-4">Verify Your Email</h1>
-            <p className="text-gray-600">We've sent a verification link to:</p>
+            <p className="text-gray-600">We&apos;ve sent a verification link to:</p>
             <p className="text-lg font-medium text-gray-900 mt-2">{currentUser.email}</p>
           </div>
 
-          {/* Verification Card */}
           <div className="bg-white rounded-lg shadow-lg p-8">
             {message && (
               <div className={`mb-6 p-4 rounded-lg ${
@@ -181,13 +174,12 @@ export default function VerifyEmailPage() {
               </div>
             )}
 
-            {/* Instructions */}
             <div className="space-y-4 mb-8">
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mt-0.5">
                   <span className="text-primary-600 text-sm font-bold">1</span>
                 </div>
-                <p className="text-gray-700">Check your email inbox for a verification link </p>
+                <p className="text-gray-700">Check your email inbox for a verification link from Firebase</p>
               </div>
 
               <div className="flex items-start gap-3">
@@ -201,11 +193,10 @@ export default function VerifyEmailPage() {
                 <div className="flex-shrink-0 w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mt-0.5">
                   <span className="text-primary-600 text-sm font-bold">3</span>
                 </div>
-                <p className="text-gray-700">Come back here and click "I've Verified My Email"</p>
+                <p className="text-gray-700">Come back here and click &quot;I&apos;ve Verified My Email&quot;</p>
               </div>
             </div>
 
-            {/* Action Buttons */}
             <div className="space-y-3">
               <button
                 onClick={checkVerification}
@@ -231,20 +222,18 @@ export default function VerifyEmailPage() {
               </button>
             </div>
 
-            {/* Help Text */}
             <div className="mt-6 p-4 bg-gray-50 rounded-lg">
               <p className="text-sm text-gray-600">
-                <strong>Didn't receive the email?</strong>
+                <strong>Didn&apos;t receive the email?</strong>
               </p>
               <ul className="mt-2 text-sm text-gray-600 space-y-1 list-disc list-inside">
                 <li>Check your spam/junk folder</li>
                 <li>Make sure you entered the correct email</li>
-                <li>Click "Resend Verification Email" to get a new link</li>
+                <li>Click &quot;Resend Verification Email&quot; to get a new link</li>
               </ul>
             </div>
           </div>
 
-          {/* Back Link */}
           <p className="mt-6 text-center text-sm text-gray-600">
             Wrong email?{' '}
             <Link href="/auth/signup" className="text-primary-600 hover:text-primary-700 font-medium">
@@ -254,5 +243,20 @@ export default function VerifyEmailPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function VerifyEmailPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-b from-primary-50 to-white py-20 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading...</p>
+        </div>
+      </div>
+    }>
+      <VerifyEmailContent />
+    </Suspense>
   )
 }
