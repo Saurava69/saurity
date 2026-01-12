@@ -64,7 +64,7 @@ export default function WriteBlogPost() {
     setAutoSlug(false)
   }
 
-  // Strip HTML tags for SEO check
+  // Strip HTML tags for plain text analysis (word count, reading time)
   const stripHtml = (html) => {
     const tmp = document.createElement('DIV')
     tmp.innerHTML = html
@@ -75,8 +75,8 @@ export default function WriteBlogPost() {
   useEffect(() => {
     if (formData.title && formData.excerpt && formData.content) {
       const timer = setTimeout(() => {
-        const plainContent = stripHtml(formData.content)
-        const results = checkSEO(formData.title, formData.excerpt, plainContent, formData.slug)
+        // Pass HTML content directly to SEO checker - it now handles HTML
+        const results = checkSEO(formData.title, formData.excerpt, formData.content, formData.slug)
         setSeoResults(results)
       }, 1000) // Debounce 1 second
       

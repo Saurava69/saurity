@@ -1,7 +1,8 @@
 'use client'
 
 import { useEditor, EditorContent } from '@tiptap/react'
-import { useState, useCallback, useEffect } from 'react'
+import { BubbleMenu } from '@tiptap/extension-bubble-menu'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import { getEditorExtensions } from '@/lib/tiptap/extensions'
 import { handleImageUpload } from '@/lib/utils/imageUpload'
 import { useAuth } from '@/contexts/AuthContext'
@@ -10,6 +11,8 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
   const { user } = useAuth()
   const [activeTab, setActiveTab] = useState('editor')
   const [imageUrl, setImageUrl] = useState('')
+  const [imageAlt, setImageAlt] = useState('')
+  const [imageCaption, setImageCaption] = useState('')
   const [youtubeUrl, setYoutubeUrl] = useState('')
   const [htmlCode, setHtmlCode] = useState('')
   const [showImageDialog, setShowImageDialog] = useState(false)
@@ -50,11 +53,17 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
 
   const addImage = useCallback(() => {
     if (imageUrl && editor) {
-      editor.chain().focus().setImage({ src: imageUrl }).run()
+      editor.chain().focus().setCustomImage({ 
+        src: imageUrl,
+        alt: imageAlt || '',
+        caption: imageCaption || null
+      }).run()
       setImageUrl('')
+      setImageAlt('')
+      setImageCaption('')
       setShowImageDialog(false)
     }
-  }, [editor, imageUrl])
+  }, [editor, imageUrl, imageAlt, imageCaption])
 
   const addYoutube = useCallback(() => {
     if (youtubeUrl && editor) {
@@ -352,9 +361,131 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
       </div>
 
       {/* Content Area */}
-      <div className="min-h-[600px]">
+      <div className="min-h-[600px] relative">
         {activeTab === 'editor' ? (
-          <EditorContent editor={editor} />
+          <>
+            {/* Bubble Menu for Text Selection */}
+            {editor && (
+              <BubbleMenu
+                editor={editor}
+                tippyOptions={{ duration: 100, placement: 'top' }}
+                className="bg-gray-900 text-white rounded-lg shadow-xl px-2 py-2 flex items-center gap-1"
+              >
+                {/* Text Formatting */}
+                <button
+                  onClick={() => editor.chain().focus().toggleBold().run()}
+                  className={`px-3 py-1.5 rounded hover:bg-gray-700 transition-colors font-bold text-sm ${
+                    editor.isActive('bold') ? 'bg-gray-700' : ''
+                  }`}
+                  type="button"
+                  title="Bold"
+                >
+                  B
+                </button>
+                <button
+                  onClick={() => editor.chain().focus().toggleItalic().run()}
+                  className={`px-3 py-1.5 rounded hover:bg-gray-700 transition-colors italic text-sm ${
+                    editor.isActive('italic') ? 'bg-gray-700' : ''
+                  }`}
+                  type="button"
+                  title="Italic"
+                >
+                  I
+                </button>
+                <button
+                  onClick={() => editor.chain().focus().toggleStrike().run()}
+                  className={`px-3 py-1.5 rounded hover:bg-gray-700 transition-colors line-through text-sm ${
+                    editor.isActive('strike') ? 'bg-gray-700' : ''
+                  }`}
+                  type="button"
+                  title="Strikethrough"
+                >
+                  S
+                </button>
+                
+                <div className="w-px h-6 bg-gray-600 mx-1"></div>
+                
+                {/* Headings */}
+                <button
+                  onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+                  className={`px-3 py-1.5 rounded hover:bg-gray-700 transition-colors font-semibold text-sm ${
+                    editor.isActive('heading', { level: 2 }) ? 'bg-gray-700' : ''
+                  }`}
+                  type="button"
+                  title="Heading 2"
+                >
+                  H2
+                </button>
+                <button
+                  onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+                  className={`px-3 py-1.5 rounded hover:bg-gray-700 transition-colors font-semibold text-sm ${
+                    editor.isActive('heading', { level: 3 }) ? 'bg-gray-700' : ''
+                  }`}
+                  type="button"
+                  title="Heading 3"
+                >
+                  H3
+                </button>
+                
+                <div className="w-px h-6 bg-gray-600 mx-1"></div>
+                
+                {/* Link and Code */}
+                <button
+                  onClick={() => {
+                    const url = window.prompt('Enter URL:')
+                    if (url) {
+                      editor.chain().focus().setLink({ href: url }).run()
+                    }
+                  }}
+                  className={`px-3 py-1.5 rounded hover:bg-gray-700 transition-colors text-sm ${
+                    editor.isActive('link') ? 'bg-gray-700' : ''
+                  }`}
+                  type="button"
+                  title="Add Link"
+                >
+                  🔗
+                </button>
+                <button
+                  onClick={() => editor.chain().focus().toggleCode().run()}
+                  className={`px-3 py-1.5 rounded hover:bg-gray-700 transition-colors font-mono text-xs ${
+                    editor.isActive('code') ? 'bg-gray-700' : ''
+                  }`}
+                  type="button"
+                  title="Inline Code"
+                >
+                  {'<>'}
+                </button>
+                
+                <div className="w-px h-6 bg-gray-600 mx-1"></div>
+                
+                {/* Insert Options */}
+                <button
+                  onClick={() => {
+                    setShowImageDialog(true)
+                  }}
+                  className="px-3 py-1.5 rounded hover:bg-gray-700 transition-colors text-sm"
+                  type="button"
+                  title="Insert Image"
+                >
+                  🖼️
+                </button>
+                <button
+                  onClick={() => {
+                    const url = window.prompt('Enter YouTube URL:')
+                    if (url) {
+                      editor.chain().focus().setYoutubeVideo({ src: url }).run()
+                    }
+                  }}
+                  className="px-3 py-1.5 rounded hover:bg-gray-700 transition-colors text-sm"
+                  type="button"
+                  title="Insert YouTube Video"
+                >
+                  ▶️
+                </button>
+              </BubbleMenu>
+            )}
+            <EditorContent editor={editor} />
+          </>
         ) : activeTab === 'preview' ? (
           <div className="p-8 max-w-4xl mx-auto">
             {title && (
@@ -391,24 +522,67 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
         </div>
       </div>
 
-      {/* Image Dialog */}
+      {/* Enhanced Image Dialog with Alt Text and Caption */}
       {showImageDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
             <h3 className="text-xl font-bold mb-4">Insert Image</h3>
-            <input
-              type="text"
-              value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
-              placeholder="Enter image URL..."
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-primary-500"
-              autoFocus
-            />
-            <div className="flex gap-2 justify-end">
+            
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Image URL *
+                </label>
+                <input
+                  type="text"
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
+                  placeholder="https://example.com/image.jpg"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  autoFocus
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Alt Text (for SEO & Accessibility)
+                </label>
+                <input
+                  type="text"
+                  value={imageAlt}
+                  onChange={(e) => setImageAlt(e.target.value)}
+                  placeholder="Describe the image..."
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  Helps search engines and screen readers understand your image
+                </p>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Caption (optional)
+                </label>
+                <input
+                  type="text"
+                  value={imageCaption}
+                  onChange={(e) => setImageCaption(e.target.value)}
+                  placeholder="Add a caption for your image..."
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  Displayed below the image
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex gap-2 justify-end mt-6">
               <button
                 onClick={() => {
                   setShowImageDialog(false)
                   setImageUrl('')
+                  setImageAlt('')
+                  setImageCaption('')
                 }}
                 className="px-4 py-2 text-gray-600 hover:text-gray-900"
                 type="button"
@@ -417,10 +591,11 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
               </button>
               <button
                 onClick={addImage}
-                className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700"
+                disabled={!imageUrl}
+                className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed"
                 type="button"
               >
-                Insert
+                Insert Image
               </button>
             </div>
           </div>
