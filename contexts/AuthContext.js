@@ -8,6 +8,8 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
   sendEmailVerification
 } from 'firebase/auth'
 import { auth, db } from '@/lib/firebase/config'
@@ -22,6 +24,28 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    // Check for redirect result first (for Google Sign-In redirect flow)
+    getRedirectResult(auth)
+      .then(async (result) => {
+        if (result?.user) {
+          // Check if user profile exists, if not create it
+          const userDoc = await getDoc(doc(db, 'users', result.user.uid))
+          if (!userDoc.exists()) {
+            await setDoc(doc(db, 'users', result.user.uid), {
+              email: result.user.email,
+              displayName: result.user.displayName,
+              photoURL: result.user.photoURL,
+              createdAt: new Date().toISOString(),
+              bookmarks: [],
+              role: 'user'
+            })
+          }
+        }
+      })
+      .catch((error) => {
+        console.error('Redirect result error:', error)
+      })
+
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         // Fetch additional user data from Firestore
@@ -61,24 +85,36 @@ export function AuthProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, password)
   }
 
-  const loginWithGoogle = async () => {
+  const loginWithGoogle = async (useRedirect = false) => {
     const provider = new GoogleAuthProvider()
-    const result = await signInWithPopup(auth, provider)
     
-    // Check if user profile exists, if not create it
-    const userDoc = await getDoc(doc(db, 'users', result.user.uid))
-    if (!userDoc.exists()) {
-      await setDoc(doc(db, 'users', result.user.uid), {
-        email: result.user.email,
-        displayName: result.user.displayName,
-        photoURL: result.user.photoURL,
-        createdAt: new Date().toISOString(),
-        bookmarks: [],
-        role: 'user'
-      })
-    }
+    // Add custom parameters for better UX
+    provider.setCustomParameters({
+      prompt: 'select_account'
+    })
+    
+    if (useRedirect) {
+      // Use redirect flow - better for mobile and avoids COOP issues
+      return signInWithRedirect(auth, provider)
+    } else {
+      // Use popup flow - faster but may have COOP warnings
+      const result = await signInWithPopup(auth, provider)
+      
+      // Check if user profile exists, if not create it
+      const userDoc = await getDoc(doc(db, 'users', result.user.uid))
+      if (!userDoc.exists()) {
+        await setDoc(doc(db, 'users', result.user.uid), {
+          email: result.user.email,
+          displayName: result.user.displayName,
+          photoURL: result.user.photoURL,
+          createdAt: new Date().toISOString(),
+          bookmarks: [],
+          role: 'user'
+        })
+      }
 
-    return result
+      return result
+    }
   }
 
   const logout = () => {
