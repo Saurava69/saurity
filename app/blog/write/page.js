@@ -9,6 +9,7 @@ import { checkSEO, generateSlug } from '@/lib/utils/seoChecker'
 import { db } from '@/lib/firebase/config'
 import { collection, addDoc, serverTimestamp, query, where, getDocs } from 'firebase/firestore'
 import readingTime from 'reading-time'
+import { handleImageUpload } from '@/lib/utils/imageUpload'
 
 export default function WriteBlogPost() {
   const router = useRouter()
@@ -22,6 +23,7 @@ export default function WriteBlogPost() {
     category: 'Security Tips',
     tags: '',
     featuredImage: '',
+    featuredImageAlt: '',
   })
   
   const [seoResults, setSeoResults] = useState(null)
@@ -29,6 +31,7 @@ export default function WriteBlogPost() {
   const [submitStatus, setSubmitStatus] = useState(null)
   const [autoSlug, setAutoSlug] = useState(true)
   const [showPreview, setShowPreview] = useState(false)
+  const [uploadingFeaturedImage, setUploadingFeaturedImage] = useState(false)
 
   const categories = [
     'Security Tips',
@@ -154,6 +157,7 @@ export default function WriteBlogPost() {
         category: 'Security Tips',
         tags: '',
         featuredImage: '',
+        featuredImageAlt: '',
       })
       setAutoSlug(true)
       setShowPreview(false)
@@ -485,16 +489,93 @@ export default function WriteBlogPost() {
 
                     <div>
                       <label htmlFor="featuredImage" className="block text-sm font-medium text-gray-700 mb-2">
-                        Featured Image URL
+                        Featured Image
                       </label>
-                      <input
-                        type="url"
-                        id="featuredImage"
-                        value={formData.featuredImage}
-                        onChange={(e) => setFormData({...formData, featuredImage: e.target.value})}
-                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                        placeholder="https://example.com/image.jpg"
-                      />
+                      
+                      {formData.featuredImage && (
+                        <div className="mb-3 relative">
+                          <img 
+                            src={formData.featuredImage} 
+                            alt={formData.featuredImageAlt || 'Featured image preview'}
+                            className="w-full h-32 object-cover rounded-lg border border-gray-300"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => setFormData({...formData, featuredImage: '', featuredImageAlt: ''})}
+                            className="absolute top-2 right-2 bg-red-600 text-white rounded-full p-1 hover:bg-red-700 shadow-lg"
+                            title="Remove image"
+                          >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          </button>
+                        </div>
+                      )}
+                      
+                      <div className="space-y-2">
+                        <input
+                          type="url"
+                          id="featuredImage"
+                          value={formData.featuredImage}
+                          onChange={(e) => setFormData({...formData, featuredImage: e.target.value})}
+                          className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                          placeholder="https://example.com/image.jpg"
+                        />
+                        
+                        <input
+                          type="text"
+                          value={formData.featuredImageAlt}
+                          onChange={(e) => setFormData({...formData, featuredImageAlt: e.target.value})}
+                          className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                          placeholder="Alt text for SEO (e.g., WordPress security dashboard)"
+                        />
+                        
+                        <label className={`w-full px-3 py-2 text-sm border border-gray-300 rounded-md flex items-center justify-center gap-2 cursor-pointer hover:bg-gray-50 transition-colors ${
+                          uploadingFeaturedImage ? 'opacity-50 cursor-not-allowed' : ''
+                        }`}>
+                          {uploadingFeaturedImage ? (
+                            <>
+                              <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                              </svg>
+                              Uploading...
+                            </>
+                          ) : (
+                            <>
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                              </svg>
+                              Upload from Computer
+                            </>
+                          )}
+                          <input
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            disabled={uploadingFeaturedImage}
+                            onChange={async (e) => {
+                              const file = e.target.files?.[0]
+                              if (file) {
+                                try {
+                                  setUploadingFeaturedImage(true)
+                                  const uploadedUrl = await handleImageUpload(file, {
+                                    userId: user?.uid,
+                                    useCloudStorage: process.env.NODE_ENV === 'production',
+                                  })
+                                  setFormData({...formData, featuredImage: uploadedUrl})
+                                  setUploadingFeaturedImage(false)
+                                } catch (error) {
+                                  console.error('Error uploading featured image:', error)
+                                  alert('Failed to upload image. Please try again.')
+                                  setUploadingFeaturedImage(false)
+                                }
+                              }
+                            }}
+                          />
+                        </label>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-1">Paste URL, upload from computer, then add alt text</p>
                     </div>
                   </div>
                 </div>

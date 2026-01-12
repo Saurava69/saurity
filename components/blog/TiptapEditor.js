@@ -1,7 +1,6 @@
 'use client'
 
 import { useEditor, EditorContent } from '@tiptap/react'
-import { BubbleMenu } from '@tiptap/extension-bubble-menu'
 import { useState, useCallback, useEffect, useRef } from 'react'
 import { getEditorExtensions } from '@/lib/tiptap/extensions'
 import { handleImageUpload } from '@/lib/utils/imageUpload'
@@ -19,6 +18,9 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
   const [showYoutubeDialog, setShowYoutubeDialog] = useState(false)
   const [showHtmlDialog, setShowHtmlDialog] = useState(false)
   const [uploading, setUploading] = useState(false)
+  const [bubbleMenuVisible, setBubbleMenuVisible] = useState(false)
+  const [bubbleMenuPosition, setBubbleMenuPosition] = useState({ top: 0, left: 0 })
+  const bubbleMenuRef = useRef(null)
 
   const editor = useEditor({
     immediatelyRender: false,
@@ -28,6 +30,44 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
       // Save as JSON, not HTML
       const json = editor.getJSON()
       onChange(JSON.stringify(json))
+    },
+    onSelectionUpdate: ({ editor }) => {
+      // Show/hide bubble menu based on selection
+      const { from, to } = editor.state.selection
+      const hasSelection = from !== to
+      
+      if (hasSelection && activeTab === 'editor') {
+        // Get selection coordinates
+        const { view } = editor
+        const start = view.coordsAtPos(from)
+        const end = view.coordsAtPos(to)
+        
+        // Calculate center position
+        let left = (start.left + end.left) / 2
+        let top = start.top - 60 // Position above selection
+        
+        // Ensure bubble menu stays within viewport
+        const menuWidth = 600 // Approximate width of bubble menu
+        const menuHeight = 50 // Approximate height of bubble menu
+        const padding = 10
+        
+        // Keep within horizontal bounds
+        if (left - menuWidth / 2 < padding) {
+          left = menuWidth / 2 + padding
+        } else if (left + menuWidth / 2 > window.innerWidth - padding) {
+          left = window.innerWidth - menuWidth / 2 - padding
+        }
+        
+        // If too close to top, show below selection instead
+        if (top < menuHeight + padding) {
+          top = end.bottom + padding
+        }
+        
+        setBubbleMenuPosition({ top, left })
+        setBubbleMenuVisible(true)
+      } else {
+        setBubbleMenuVisible(false)
+      }
     },
     editorProps: {
       attributes: {
@@ -91,15 +131,16 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
         setUploading(true)
         
         // Upload image (uses base64 in dev, Firebase Storage in production)
-        const imageUrl = await handleImageUpload(file, {
+        const uploadedImageUrl = await handleImageUpload(file, {
           userId: user?.uid,
           useCloudStorage: process.env.NODE_ENV === 'production',
         })
         
-        // Insert image into editor
-        editor.chain().focus().setImage({ src: imageUrl }).run()
-        
         setUploading(false)
+        
+        // Open image dialog with the uploaded URL pre-filled
+        setImageUrl(uploadedImageUrl)
+        setShowImageDialog(true)
       } catch (error) {
         console.error('Error uploading image:', error)
         alert('Failed to upload image. Please try again.')
@@ -364,12 +405,19 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
       <div className="min-h-[600px] relative">
         {activeTab === 'editor' ? (
           <>
-            {/* Bubble Menu for Text Selection */}
-            {editor && (
-              <BubbleMenu
-                editor={editor}
-                tippyOptions={{ duration: 100, placement: 'top' }}
-                className="bg-gray-900 text-white rounded-lg shadow-xl px-2 py-2 flex items-center gap-1"
+            {/* Custom Bubble Menu for Text Selection */}
+            {editor && bubbleMenuVisible && (
+              <div
+                ref={bubbleMenuRef}
+                style={{
+                  position: 'fixed',
+                  top: `${bubbleMenuPosition.top}px`,
+                  left: `${bubbleMenuPosition.left}px`,
+                  transform: 'translateX(-50%)',
+                  zIndex: 1000,
+                  maxWidth: 'calc(100vw - 20px)',
+                }}
+                className="bg-gray-900 text-white rounded-lg shadow-2xl px-2 py-2 flex flex-wrap items-center gap-1 transition-opacity duration-200"
               >
                 {/* Text Formatting */}
                 <button
@@ -461,6 +509,7 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
                 {/* Insert Options */}
                 <button
                   onClick={() => {
+                    setBubbleMenuVisible(false)
                     setShowImageDialog(true)
                   }}
                   className="px-3 py-1.5 rounded hover:bg-gray-700 transition-colors text-sm"
@@ -482,7 +531,7 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
                 >
                   ▶️
                 </button>
-              </BubbleMenu>
+              </div>
             )}
             <EditorContent editor={editor} />
           </>
