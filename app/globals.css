@@ -744,3 +744,16 @@ ul, ol {
 .article-content .ProseMirror ol {
   margin-bottom: 2rem;
 }
+
+/* Accessibility: Improve color contrast for WCAG AA compliance */
+.text-primary-600 {
+  color: var(--color-primary-700) !important;
+}
+
+a.text-primary-600 {
+  color: var(--color-primary-700) !important;
+}
+
+a.text-primary-600:hover {
+  color: var(--color-primary-800) !important;
+}

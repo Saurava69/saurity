@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Product */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Product</h3>
+            <h2 className="font-semibold text-gray-900 mb-4 text-base">Product</h2>
             <ul className="space-y-3">
               <li>
                 <Link href="/features" className="text-gray-600 hover:text-primary-600 transition-colors">
@@ -42,7 +42,7 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Resources</h3>
+            <h2 className="font-semibold text-gray-900 mb-4 text-base">Resources</h2>
             <ul className="space-y-3">
               <li>
                 <Link href="/faq" className="text-gray-600 hover:text-primary-600 transition-colors">
@@ -89,7 +89,7 @@ export default function Footer() {
 
           {/* Compare */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Compare</h3>
+            <h2 className="font-semibold text-gray-900 mb-4 text-base">Compare</h2>
             <ul className="space-y-3">
               <li>
                 <Link href="/vs/wordfence" className="text-gray-600 hover:text-primary-600 transition-colors">
@@ -116,7 +116,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Company</h3>
+            <h2 className="font-semibold text-gray-900 mb-4 text-base">Company</h2>
             <ul className="space-y-3">
               <li>
                 <Link href="/about" className="text-gray-600 hover:text-primary-600 transition-colors">

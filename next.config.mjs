@@ -2,6 +2,14 @@
 const nextConfig = {
   /* config options here */
   reactCompiler: true,
+  
+  // Enable SWC minification
+  swcMinify: true,
+  
+  // Optimize CSS
+  experimental: {
+    optimizeCss: true,
+  },
   images: {
     remotePatterns: [
       {
@@ -34,6 +42,24 @@ const nextConfig = {
           {
             key: 'Cross-Origin-Opener-Policy',
             value: 'same-origin-allow-popups',
+          },
+        ],
+      },
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/:all*(svg|jpg|png|webp|ico)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
           },
         ],
       },
