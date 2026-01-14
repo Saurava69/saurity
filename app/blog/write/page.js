@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useAuth } from '@/contexts/AuthContext'
 import TiptapEditor from '@/components/blog/TiptapEditor'
-import { checkSEO, generateSlug } from '@/lib/utils/seoChecker'
 import { db } from '@/lib/firebase/config'
 import { collection, addDoc, serverTimestamp, query, where, getDocs } from 'firebase/firestore'
 import readingTime from 'reading-time'
@@ -25,8 +24,6 @@ export default function WriteBlogPost() {
     featuredImage: '',
     featuredImageAlt: '',
   })
-  
-  const [seoResults, setSeoResults] = useState(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null)
   const [autoSlug, setAutoSlug] = useState(true)
@@ -52,6 +49,14 @@ export default function WriteBlogPost() {
     }
   }, [user, authLoading, router])
 
+  // Generate slug from title
+  const generateSlug = (text) => {
+    return text
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+  }
+
   const handleTitleChange = (e) => {
     const newTitle = e.target.value
     setFormData({ ...formData, title: newTitle })
@@ -74,20 +79,6 @@ export default function WriteBlogPost() {
     return tmp.textContent || tmp.innerText || ''
   }
 
-  // Auto-check SEO when content changes
-  useEffect(() => {
-    if (formData.title && formData.excerpt && formData.content) {
-      const timer = setTimeout(() => {
-        // Pass HTML content directly to SEO checker - it now handles HTML
-        const results = checkSEO(formData.title, formData.excerpt, formData.content, formData.slug)
-        setSeoResults(results)
-      }, 1000) // Debounce 1 second
-      
-      return () => clearTimeout(timer)
-    } else {
-      setSeoResults(null)
-    }
-  }, [formData.title, formData.excerpt, formData.content, formData.slug])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -95,9 +86,8 @@ export default function WriteBlogPost() {
     setSubmitStatus(null)
 
     try {
-      // Check SEO score
+      // Calculate reading time
       const plainContent = stripHtml(formData.content)
-      const seo = checkSEO(formData.title, formData.excerpt, plainContent, formData.slug)
       const stats = readingTime(plainContent)
 
       // Parse tags
@@ -135,7 +125,6 @@ export default function WriteBlogPost() {
         authorEmail: user.email,
         readTime: Math.ceil(stats.minutes),
         wordCount: stats.words,
-        seoScore: seo.score.overall,
         status: 'pending',
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),
@@ -348,37 +337,10 @@ export default function WriteBlogPost() {
                   </h3>
                 
 
-                  {/* SEO Score Display */}
-                  {seoResults && (
-                    <div className={`mb-4 p-4 rounded-lg border-2 ${
-                      seoResults.score.overall >= 80 
-                        ? 'bg-green-50 border-green-300' 
-                        : seoResults.score.overall >= 60
-                        ? 'bg-yellow-50 border-yellow-300'
-                        : 'bg-red-50 border-red-300'
-                    }`}>
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="font-semibold text-gray-900">SEO Score</span>
-                        <span className={`text-2xl font-bold ${
-                          seoResults.score.overall >= 80 
-                            ? 'text-green-600' 
-                            : seoResults.score.overall >= 60
-                            ? 'text-yellow-600'
-                            : 'text-red-600'
-                        }`}>
-                          {seoResults.score.overall}/100
-                        </span>
-                      </div>
-                      <div className="text-sm text-gray-600">
-                        Grade: <strong>{seoResults.grade}</strong>
-                      </div>
-                    </div>
-                  )}
-
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    disabled={isSubmitting || (seoResults && seoResults.score.overall < 50)}
+                    disabled={isSubmitting}
                     className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed text-center flex items-center justify-center gap-2"
                   >
                     {isSubmitting ? (
@@ -398,13 +360,6 @@ export default function WriteBlogPost() {
                       </>
                     )}
                   </button>
-                  
-                  {seoResults && seoResults.score.overall < 50 && (
-                    <p className="text-red-600 text-xs mt-2 flex items-start gap-1">
-                      <span>⚠️</span>
-                      <span>SEO score too low. Improve content before submitting.</span>
-                    </p>
-                  )}
 
                   <Link href="/blog" className="w-full btn-secondary text-center mt-3 block">
                     Cancel
@@ -580,27 +535,6 @@ export default function WriteBlogPost() {
                   </div>
                 </div>
 
-                {/* SEO Analysis Card */}
-                {seoResults && (
-                  <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
-                    <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                      <svg className="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                      </svg>
-                      SEO Analysis
-                    </h3>
-                    <div className="space-y-2 max-h-64 overflow-y-auto">
-                      {seoResults.issues.map((issue, index) => (
-                        <div key={index} className="text-sm flex items-start gap-2">
-                          <span className={`inline-block w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${
-                            issue.includes('✓') ? 'bg-green-500' : 'bg-red-500'
-                          }`}></span>
-                          <span className="text-gray-700">{issue}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
             </form>
           </div>

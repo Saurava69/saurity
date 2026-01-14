@@ -141,7 +141,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-2">
               <Image 
-                src="/logo.svg" 
+                src="/logo.png" 
                 alt="Saurity WordPress Security Plugin - Zero Admin Lockouts" 
                 width={24} 
                 height={24}

@@ -5,6 +5,12 @@ import { useState, useCallback, useEffect, useRef } from 'react'
 import { getEditorExtensions } from '@/lib/tiptap/extensions'
 import { handleImageUpload } from '@/lib/utils/imageUpload'
 import { useAuth } from '@/contexts/AuthContext'
+import { 
+  Bold, Italic, Strikethrough, Heading2, Heading3,
+  List, ListOrdered, Code2, Quote, Image as ImageIcon,
+  Youtube, FileCode2, Link as LinkIcon, Undo2, Redo2,
+  Upload, Loader2
+} from 'lucide-react'
 
 export default function TiptapEditor({ value, onChange, title, excerpt }) {
   const { user } = useAuth()
@@ -27,7 +33,7 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
     extensions: getEditorExtensions('Start writing your content...'),
     content: value ? (typeof value === 'string' ? JSON.parse(value) : value) : '',
     onUpdate: ({ editor }) => {
-      // Save as JSON, not HTML
+      // Save as JSON for database
       const json = editor.getJSON()
       onChange(JSON.stringify(json))
     },
@@ -275,27 +281,30 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
       {/* Media & Embeds */}
       <button
         onClick={() => setShowImageDialog(true)}
-        className="px-3 py-2 rounded hover:bg-gray-200 transition-colors"
+        className="px-3 py-2 rounded hover:bg-gray-200 transition-colors flex items-center gap-1"
         type="button"
         title="Insert Image"
       >
-        🖼️ Image
+        <ImageIcon className="w-4 h-4" />
+        <span className="hidden sm:inline">Image</span>
       </button>
       <button
         onClick={() => setShowYoutubeDialog(true)}
-        className="px-3 py-2 rounded hover:bg-gray-200 transition-colors"
+        className="px-3 py-2 rounded hover:bg-gray-200 transition-colors flex items-center gap-1"
         type="button"
         title="Embed YouTube"
       >
-        ▶️ YouTube
+        <Youtube className="w-4 h-4" />
+        <span className="hidden sm:inline">YouTube</span>
       </button>
       <button
         onClick={() => setShowHtmlDialog(true)}
-        className="px-3 py-2 rounded hover:bg-gray-200 transition-colors"
+        className="px-3 py-2 rounded hover:bg-gray-200 transition-colors flex items-center gap-1"
         type="button"
         title="Insert HTML"
       >
-        &lt;/&gt; HTML
+        <FileCode2 className="w-4 h-4" />
+        <span className="hidden sm:inline">HTML</span>
       </button>
 
       <div className="w-px h-6 bg-gray-300 mx-2"></div>
@@ -308,13 +317,14 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
             editor.chain().focus().setLink({ href: url }).run()
           }
         }}
-        className={`px-3 py-2 rounded hover:bg-gray-200 transition-colors ${
+        className={`px-3 py-2 rounded hover:bg-gray-200 transition-colors flex items-center gap-1 ${
           editor.isActive('link') ? 'bg-gray-300' : ''
         }`}
         type="button"
         title="Add Link"
       >
-        🔗 Link
+        <LinkIcon className="w-4 h-4" />
+        <span className="hidden sm:inline">Link</span>
       </button>
 
       <div className="w-px h-6 bg-gray-300 mx-2"></div>
@@ -327,7 +337,7 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
         type="button"
         title="Undo (Ctrl+Z)"
       >
-        ↶
+        <Undo2 className="w-4 h-4" />
       </button>
       <button
         onClick={() => editor.chain().focus().redo().run()}
@@ -336,16 +346,26 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
         type="button"
         title="Redo (Ctrl+Y)"
       >
-        ↷
+        <Redo2 className="w-4 h-4" />
       </button>
 
       <div className="ml-auto">
-        <label className={`px-3 py-2 rounded transition-colors inline-block ${
+        <label className={`px-3 py-2 rounded transition-colors inline-flex items-center gap-2 ${
           uploading 
             ? 'opacity-50 cursor-not-allowed bg-gray-100' 
             : 'hover:bg-gray-200 cursor-pointer'
         }`}>
-          {uploading ? '⏳ Uploading...' : '📤 Upload Image'}
+          {uploading ? (
+            <>
+              <Loader2 className="w-4 h-4 animate-spin" />
+              <span className="hidden sm:inline">Uploading...</span>
+            </>
+          ) : (
+            <>
+              <Upload className="w-4 h-4" />
+              <span className="hidden sm:inline">Upload Image</span>
+            </>
+          )}
           <input
             type="file"
             accept="image/*"
@@ -485,13 +505,13 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
                       editor.chain().focus().setLink({ href: url }).run()
                     }
                   }}
-                  className={`px-3 py-1.5 rounded hover:bg-gray-700 transition-colors text-sm ${
+                  className={`px-3 py-1.5 rounded hover:bg-gray-700 transition-colors text-sm flex items-center ${
                     editor.isActive('link') ? 'bg-gray-700' : ''
                   }`}
                   type="button"
                   title="Add Link"
                 >
-                  🔗
+                  <LinkIcon className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => editor.chain().focus().toggleCode().run()}
@@ -512,11 +532,11 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
                     setBubbleMenuVisible(false)
                     setShowImageDialog(true)
                   }}
-                  className="px-3 py-1.5 rounded hover:bg-gray-700 transition-colors text-sm"
+                  className="px-3 py-1.5 rounded hover:bg-gray-700 transition-colors text-sm flex items-center"
                   type="button"
                   title="Insert Image"
                 >
-                  🖼️
+                  <ImageIcon className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => {
@@ -525,11 +545,11 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
                       editor.chain().focus().setYoutubeVideo({ src: url }).run()
                     }
                   }}
-                  className="px-3 py-1.5 rounded hover:bg-gray-700 transition-colors text-sm"
+                  className="px-3 py-1.5 rounded hover:bg-gray-700 transition-colors text-sm flex items-center"
                   type="button"
                   title="Insert YouTube Video"
                 >
-                  ▶️
+                  <Youtube className="w-4 h-4" />
                 </button>
               </div>
             )}

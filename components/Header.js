@@ -56,7 +56,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
             <Image 
-              src="/logo.svg" 
+              src="/logo.png" 
               alt="Saurity" 
               width={32} 
               height={32}
@@ -321,16 +321,16 @@ export default function Header() {
               {/* Products */}
               <div className="py-2">
                 <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider px-3 mb-2">Products</div>
-                <Link href="/firewall" className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
+                <Link href="/firewall" onClick={handleMobileNavClick} className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
                   Web Firewall
                 </Link>
-                <Link href="/login-security" className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
+                <Link href="/login-security" onClick={handleMobileNavClick} className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
                   Login Security
                 </Link>
-                <Link href="/rate-limiting" className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
+                <Link href="/rate-limiting" onClick={handleMobileNavClick} className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
                   Rate Limiting
                 </Link>
-                <Link href="/features" className="block px-3 py-2 text-primary-600 hover:bg-primary-50 rounded-md transition-colors font-medium">
+                <Link href="/features" onClick={handleMobileNavClick} className="block px-3 py-2 text-primary-600 hover:bg-primary-50 rounded-md transition-colors font-medium">
                   All Features
                 </Link>
               </div>
@@ -338,26 +338,26 @@ export default function Header() {
               {/* Resources */}
               <div className="py-2 border-t border-gray-200">
                 <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider px-3 mb-2">Resources</div>
-                <Link href="/blog" className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
+                <Link href="/blog" onClick={handleMobileNavClick} className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
                   Blog & Guides
                 </Link>
-                <Link href="/use-cases" className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
+                <Link href="/use-cases" onClick={handleMobileNavClick} className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
                   Use Cases
                 </Link>
-                <Link href="/faq" className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
+                <Link href="/faq" onClick={handleMobileNavClick} className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
                   FAQ
                 </Link>
-                <Link href="/changelog" className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
+                <Link href="/changelog" onClick={handleMobileNavClick} className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
                   Changelog
                 </Link>
               </div>
 
               {/* Other Links */}
               <div className="py-2 border-t border-gray-200">
-                <Link href="/vs/wordfence" className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
+                <Link href="/vs/wordfence" onClick={handleMobileNavClick} className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
                   Comparisons
                 </Link>
-                <Link href="/about" className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
+                <Link href="/about" onClick={handleMobileNavClick} className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
                   About
                 </Link>
               </div>
@@ -377,14 +377,14 @@ export default function Header() {
                       </div>
                     </div>
                   </div>
-                  <Link href="/user/my-posts" className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
+                  <Link href="/user/my-posts" onClick={handleMobileNavClick} className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
                     My Posts
                   </Link>
-                  <Link href="/blog/write" className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
+                  <Link href="/blog/write" onClick={handleMobileNavClick} className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
                     Write Post
                   </Link>
                   {user.role === 'admin' && (
-                    <Link href="/admin/dashboard" className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
+                    <Link href="/admin/dashboard" onClick={handleMobileNavClick} className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
                       Admin Dashboard
                     </Link>
                   )}
@@ -400,10 +400,10 @@ export default function Header() {
                 </div>
               ) : (
                 <div className="py-2 border-t border-gray-200 space-y-2">
-                  <Link href="/auth/login" className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
+                  <Link href="/auth/login" onClick={handleMobileNavClick} className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-md transition-colors">
                     Login
                   </Link>
-                  <Link href="/download" className="block mx-3 btn-primary text-center">
+                  <Link href="/download" onClick={handleMobileNavClick} className="block mx-3 btn-primary text-center">
                     Download Free
                   </Link>
                 </div>

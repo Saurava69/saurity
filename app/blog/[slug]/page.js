@@ -110,7 +110,7 @@ export default async function BlogPostPage({ params }) {
     description: post.excerpt,
     image: {
       '@type': 'ImageObject',
-      url: post.featuredImage || 'https://saurity.com/logo.svg',
+      url: post.featuredImage || 'https://saurity.com/logo.png',
       width: 1200,
       height: 630,
     },
@@ -123,7 +123,7 @@ export default async function BlogPostPage({ params }) {
       name: 'Saurity',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://saurity.com/logo.svg',
+        url: 'https://saurity.com/logo.png',
         width: 600,
         height: 60,
       },

@@ -83,7 +83,7 @@ export default async function BlogPage({ searchParams }) {
       name: 'Saurity',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://saurity.com/logo.svg',
+        url: 'https://saurity.com/logo.png',
       },
     },
     blogPost: posts.slice(0, 10).map(post => ({
@@ -97,7 +97,7 @@ export default async function BlogPage({ searchParams }) {
         '@type': 'Person',
         name: post.author,
       },
-      image: post.featuredImage || 'https://saurity.com/logo.svg',
+      image: post.featuredImage || 'https://saurity.com/logo.png',
     })),
   }
 
@@ -224,7 +224,7 @@ export default async function BlogPage({ searchParams }) {
           </div>
         </div>
       </section>
-      
+
       {/* CTA Section */}
       <section className="py-20 bg-primary-600 text-white">
         <div className="container-custom">
