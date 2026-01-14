@@ -170,6 +170,7 @@ export default function EditUserPost() {
             hasChanges: true,
             submittedAt: serverTimestamp()
           },
+          hasDraft: true,
           updatedAt: serverTimestamp(),
         }
 
@@ -191,7 +192,7 @@ export default function EditUserPost() {
           featuredImage: formData.featuredImage || '',
           readTime: Math.ceil(stats.minutes),
           wordCount: stats.words,
-          status: formData.status,
+          status: originalStatus === 'rejected' ? 'pending' : formData.status,
           updatedAt: serverTimestamp(),
         }
 
@@ -199,7 +200,9 @@ export default function EditUserPost() {
 
         setSubmitStatus({
           type: 'success',
-          message: 'Post updated successfully!',
+          message: originalStatus === 'rejected' 
+            ? 'Post resubmitted for review! Status changed to pending.' 
+            : 'Post updated successfully!',
         })
       }
 

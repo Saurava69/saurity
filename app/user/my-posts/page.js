@@ -154,6 +154,16 @@ export default function MyPosts() {
                 >
                   Pending ({stats.pending})
                 </button>
+                <button
+                  onClick={() => setFilter('rejected')}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                    filter === 'rejected'
+                      ? 'bg-red-600 text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  Rejected ({stats.rejected})
+                </button>
               </div>
 
               {/* Write New Post Button */}
@@ -261,18 +271,6 @@ export default function MyPosts() {
                                 day: 'numeric' 
                               })}
                             </span>
-                            {post.seoScore && (
-                              <span className={`flex items-center gap-1 ${
-                                (typeof post.seoScore === 'object' ? post.seoScore?.overall : post.seoScore) >= 80 ? 'text-green-600' :
-                                (typeof post.seoScore === 'object' ? post.seoScore?.overall : post.seoScore) >= 50 ? 'text-yellow-600' :
-                                'text-red-600'
-                              }`}>
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                SEO: {typeof post.seoScore === 'object' ? post.seoScore?.overall || 'N/A' : post.seoScore}/100
-                              </span>
-                            )}
                           </div>
                         </div>
                       </div>
@@ -336,16 +334,20 @@ export default function MyPosts() {
                           </span>
                         )}
 
-                        {post.status === 'rejected' && post.rejectionReason && (
-                          <button
-                            onClick={() => alert(`Rejection Reason:\n\n${post.rejectionReason}`)}
-                            className="px-4 py-2 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-sm font-medium transition-colors inline-flex items-center gap-2"
-                          >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            View Reason
-                          </button>
+                        {post.status === 'rejected' && (
+                          <>
+                            {post.rejectionReason && (
+                              <button
+                                onClick={() => alert(`Rejection Reason:\n\n${post.rejectionReason}`)}
+                                className="px-4 py-2 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-sm font-medium transition-colors inline-flex items-center gap-2"
+                              >
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                View Feedback
+                              </button>
+                            )}
+                          </>
                         )}
                       </div>
                     </div>

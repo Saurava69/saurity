@@ -98,7 +98,17 @@ export default function AdminDashboard() {
       orderBy('createdAt', 'desc')
     )
     const snapshot = await getDocs(q)
-    const posts = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+    const posts = snapshot.docs.map(doc => {
+      const data = doc.data()
+      // Convert Firebase Timestamps to plain objects for serialization
+      if (data.draft && data.draft.submittedAt) {
+        data.draft = {
+          ...data.draft,
+          submittedAt: data.draft.submittedAt.toDate().toISOString()
+        }
+      }
+      return { id: doc.id, ...data }
+    })
     setPostsWithDrafts(posts)
     setStats(prev => ({ ...prev, drafts: posts.length }))
   }
@@ -129,13 +139,29 @@ export default function AdminDashboard() {
   }
 
   const handleReject = async (postId) => {
-    if (!confirm('Are you sure you want to reject and delete this post?')) return
+    const rejectionReason = prompt('Please provide feedback for why this post is being rejected (required):')
+    
+    // If user cancels or provides empty feedback
+    if (!rejectionReason || rejectionReason.trim() === '') {
+      alert('Rejection feedback is required to help the author improve their post.')
+      return
+    }
     
     setActionLoading(postId)
     try {
-      await deleteDoc(doc(db, 'blogPosts', postId))
+      const updateData = {
+        status: 'rejected',
+        rejectedAt: Timestamp.now(),
+        updatedAt: Timestamp.now(),
+      }
+      
+      if (rejectionReason) {
+        updateData.rejectionReason = rejectionReason
+      }
+      
+      await updateDoc(doc(db, 'blogPosts', postId), updateData)
       await fetchAllData()
-      alert('Post rejected and deleted')
+      alert('Post rejected. Author can edit and resubmit.')
     } catch (error) {
       console.error('Error rejecting post:', error)
       alert('Failed to reject post')
@@ -533,8 +559,6 @@ function PostCard({ post, onApprove, onReject, onUnpublish, onDelete, onEdit, lo
                 <span>by {post.author}</span>
                 <span>•</span>
                 <span>{post.readTime} min read</span>
-                <span>•</span>
-                <span>SEO: {typeof post.seoScore === 'object' ? post.seoScore?.overall || 'N/A' : post.seoScore}/100</span>
               </div>
             </div>
           </div>
