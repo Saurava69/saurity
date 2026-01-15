@@ -5,19 +5,19 @@ export const metadata = {
   title: 'Download Saurity v1.0.0 - Free WordPress Security Plugin',
   description: 'Download Saurity v1.0.0 for free. Enterprise WordPress security with zero false positives. Install in 5 minutes. No credit card required.',
   alternates: {
-    canonical: 'https://saurity.com/download',
+    canonical: 'https://www.saurity.com/download',
   },
   openGraph: {
     title: 'Download Saurity v1.0.0 - Free WordPress Security',
     description: 'Enterprise WordPress security plugin. Download free, install in 5 minutes.',
-    url: 'https://saurity.com/download',
+    url: 'https://www.saurity.com/download',
     images: ['/HomePage1200_600.webp'],
   },
 }
 
 const breadcrumbs = [
-  { name: 'Home', url: 'https://saurity.com' },
-  { name: 'Download', url: 'https://saurity.com/download' },
+  { name: 'Home', url: 'https://www.saurity.com' },
+  { name: 'Download', url: 'https://www.saurity.com/download' },
 ]
 
 export default function DownloadPage() {

@@ -9,11 +9,11 @@ export const metadata = {
   openGraph: {
     title: 'Saurity Features - Complete WordPress Security Solution',
     description: 'Enterprise-grade WordPress security with zero false positives. Smart rate limiting, advanced firewall, honeypot detection. Compare features with leading competitors.',
-    url: 'https://saurity.com/features',
+    url: 'https://www.saurity.com/features',
     siteName: 'Saurity',
     images: [
       {
-        url: 'https://saurity.com/HomePage1200_600.webp',
+        url: 'https://www.saurity.com/HomePage1200_600.webp',
         width: 1200,
         height: 600,
         alt: 'Saurity WordPress Security Features',
@@ -26,10 +26,10 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Saurity Features - Complete WordPress Security Solution',
     description: 'Enterprise-grade WordPress security with zero false positives. Smart rate limiting, advanced firewall, honeypot detection.',
-    images: ['https://saurity.com/HomePage1200_600.webp'],
+    images: ['https://www.saurity.com/HomePage1200_600.webp'],
   },
   alternates: {
-    canonical: 'https://saurity.com/features',
+    canonical: 'https://www.saurity.com/features',
   },
 }
 
@@ -192,13 +192,13 @@ export default function Features() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://saurity.com',
+        item: 'https://www.saurity.com',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Features',
-        item: 'https://saurity.com/features',
+        item: 'https://www.saurity.com/features',
       },
     ],
   }

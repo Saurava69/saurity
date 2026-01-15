@@ -8,11 +8,11 @@ export const metadata = {
   openGraph: {
     title: 'Saurity vs Wordfence - Which WordPress Security Plugin is Better?',
     description: 'Detailed comparison of Saurity and Wordfence features, pricing, performance, and user experience. See why Saurity never locks out admins.',
-    url: 'https://saurity.com/vs/wordfence',
+    url: 'https://www.saurity.com/vs/wordfence',
     siteName: 'Saurity',
     images: [
       {
-        url: 'https://saurity.com/HomePage1200_600.webp',
+        url: 'https://www.saurity.com/HomePage1200_600.webp',
         width: 1200,
         height: 600,
         alt: 'Saurity vs Wordfence Comparison',
@@ -25,10 +25,10 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Saurity vs Wordfence - Which WordPress Security Plugin is Better?',
     description: 'Detailed comparison of Saurity and Wordfence features, pricing, performance, and user experience.',
-    images: ['https://saurity.com/HomePage1200_600.webp'],
+    images: ['https://www.saurity.com/HomePage1200_600.webp'],
   },
   alternates: {
-    canonical: 'https://saurity.com/vs/wordfence',
+    canonical: 'https://www.saurity.com/vs/wordfence',
   },
 }
 
@@ -110,19 +110,19 @@ export default function SaurityVsWordfence() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://saurity.com',
+        item: 'https://www.saurity.com',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Comparisons',
-        item: 'https://saurity.com/features',
+        item: 'https://www.saurity.com/features',
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'vs Wordfence',
-        item: 'https://saurity.com/vs/wordfence',
+        item: 'https://www.saurity.com/vs/wordfence',
       },
     ],
   }

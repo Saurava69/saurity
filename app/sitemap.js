@@ -22,7 +22,7 @@ async function getPublishedPosts() {
 }
 
 export default async function sitemap() {
-  const baseUrl = 'https://saurity.com'
+  const baseUrl = 'https://www.saurity.com'
   
   // Static pages
   const staticPages = [

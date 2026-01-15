@@ -7,7 +7,7 @@ export const metadata = {
   description: 'Saurity v1.0.0 - Enterprise WordPress security with zero false positives. Smart rate limiting, advanced firewall, honeypot detection. Download free → Never locks out admins.',
   keywords: 'WordPress security, brute force protection, rate limiting, firewall, IP blocking, spam prevention, DDoS protection, XML-RPC protection, WordPress hardening',
   alternates: {
-    canonical: 'https://saurity.com',
+    canonical: 'https://www.saurity.com',
   },
   openGraph: {
     title: 'Saurity v1.0.0 - Enterprise WordPress Security Plugin',

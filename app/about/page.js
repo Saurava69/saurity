@@ -2,7 +2,7 @@ export const metadata = {
   title: 'About Saurity v1.0.0 | Enterprise WordPress Security',
   description: 'Learn about Saurity v1.0.0, the enterprise WordPress security plugin with zero false positives, smart rate limiting, and advanced firewall protection.',
   alternates: {
-    canonical: 'https://saurity.com/about',
+    canonical: 'https://www.saurity.com/about',
   },
 }
 

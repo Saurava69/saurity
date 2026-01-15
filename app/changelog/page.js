@@ -8,10 +8,10 @@ export const metadata = {
   openGraph: {
     title: 'Saurity Changelog - Version History & Updates',
     description: 'Track all Saurity WordPress security plugin updates, new features, and improvements.',
-    url: 'https://saurity.com/changelog',
+    url: 'https://www.saurity.com/changelog',
   },
   alternates: {
-    canonical: 'https://saurity.com/changelog',
+    canonical: 'https://www.saurity.com/changelog',
   },
 }
 
@@ -24,13 +24,13 @@ export default function Changelog() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://saurity.com',
+        item: 'https://www.saurity.com',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Changelog',
-        item: 'https://saurity.com/changelog',
+        item: 'https://www.saurity.com/changelog',
       },
     ],
   }

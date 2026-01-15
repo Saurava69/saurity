@@ -8,11 +8,11 @@ export const metadata = {
   openGraph: {
     title: 'Saurity Use Cases - Security Solutions for Every WordPress Site',
     description: 'Industry-specific WordPress security implementations for e-commerce, membership sites, corporate websites, and more.',
-    url: 'https://saurity.com/use-cases',
+    url: 'https://www.saurity.com/use-cases',
     siteName: 'Saurity',
     images: [
       {
-        url: 'https://saurity.com/HomePage1200_600.webp',
+        url: 'https://www.saurity.com/HomePage1200_600.webp',
         width: 1200,
         height: 600,
         alt: 'Saurity WordPress Security Use Cases',
@@ -25,10 +25,10 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Saurity Use Cases - Security Solutions for Every WordPress Site',
     description: 'Industry-specific WordPress security implementations for e-commerce, membership sites, corporate websites, and more.',
-    images: ['https://saurity.com/HomePage1200_600.webp'],
+    images: ['https://www.saurity.com/HomePage1200_600.webp'],
   },
   alternates: {
-    canonical: 'https://saurity.com/use-cases',
+    canonical: 'https://www.saurity.com/use-cases',
   },
 }
 
@@ -251,13 +251,13 @@ export default function UseCases() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://saurity.com',
+        item: 'https://www.saurity.com',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Use Cases',
-        item: 'https://saurity.com/use-cases',
+        item: 'https://www.saurity.com/use-cases',
       },
     ],
   }

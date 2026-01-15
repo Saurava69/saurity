@@ -5,19 +5,19 @@ export const metadata = {
   title: 'WordPress Firewall Protection | Web Application Firewall | Saurity v1.0.0',
   description: 'Enterprise-grade WordPress firewall with SQL injection detection, XSS protection, XML-RPC blocking, and multi-layer attack prevention. Lightweight and fail-safe.',
   alternates: {
-    canonical: 'https://saurity.com/firewall',
+    canonical: 'https://www.saurity.com/firewall',
   },
   openGraph: {
     title: 'WordPress Web Application Firewall (WAF) | Saurity v1.0.0',
     description: 'Lightweight firewall blocks SQL injection, XSS, XML-RPC attacks, and malicious bots without slowing down your WordPress site.',
-    url: 'https://saurity.com/firewall',
+    url: 'https://www.saurity.com/firewall',
     images: ['/HomePage1200_600.webp'],
   },
 }
 
 const breadcrumbs = [
-  { name: 'Home', url: 'https://saurity.com' },
-  { name: 'Firewall', url: 'https://saurity.com/firewall' },
+  { name: 'Home', url: 'https://www.saurity.com' },
+  { name: 'Firewall', url: 'https://www.saurity.com/firewall' },
 ]
 
 const faqs = [

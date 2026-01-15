@@ -2,7 +2,7 @@ export const metadata = {
   title: 'Privacy Policy | Saurity v1.0.0',
   description: 'Saurity v1.0.0 privacy policy. Learn how we handle data for our WordPress security plugin - no external data collection, everything stays on your server.',
   alternates: {
-    canonical: 'https://saurity.com/privacy',
+    canonical: 'https://www.saurity.com/privacy',
   },
   robots: {
     index: true,

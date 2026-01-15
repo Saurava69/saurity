@@ -24,16 +24,16 @@ export async function generateMetadata({ searchParams }) {
     description,
     keywords: 'WordPress security, website security, security tips, vulnerabilities, WordPress plugins, web security, cybersecurity, security best practices',
     alternates: {
-      canonical: 'https://saurity.com/blog',
+      canonical: 'https://www.saurity.com/blog',
     },
     openGraph: {
       type: 'website',
-      url: 'https://saurity.com/blog',
+      url: 'https://www.saurity.com/blog',
       title,
       description,
       images: [
         {
-          url: 'https://saurity.com/HomePage1200_600.webp',
+          url: 'https://www.saurity.com/HomePage1200_600.webp',
           width: 1200,
           height: 600,
           alt: 'Saurity WordPress Security Blog',
@@ -45,7 +45,7 @@ export async function generateMetadata({ searchParams }) {
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://saurity.com/HomePage1200_600.webp'],
+      images: ['https://www.saurity.com/HomePage1200_600.webp'],
     },
     robots: {
       index: true,
@@ -77,27 +77,27 @@ export default async function BlogPage({ searchParams }) {
     '@type': 'Blog',
     name: 'Saurity WordPress Security Blog',
     description: 'Latest WordPress security insights, best practices, and industry updates',
-    url: 'https://saurity.com/blog',
+    url: 'https://www.saurity.com/blog',
     publisher: {
       '@type': 'Organization',
       name: 'Saurity',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://saurity.com/logo.png',
+        url: 'https://www.saurity.com/logo.png',
       },
     },
     blogPost: posts.slice(0, 10).map(post => ({
       '@type': 'BlogPosting',
-      '@id': `https://saurity.com/blog/${post.slug}`,
+      '@id': `https://www.saurity.com/blog/${post.slug}`,
       headline: post.title,
       description: post.excerpt,
-      url: `https://saurity.com/blog/${post.slug}`,
+      url: `https://www.saurity.com/blog/${post.slug}`,
       datePublished: post.publishedAt || post.createdAt,
       author: {
         '@type': 'Person',
         name: post.author,
       },
-      image: post.featuredImage || 'https://saurity.com/logo.png',
+      image: post.featuredImage || 'https://www.saurity.com/logo.png',
     })),
   }
 

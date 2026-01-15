@@ -8,6 +8,6 @@ export default function robots() {
         crawlDelay: 1,
       },
     ],
-    sitemap: 'https://saurity.com/sitemap.xml',
+    sitemap: 'https://www.saurity.com/sitemap.xml',
   }
 }

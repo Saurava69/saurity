@@ -30,10 +30,10 @@ export function generateSoftwareSchema() {
     author: {
       '@type': 'Organization',
       name: 'Saurity',
-      url: 'https://saurity.com',
+      url: 'https://www.saurity.com',
     },
     downloadUrl: 'https://github.com/saurity/saurity/releases',
-    screenshot: 'https://saurity.com/HomePage1200_600.webp',
+    screenshot: 'https://www.saurity.com/HomePage1200_600.webp',
     softwareRequirements: 'WordPress 6.0+, PHP 8.0+, MySQL 5.7+',
     featureList: [
       'Smart Rate Limiting',
@@ -79,10 +79,10 @@ export function generateArticleSchema({ title, description, datePublished, dateM
       name: 'Saurity',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://saurity.com/logo.png',
+        url: 'https://www.saurity.com/logo.png',
       },
     },
-    image: image || 'https://saurity.com/og-image.jpg',
+    image: image || 'https://www.saurity.com/og-image.jpg',
   }
 }
 
@@ -106,8 +106,8 @@ export function generateOrganizationSchema() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Saurity',
-    url: 'https://saurity.com',
-    logo: 'https://saurity.com/logo.png',
+    url: 'https://www.saurity.com',
+    logo: 'https://www.saurity.com/logo.png',
     description: 'WordPress security plugin with zero admin lockout guarantee',
     sameAs: [
       'https://github.com/saurity/saurity',

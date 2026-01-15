@@ -6,19 +6,19 @@ export const metadata = {
   title: 'WordPress Login Security & Brute Force Protection | Saurity v1.0.0',
   description: 'Protect WordPress logins with progressive rate limiting, honeypot detection, and 3-tier emergency recovery. Enterprise security that never locks out admins.',
   alternates: {
-    canonical: 'https://saurity.com/login-security',
+    canonical: 'https://www.saurity.com/login-security',
   },
   openGraph: {
     title: 'WordPress Login Security Without Admin Lockouts | Saurity v1.0.0',
     description: 'Progressive rate limiting for WordPress login protection. Stops brute force attacks while protecting legitimate users.',
-    url: 'https://saurity.com/login-security',
+    url: 'https://www.saurity.com/login-security',
     images: ['/recovery1000_700.webp'],
   },
 }
 
 const breadcrumbs = [
-  { name: 'Home', url: 'https://saurity.com' },
-  { name: 'Login Security', url: 'https://saurity.com/login-security' },
+  { name: 'Home', url: 'https://www.saurity.com' },
+  { name: 'Login Security', url: 'https://www.saurity.com/login-security' },
 ]
 
 const faqs = [

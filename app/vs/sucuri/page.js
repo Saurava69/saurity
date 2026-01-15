@@ -8,11 +8,11 @@ export const metadata = {
   openGraph: {
     title: 'Saurity vs Sucuri - Self-Hosted vs Cloud Security Comparison',
     description: 'Detailed comparison of Saurity self-hosted plugin and Sucuri cloud-based WAF. Features, pricing, and performance analysis.',
-    url: 'https://saurity.com/vs/sucuri',
+    url: 'https://www.saurity.com/vs/sucuri',
     siteName: 'Saurity',
     images: [
       {
-        url: 'https://saurity.com/HomePage1200_600.webp',
+        url: 'https://www.saurity.com/HomePage1200_600.webp',
         width: 1200,
         height: 600,
         alt: 'Saurity vs Sucuri Comparison',
@@ -22,7 +22,7 @@ export const metadata = {
     type: 'website',
   },
   alternates: {
-    canonical: 'https://saurity.com/vs/sucuri',
+    canonical: 'https://www.saurity.com/vs/sucuri',
   },
 }
 
@@ -99,19 +99,19 @@ export default function SaurityVsSucuri() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://saurity.com',
+        item: 'https://www.saurity.com',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Comparisons',
-        item: 'https://saurity.com/features',
+        item: 'https://www.saurity.com/features',
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'vs Sucuri',
-        item: 'https://saurity.com/vs/sucuri',
+        item: 'https://www.saurity.com/vs/sucuri',
       },
     ],
   }

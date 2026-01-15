@@ -8,11 +8,11 @@ export const metadata = {
   openGraph: {
     title: 'Saurity vs iThemes Security - Which WordPress Security Plugin?',
     description: 'Detailed comparison of Saurity and iThemes Security features, pricing, and performance.',
-    url: 'https://saurity.com/vs/ithemes',
+    url: 'https://www.saurity.com/vs/ithemes',
     siteName: 'Saurity',
     images: [
       {
-        url: 'https://saurity.com/HomePage1200_600.webp',
+        url: 'https://www.saurity.com/HomePage1200_600.webp',
         width: 1200,
         height: 600,
         alt: 'Saurity vs iThemes Security Comparison',
@@ -22,7 +22,7 @@ export const metadata = {
     type: 'website',
   },
   alternates: {
-    canonical: 'https://saurity.com/vs/ithemes',
+    canonical: 'https://www.saurity.com/vs/ithemes',
   },
 }
 
@@ -97,19 +97,19 @@ export default function SaurityVsIThemes() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://saurity.com',
+        item: 'https://www.saurity.com',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Comparisons',
-        item: 'https://saurity.com/features',
+        item: 'https://www.saurity.com/features',
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'vs iThemes',
-        item: 'https://saurity.com/vs/ithemes',
+        item: 'https://www.saurity.com/vs/ithemes',
       },
     ],
   }

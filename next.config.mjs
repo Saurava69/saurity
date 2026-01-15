@@ -34,6 +34,21 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'saurity.com',
+          },
+        ],
+        destination: 'https://www.saurity.com/:path*',
+        permanent: true, // 301
+      },
+    ];
+  },
   async headers() {
     return [
       {

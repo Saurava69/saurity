@@ -8,11 +8,11 @@ export const metadata = {
   openGraph: {
     title: 'Saurity vs All In One WP Security - Free Plugin Comparison',
     description: 'Compare two free WordPress security plugins: Saurity and All In One WP Security. Which is better for your site?',
-    url: 'https://saurity.com/vs/all-in-one',
+    url: 'https://www.saurity.com/vs/all-in-one',
     siteName: 'Saurity',
     images: [
       {
-        url: 'https://saurity.com/HomePage1200_600.webp',
+        url: 'https://www.saurity.com/HomePage1200_600.webp',
         width: 1200,
         height: 600,
         alt: 'Saurity vs All In One WP Security Comparison',
@@ -22,7 +22,7 @@ export const metadata = {
     type: 'website',
   },
   alternates: {
-    canonical: 'https://saurity.com/vs/all-in-one',
+    canonical: 'https://www.saurity.com/vs/all-in-one',
   },
 }
 
@@ -97,19 +97,19 @@ export default function SaurityVsAllInOne() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://saurity.com',
+        item: 'https://www.saurity.com',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Comparisons',
-        item: 'https://saurity.com/features',
+        item: 'https://www.saurity.com/features',
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'vs All In One',
-        item: 'https://saurity.com/vs/all-in-one',
+        item: 'https://www.saurity.com/vs/all-in-one',
       },
     ],
   }

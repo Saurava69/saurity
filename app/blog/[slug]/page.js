@@ -28,16 +28,16 @@ export async function generateMetadata({ params }) {
     keywords: post.tags?.join(', '),
     authors: [{ name: post.author }],
     alternates: {
-      canonical: `https://saurity.com/blog/${post.slug}`,
+      canonical: `https://www.saurity.com/blog/${post.slug}`,
     },
     openGraph: {
       type: 'article',
-      url: `https://saurity.com/blog/${post.slug}`,
+      url: `https://www.saurity.com/blog/${post.slug}`,
       title: post.title,
       description: post.excerpt,
       images: [
         {
-          url: post.featuredImage || 'https://saurity.com/HomePage1200_600.webp',
+          url: post.featuredImage || 'https://www.saurity.com/HomePage1200_600.webp',
           width: 1200,
           height: 630,
           alt: post.title,
@@ -54,7 +54,7 @@ export async function generateMetadata({ params }) {
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: [post.featuredImage || 'https://saurity.com/HomePage1200_600.webp'],
+      images: [post.featuredImage || 'https://www.saurity.com/HomePage1200_600.webp'],
     },
     robots: {
       index: true,
@@ -101,16 +101,16 @@ export default async function BlogPostPage({ params }) {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
-    '@id': `https://saurity.com/blog/${post.slug}#article`,
+    '@id': `https://www.saurity.com/blog/${post.slug}#article`,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://saurity.com/blog/${post.slug}`,
+      '@id': `https://www.saurity.com/blog/${post.slug}`,
     },
     headline: post.title,
     description: post.excerpt,
     image: {
       '@type': 'ImageObject',
-      url: post.featuredImage || 'https://saurity.com/logo.png',
+      url: post.featuredImage || 'https://www.saurity.com/logo.png',
       width: 1200,
       height: 630,
     },
@@ -123,7 +123,7 @@ export default async function BlogPostPage({ params }) {
       name: 'Saurity',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://saurity.com/logo.png',
+        url: 'https://www.saurity.com/logo.png',
         width: 600,
         height: 60,
       },
@@ -142,19 +142,19 @@ export default async function BlogPostPage({ params }) {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://saurity.com',
+          item: 'https://www.saurity.com',
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Blog',
-          item: 'https://saurity.com/blog',
+          item: 'https://www.saurity.com/blog',
         },
         {
           '@type': 'ListItem',
           position: 3,
           name: post.title,
-          item: `https://saurity.com/blog/${post.slug}`,
+          item: `https://www.saurity.com/blog/${post.slug}`,
         },
       ],
     },

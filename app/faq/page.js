@@ -8,11 +8,11 @@ export const metadata = {
   openGraph: {
     title: 'Saurity FAQ - Your Questions Answered',
     description: 'Common questions about Saurity WordPress security plugin, installation, features, and troubleshooting.',
-    url: 'https://saurity.com/faq',
+    url: 'https://www.saurity.com/faq',
     siteName: 'Saurity',
     images: [
       {
-        url: 'https://saurity.com/HomePage1200_600.webp',
+        url: 'https://www.saurity.com/HomePage1200_600.webp',
         width: 1200,
         height: 600,
         alt: 'Saurity WordPress Security FAQ',
@@ -25,10 +25,10 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Saurity FAQ - Your Questions Answered',
     description: 'Common questions about Saurity WordPress security plugin, installation, features, and troubleshooting.',
-    images: ['https://saurity.com/HomePage1200_600.webp'],
+    images: ['https://www.saurity.com/HomePage1200_600.webp'],
   },
   alternates: {
-    canonical: 'https://saurity.com/faq',
+    canonical: 'https://www.saurity.com/faq',
   },
 }
 
@@ -220,13 +220,13 @@ export default function FAQ() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://saurity.com',
+        item: 'https://www.saurity.com',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'FAQ',
-        item: 'https://saurity.com/faq',
+        item: 'https://www.saurity.com/faq',
       },
     ],
   }

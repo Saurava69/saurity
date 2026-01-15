@@ -2,7 +2,7 @@ export const metadata = {
   title: 'Terms of Service | Saurity v1.0.0',
   description: 'Terms of service for using Saurity v1.0.0 WordPress security plugin - open source, GPL v2 licensed.',
   alternates: {
-    canonical: 'https://saurity.com/terms',
+    canonical: 'https://www.saurity.com/terms',
   },
 }
 

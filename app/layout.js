@@ -11,7 +11,7 @@ const inter = Inter({
 })
 
 export const metadata = {
-  metadataBase: new URL('https://saurity.com'),
+  metadataBase: new URL('https://www.saurity.com'),
   title: {
     default: 'Saurity - WordPress Login Security Without Admin Lockouts',
     template: '%s | Saurity'
@@ -38,13 +38,13 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://saurity.com',
+    url: 'https://www.saurity.com',
     siteName: 'Saurity',
     title: 'Saurity v1.0.0 - Enterprise WordPress Security Plugin',
     description: 'Zero false positives. Production-ready WordPress security with smart rate limiting, advanced firewall, honeypot detection, and 3-tier emergency recovery.',
     images: [
       {
-        url: 'https://saurity.com/HomePage1200_600.webp',
+        url: 'https://www.saurity.com/HomePage1200_600.webp',
         width: 1200,
         height: 600,
         alt: 'Saurity WordPress Security Dashboard',
@@ -56,7 +56,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Saurity v1.0.0 - Enterprise WordPress Security Plugin',
     description: 'Zero false positives. Production-ready WordPress security with smart rate limiting, advanced firewall, and emergency recovery.',
-    images: ['https://saurity.com/HomePage1200_600.webp'],
+    images: ['https://www.saurity.com/HomePage1200_600.webp'],
     creator: '@saurity',
   },
   robots: {
