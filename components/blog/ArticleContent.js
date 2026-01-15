@@ -8,7 +8,7 @@ import TiptapRenderer from './TiptapRenderer'
  */
 export default function ArticleContent({ content }) {
   return (
-    <div className="container-custom py-8">
+    <div className="py-8">
       <div className="max-w-[680px] mx-auto article-content">
         <TiptapRenderer content={content} />
       </div>

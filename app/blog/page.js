@@ -62,6 +62,7 @@ export const revalidate = 1800
 
 /**
  * Blog listing page - Server Component with ISR
+ * Medium-inspired design with clean typography and minimal layout
  */
 export default async function BlogPage({ searchParams }) {
   // Await searchParams in Next.js 15+
@@ -109,140 +110,202 @@ export default async function BlogPage({ searchParams }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-primary-50 to-white py-20">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              WordPress Security Blog
+      {/* Hero Section - Medium-style minimal header */}
+      <section className="bg-white border-b border-gray-200 py-12 md:py-16">
+        <div className="max-w-[1192px] mx-auto px-6">
+          <div className="max-w-[728px] mx-auto">
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4" style={{
+              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
+              letterSpacing: '-0.022em',
+              lineHeight: '1.08'
+            }}>
+              WordPress Security
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              Latest insights, best practices, and industry updates to keep your WordPress site secure.
+            <p className="text-xl md:text-2xl text-gray-600 mb-8" style={{
+              fontFamily: 'Charter, Georgia, Cambria, "Times New Roman", serif',
+              lineHeight: '1.4'
+            }}>
+              Expert insights, best practices, and industry updates to keep your WordPress site secure.
             </p>
-            <Link 
-              href="/blog/write" 
-              className="btn-primary inline-block"
-            >
-              Write a Post
-            </Link>
           </div>
         </div>
       </section>
 
-      {/* Search Section */}
-      <section className="py-8 bg-white border-b border-gray-200">
-        <div className="container-custom">
+      {/* Search Section - Minimal design */}
+      <section className="py-6 bg-white border-b border-gray-100">
+        <div className="max-w-[1192px] mx-auto px-6">
           <BlogSearch posts={posts} />
         </div>
       </section>
 
-      {/* Category Filter - Client Component for interactivity */}
-      <Suspense fallback={<div className="py-8 bg-white border-b border-gray-200" />}>
+      {/* Category Filter - Medium-style tabs */}
+      <Suspense fallback={<div className="py-4 bg-white border-b border-gray-100" />}>
         <CategoryFilter />
       </Suspense>
 
-      {/* Blog Posts Section */}
-      <section className="py-20 bg-white">
-        <div className="container-custom">
-          <div className="max-w-6xl mx-auto">
-            {posts.length === 0 ? (
-              <div className="text-center py-12">
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-2">
-                  {category === 'all' ? 'No posts yet' : `No posts in ${category}`}
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  {category === 'all' 
-                    ? 'Be the first to contribute to our security blog!' 
-                    : 'Try selecting a different category or write a new post.'}
-                </p>
-                <Link href="/blog/write" className="btn-primary inline-block">
-                  Write a Post
-                </Link>
-              </div>
-            ) : (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {posts.map((post) => {
-                  const publishDate = new Date(post.publishedAt || post.createdAt)
-                  return (
-                    <Link 
-                      key={post.id} 
-                      href={`/blog/${post.slug}`}
-                      className="group bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow"
-                    >
-                      {post.featuredImage && (
-                        <div className="aspect-video bg-gray-100 overflow-hidden">
-                          <img 
-                            src={post.featuredImage} 
-                            alt={post.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            loading="lazy"
-                          />
-                        </div>
-                      )}
-                      <div className="p-6">
-                        <div className="flex items-center gap-2 mb-3">
-                          <span className="text-sm font-medium text-primary-600 bg-primary-50 px-3 py-1 rounded-full">
-                            {post.category}
-                          </span>
-                          <span className="text-sm text-gray-500">
-                            {publishDate.toLocaleDateString('en-US', {
-                              year: 'numeric',
-                              month: 'short',
-                              day: 'numeric'
-                            })}
-                          </span>
-                        </div>
-                        <h2 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors line-clamp-2">
-                          {post.title}
-                        </h2>
-                        <p className="text-gray-600 mb-4 line-clamp-3">
-                          {post.excerpt}
-                        </p>
-                        <div className="flex items-center gap-3 text-sm text-gray-500">
-                          <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
-                              <span className="text-primary-600 font-medium">
+      {/* Blog Posts Section - Medium-style card layout */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="max-w-[1192px] mx-auto px-6">
+          {posts.length === 0 ? (
+            <div className="max-w-[728px] mx-auto text-center py-20">
+              <h3 className="text-3xl font-bold text-gray-900 mb-3" style={{
+                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
+                letterSpacing: '-0.022em'
+              }}>
+                {category === 'all' ? 'No posts yet' : `No posts in ${category}`}
+              </h3>
+              <p className="text-lg text-gray-600 mb-8" style={{
+                fontFamily: 'Charter, Georgia, Cambria, "Times New Roman", serif'
+              }}>
+                {category === 'all' 
+                  ? 'Be the first to contribute to our security blog.' 
+                  : 'Try selecting a different category or write a new post.'}
+              </p>
+              <Link 
+                href="/blog/write" 
+                className="inline-block px-6 py-2.5 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors text-sm font-medium"
+              >
+                Write a Post
+              </Link>
+            </div>
+          ) : (
+            <div className="space-y-12 md:space-y-16">
+              {posts.map((post, index) => {
+                const publishDate = new Date(post.publishedAt || post.createdAt)
+                const isLarge = index === 0 // First post is featured larger
+                
+                return (
+                  <article 
+                    key={post.id}
+                    className="group"
+                  >
+                    <div className={`flex gap-6 md:gap-12 ${isLarge ? 'flex-col md:flex-row' : 'flex-col sm:flex-row'}`}>
+                      {/* Content */}
+                      <div className={`flex-1 min-w-0 ${isLarge ? '' : ''}`}>
+                        {/* Author & Date */}
+                        <div className="flex items-center gap-3 mb-3">
+                          <Link 
+                            href={`/blog/author/${encodeURIComponent(post.author)}`}
+                            className="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden flex-shrink-0"
+                          >
+                            {post.authorPhotoURL ? (
+                              <img 
+                                src={post.authorPhotoURL} 
+                                alt={post.author}
+                                className="w-full h-full object-cover"
+                              />
+                            ) : (
+                              <span className="text-xs font-medium text-gray-600">
                                 {post.author?.charAt(0).toUpperCase()}
                               </span>
-                            </div>
-                            <span>{post.author}</span>
+                            )}
+                          </Link>
+                          <div className="flex items-center gap-2 text-sm text-gray-600">
+                            <Link 
+                              href={`/blog/author/${encodeURIComponent(post.author)}`}
+                              className="font-medium hover:text-gray-900 transition-colors"
+                            >
+                              {post.author}
+                            </Link>
+                            <span>·</span>
+                            <time dateTime={post.publishedAt || post.createdAt}>
+                              {publishDate.toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'short',
+                                day: 'numeric'
+                              })}
+                            </time>
                           </div>
-                          <span>•</span>
+                        </div>
+
+                        {/* Title */}
+                        <Link href={`/blog/${post.slug}`}>
+                          <h2 className={`font-bold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors cursor-pointer ${
+                            isLarge 
+                              ? 'text-2xl md:text-3xl lg:text-4xl' 
+                              : 'text-xl md:text-2xl'
+                          }`} style={{
+                            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
+                            letterSpacing: '-0.022em',
+                            lineHeight: '1.2'
+                          }}>
+                            {post.title}
+                          </h2>
+                        </Link>
+
+                        {/* Excerpt */}
+                        <Link href={`/blog/${post.slug}`}>
+                          <p className={`text-gray-600 mb-4 cursor-pointer ${
+                            isLarge ? 'text-base md:text-lg line-clamp-3' : 'text-base line-clamp-2'
+                          }`} style={{
+                            fontFamily: 'Charter, Georgia, Cambria, "Times New Roman", serif',
+                            lineHeight: '1.4'
+                          }}>
+                            {post.excerpt}
+                          </p>
+                        </Link>
+
+                        {/* Meta info */}
+                        <div className="flex items-center gap-4 text-sm text-gray-500">
+                          <span className="inline-block px-2 py-1 bg-gray-100 rounded text-xs font-medium text-gray-700">
+                            {post.category}
+                          </span>
                           <span>{post.readTime} min read</span>
                         </div>
                       </div>
-                    </Link>
-                  )
-                })}
-              </div>
-            )}
-          </div>
+
+                      {/* Featured Image */}
+                      {post.featuredImage && (
+                        <Link href={`/blog/${post.slug}`}>
+                          <div className={`${
+                            isLarge 
+                              ? 'w-full md:w-[280px] lg:w-[360px] md:h-[200px] lg:h-[240px]' 
+                              : 'w-full sm:w-[112px] md:w-[160px] sm:h-[112px] md:h-[160px]'
+                          } bg-gray-100 rounded overflow-hidden flex-shrink-0 cursor-pointer`}>
+                            <img 
+                              src={post.featuredImage} 
+                              alt={post.title}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                              loading={index < 3 ? 'eager' : 'lazy'}
+                            />
+                          </div>
+                        </Link>
+                      )}
+                    </div>
+
+                    {/* Divider */}
+                    {index < posts.length - 1 && (
+                      <hr className="mt-12 md:mt-16 border-gray-200" />
+                    )}
+                  </article>
+                )
+              })}
+            </div>
+          )}
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-primary-600 text-white">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Want to Contribute?
-            </h2>
-            <p className="text-xl mb-8 text-primary-100">
-              Share your WordPress security knowledge with our community. 
-              All submissions are reviewed before publication.
-            </p>
-            <Link 
-              href="/blog/write" 
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-lg font-medium rounded-md text-primary-600 bg-white hover:bg-gray-50 transition-colors"
-            >
-              Write a Post
-            </Link>
-          </div>
+      {/* CTA Section - Medium-style minimal */}
+      <section className="py-16 md:py-20 bg-gray-50 border-t border-gray-200">
+        <div className="max-w-[728px] mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4" style={{
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
+            letterSpacing: '-0.022em'
+          }}>
+            Share Your Knowledge
+          </h2>
+          <p className="text-lg md:text-xl text-gray-600 mb-8" style={{
+            fontFamily: 'Charter, Georgia, Cambria, "Times New Roman", serif',
+            lineHeight: '1.4'
+          }}>
+            Contribute to our WordPress security community. All submissions are reviewed before publication.
+          </p>
+          <Link 
+            href="/blog/write" 
+            className="inline-block px-8 py-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors text-base font-medium"
+          >
+            Write a Post
+          </Link>
         </div>
       </section>
     </>

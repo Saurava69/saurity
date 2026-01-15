@@ -199,7 +199,7 @@ export default function TableOfContents({ content }) {
 
   return (
     <nav 
-      className={`sticky top-24 bg-white border border-gray-200 rounded-lg p-6 shadow-sm transition-opacity duration-300 ${
+      className={`sticky top-20 bg-white border border-gray-200 rounded-lg p-6 shadow-sm transition-opacity duration-300 ${
         isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
       }`}
     >

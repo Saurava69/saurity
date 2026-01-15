@@ -5,6 +5,7 @@ import ArticleContent from '@/components/blog/ArticleContent'
 import ArticleFooter from '@/components/blog/ArticleFooter'
 import ReadingProgress from '@/components/blog/ReadingProgress'
 import TableOfContents from '@/components/blog/TableOfContents'
+import BlogSidebar from '@/components/blog/BlogSidebar'
 
 /**
  * Generate metadata for SEO (Server-side)
@@ -175,14 +176,24 @@ export default async function BlogPostPage({ params }) {
       <article className="min-h-screen bg-white">
         <ArticleHeader post={post} />
         
-        {/* Main Content with Sidebar */}
-        <div className="relative">
-          <ArticleContent content={post.content} />
-          
-          {/* Table of Contents - Hidden on mobile, sidebar on desktop */}
-          <aside className="hidden lg:block fixed right-8 top-1/4 w-64">
-            <TableOfContents content={post.content} />
-          </aside>
+        {/* Main Content with Sidebars - Grid Layout */}
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-[256px_1fr_256px] gap-8 relative">
+            {/* Left Sidebar - Author, Stats, Share, Progress */}
+            <div className="hidden lg:block">
+              <BlogSidebar post={post} relatedPosts={relatedPosts} />
+            </div>
+            
+            {/* Main Article Content */}
+            <div className="min-w-0">
+              <ArticleContent content={post.content} />
+            </div>
+            
+            {/* Right Sidebar - Table of Contents */}
+            <div className="hidden lg:block">
+              <TableOfContents content={post.content} />
+            </div>
+          </div>
         </div>
 
         <ArticleFooter post={post} relatedPosts={relatedPosts} />

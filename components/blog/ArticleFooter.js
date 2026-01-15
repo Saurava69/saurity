@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import SocialShare from './SocialShare'
 
 /**
  * Article footer component - Server component
- * Displays tags, author card, and related posts
+ * Displays tags, social sharing, author card, and related posts
  */
 export default function ArticleFooter({ post, relatedPosts = [] }) {
   return (
@@ -27,21 +28,40 @@ export default function ArticleFooter({ post, relatedPosts = [] }) {
             </div>
           )}
 
+          {/* Social Share Buttons */}
+          <SocialShare post={post} />
+
           {/* Author Card - Editorial style (no gradients) */}
           <div className="py-8 border-t border-gray-200">
             <div className="flex items-start gap-4">
-              <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="text-white font-bold text-2xl">
-                  {post.author.charAt(0).toUpperCase()}
-                </span>
-              </div>
+              <Link 
+                href={`/blog/author/${encodeURIComponent(post.author)}`}
+                className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center flex-shrink-0 hover:bg-gray-800 transition-colors overflow-hidden"
+              >
+                {post.authorPhotoURL ? (
+                  <img 
+                    src={post.authorPhotoURL} 
+                    alt={post.author}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <span className="text-white font-bold text-2xl">
+                    {post.author.charAt(0).toUpperCase()}
+                  </span>
+                )}
+              </Link>
               <div>
                 <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">
                   Written by
                 </p>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{post.author}</h3>
+                <Link 
+                  href={`/blog/author/${encodeURIComponent(post.author)}`}
+                  className="text-xl font-bold text-gray-900 hover:text-gray-700 transition-colors inline-block mb-2"
+                >
+                  {post.author}
+                </Link>
                 <p className="text-gray-600 leading-relaxed">
-                  Security expert and WordPress enthusiast sharing insights about web security best practices.
+                  {post.authorBio || 'Security expert and WordPress enthusiast sharing insights about web security best practices.'}
                 </p>
               </div>
             </div>
