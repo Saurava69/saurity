@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useAuth } from '@/contexts/AuthContext'
 import TiptapEditor from '@/components/blog/TiptapEditor'
 import { db } from '@/lib/firebase/config'
@@ -263,11 +264,15 @@ export default function WriteBlogPost() {
                     /* Preview Mode */
                     <div className="p-8 md:p-12">
                       {formData.featuredImage && (
-                        <img 
-                          src={formData.featuredImage} 
-                          alt={formData.title}
-                          className="w-full h-64 md:h-96 object-cover rounded-lg mb-8"
-                        />
+                        <div className="w-full h-64 md:h-96 relative rounded-lg mb-8 overflow-hidden">
+                          <Image 
+                            src={formData.featuredImage} 
+                            alt={formData.title}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 896px"
+                          />
+                        </div>
                       )}
                       <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                         {formData.title || 'Untitled Post'}
@@ -438,11 +443,15 @@ export default function WriteBlogPost() {
                       
                       {formData.featuredImage && (
                         <div className="mb-3 relative">
-                          <img 
-                            src={formData.featuredImage} 
-                            alt={formData.featuredImageAlt || 'Featured image preview'}
-                            className="w-full h-32 object-cover rounded-lg border border-gray-300"
-                          />
+                          <div className="w-full h-32 relative rounded-lg border border-gray-300 overflow-hidden">
+                            <Image 
+                              src={formData.featuredImage} 
+                              alt={formData.featuredImageAlt || 'Featured image preview'}
+                              fill
+                              className="object-cover"
+                              sizes="350px"
+                            />
+                          </div>
                           <button
                             type="button"
                             onClick={() => setFormData({...formData, featuredImage: '', featuredImageAlt: ''})}

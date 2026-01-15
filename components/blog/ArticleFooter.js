@@ -39,9 +39,11 @@ export default function ArticleFooter({ post, relatedPosts = [] }) {
                 className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center flex-shrink-0 hover:bg-gray-800 transition-colors overflow-hidden"
               >
                 {post.authorPhotoURL ? (
-                  <img 
+                  <Image 
                     src={post.authorPhotoURL} 
                     alt={post.author}
+                    width={64}
+                    height={64}
                     className="w-full h-full object-cover"
                   />
                 ) : (

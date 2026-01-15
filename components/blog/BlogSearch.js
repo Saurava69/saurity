@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function BlogSearch({ posts }) {
   const [searchQuery, setSearchQuery] = useState('')
@@ -163,11 +164,13 @@ export default function BlogSearch({ posts }) {
                       </div>
                     </div>
                     {post.featuredImage && (
-                      <div className="w-20 h-20 flex-shrink-0 bg-gray-100 rounded overflow-hidden">
-                        <img 
+                      <div className="w-20 h-20 flex-shrink-0 bg-gray-100 rounded overflow-hidden relative">
+                        <Image 
                           src={post.featuredImage} 
                           alt={post.title}
-                          className="w-full h-full object-cover"
+                          fill
+                          className="object-cover"
+                          sizes="80px"
                         />
                       </div>
                     )}

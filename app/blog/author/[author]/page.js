@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { getPostsByAuthor } from '@/lib/firebase/posts'
 import { notFound } from 'next/navigation'
 
@@ -135,9 +136,11 @@ export default async function AuthorPage({ params }) {
             {/* Author Avatar */}
             <div className="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center mb-6 overflow-hidden">
               {posts.length > 0 && posts[0].authorPhotoURL ? (
-                <img 
+                <Image 
                   src={posts[0].authorPhotoURL} 
                   alt={author}
+                  width={80}
+                  height={80}
                   className="w-full h-full object-cover"
                 />
               ) : (
@@ -247,12 +250,14 @@ export default async function AuthorPage({ params }) {
 
                         {/* Featured Image */}
                         {post.featuredImage && (
-                          <div className="w-full sm:w-[112px] md:w-[160px] sm:h-[112px] md:h-[160px] bg-gray-100 rounded overflow-hidden flex-shrink-0">
-                            <img 
+                          <div className="w-full sm:w-[112px] md:w-[160px] sm:h-[112px] md:h-[160px] bg-gray-100 rounded overflow-hidden flex-shrink-0 relative">
+                            <Image 
                               src={post.featuredImage} 
                               alt={post.title}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                              loading={index < 3 ? 'eager' : 'lazy'}
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-500"
+                              sizes="(max-width: 640px) 100vw, 160px"
+                              priority={index < 3}
                             />
                           </div>
                         )}

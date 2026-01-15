@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { getPublishedPosts } from '@/lib/firebase/posts'
 import CategoryFilter from '@/components/blog/CategoryFilter'
 import BlogSearch from '@/components/blog/BlogSearch'
@@ -189,9 +190,11 @@ export default async function BlogPage({ searchParams }) {
                             className="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden flex-shrink-0"
                           >
                             {post.authorPhotoURL ? (
-                              <img 
+                              <Image 
                                 src={post.authorPhotoURL} 
                                 alt={post.author}
+                                width={24}
+                                height={24}
                                 className="w-full h-full object-cover"
                               />
                             ) : (
@@ -261,12 +264,14 @@ export default async function BlogPage({ searchParams }) {
                             isLarge 
                               ? 'w-full md:w-[280px] lg:w-[360px] md:h-[200px] lg:h-[240px]' 
                               : 'w-full sm:w-[112px] md:w-[160px] sm:h-[112px] md:h-[160px]'
-                          } bg-gray-100 rounded overflow-hidden flex-shrink-0 cursor-pointer`}>
-                            <img 
+                          } bg-gray-100 rounded overflow-hidden flex-shrink-0 cursor-pointer relative`}>
+                            <Image 
                               src={post.featuredImage} 
                               alt={post.title}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                              loading={index < 3 ? 'eager' : 'lazy'}
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-500"
+                              sizes={isLarge ? "(max-width: 768px) 100vw, 360px" : "(max-width: 640px) 100vw, 160px"}
+                              priority={index < 3}
                             />
                           </div>
                         </Link>

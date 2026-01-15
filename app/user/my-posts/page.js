@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useAuth } from '@/contexts/AuthContext'
 import { db } from '@/lib/firebase/config'
 import { collection, query, where, getDocs, orderBy, deleteDoc, doc } from 'firebase/firestore'
@@ -213,11 +214,13 @@ export default function MyPosts() {
                   <div className="flex items-start gap-4">
                     {/* Thumbnail */}
                     {post.featuredImage && (
-                      <div className="w-32 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100">
-                        <img 
+                      <div className="w-32 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100 relative">
+                        <Image 
                           src={post.featuredImage} 
                           alt={post.title}
-                          className="w-full h-full object-cover"
+                          fill
+                          className="object-cover"
+                          sizes="128px"
                         />
                       </div>
                     )}
