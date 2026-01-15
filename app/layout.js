@@ -78,6 +78,27 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        {/* Preconnect to critical Firebase origins to reduce latency */}
+        <link rel="preconnect" href="https://saurity-2185d.firebaseapp.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://firebaseapp.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://saurity-2185d.firebaseapp.com" />
+        <link rel="dns-prefetch" href="https://firebaseapp.com" />
+        
+        {/* Preconnect to Firebase Auth and API domains */}
+        <link rel="preconnect" href="https://identitytoolkit.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://securetoken.googleapis.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://identitytoolkit.googleapis.com" />
+        <link rel="dns-prefetch" href="https://securetoken.googleapis.com" />
+        
+        {/* Preconnect to Firestore and Storage */}
+        <link rel="preconnect" href="https://firestore.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://firebasestorage.googleapis.com" crossOrigin="anonymous" />
+        
+        {/* Preconnect to Cloudinary for image CDN */}
+        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+      </head>
       <body className="antialiased min-h-screen flex flex-col">
         <AuthProvider>
           <Header />

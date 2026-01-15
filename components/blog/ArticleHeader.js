@@ -83,6 +83,7 @@ export default function ArticleHeader({ post }) {
                 width={680}
                 height={383}
                 priority
+                fetchPriority="high"
                 className="w-full h-auto"
                 sizes="(max-width: 768px) 100vw, 680px"
               />
