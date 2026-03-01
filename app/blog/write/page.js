@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { useAuth } from '@/contexts/AuthContext'
 import TiptapEditor from '@/components/blog/TiptapEditor'
 import { db } from '@/lib/firebase/config'
-import { collection, addDoc, serverTimestamp, query, where, getDocs } from 'firebase/firestore'
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 import readingTime from 'reading-time'
 import { handleImageUpload } from '@/lib/utils/imageUpload'
 
@@ -97,20 +97,14 @@ export default function WriteBlogPost() {
         .map(tag => tag.trim())
         .filter(tag => tag.length > 0)
 
-      // Ensure unique slug
+      // Generate unique slug with timestamp to avoid conflicts
+      // We add a short timestamp suffix to ensure uniqueness without requiring
+      // a query across all posts (which would require admin permissions)
       let finalSlug = formData.slug || generateSlug(formData.title)
-      const slugQuery = query(
-        collection(db, 'blogPosts'),
-        where('slug', '==', finalSlug)
-      )
-      const existingSlug = await getDocs(slugQuery)
       
-      // If slug exists, add random suffix
-      if (!existingSlug.empty) {
-        const randomSuffix = Math.random().toString(36).substring(2, 8)
-        finalSlug = `${finalSlug}-${randomSuffix}`
-        console.log(`Duplicate slug detected! Using unique slug: ${finalSlug}`)
-      }
+      // Add a short random suffix to ensure uniqueness
+      const randomSuffix = Math.random().toString(36).substring(2, 6)
+      finalSlug = `${finalSlug}-${randomSuffix}`
 
       // Create blog post in Firestore
       const postData = {

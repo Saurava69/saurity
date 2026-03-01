@@ -9,7 +9,7 @@ import {
   Bold, Italic, Strikethrough, Heading2, Heading3,
   List, ListOrdered, Code2, Quote, Image as ImageIcon,
   Youtube, FileCode2, Link as LinkIcon, Undo2, Redo2,
-  Upload, Loader2
+  Upload, Loader2, AlignLeft, AlignCenter, AlignRight
 } from 'lucide-react'
 
 export default function TiptapEditor({ value, onChange, title, excerpt }) {
@@ -329,6 +329,40 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
 
       <div className="w-px h-6 bg-gray-300 mx-2"></div>
 
+      {/* Text Alignment */}
+      <button
+        onClick={() => editor.chain().focus().setTextAlign('left').run()}
+        className={`px-3 py-2 rounded hover:bg-gray-200 transition-colors ${
+          editor.isActive({ textAlign: 'left' }) ? 'bg-gray-300' : ''
+        }`}
+        type="button"
+        title="Align Left"
+      >
+        <AlignLeft className="w-4 h-4" />
+      </button>
+      <button
+        onClick={() => editor.chain().focus().setTextAlign('center').run()}
+        className={`px-3 py-2 rounded hover:bg-gray-200 transition-colors ${
+          editor.isActive({ textAlign: 'center' }) ? 'bg-gray-300' : ''
+        }`}
+        type="button"
+        title="Align Center"
+      >
+        <AlignCenter className="w-4 h-4" />
+      </button>
+      <button
+        onClick={() => editor.chain().focus().setTextAlign('right').run()}
+        className={`px-3 py-2 rounded hover:bg-gray-200 transition-colors ${
+          editor.isActive({ textAlign: 'right' }) ? 'bg-gray-300' : ''
+        }`}
+        type="button"
+        title="Align Right"
+      >
+        <AlignRight className="w-4 h-4" />
+      </button>
+
+      <div className="w-px h-6 bg-gray-300 mx-2"></div>
+
       {/* Undo/Redo */}
       <button
         onClick={() => editor.chain().focus().undo().run()}
@@ -550,6 +584,40 @@ export default function TiptapEditor({ value, onChange, title, excerpt }) {
                   title="Insert YouTube Video"
                 >
                   <Youtube className="w-4 h-4" />
+                </button>
+                
+                <div className="w-px h-6 bg-gray-600 mx-1"></div>
+                
+                {/* Text Alignment */}
+                <button
+                  onClick={() => editor.chain().focus().setTextAlign('left').run()}
+                  className={`px-3 py-1.5 rounded hover:bg-gray-700 transition-colors text-sm flex items-center ${
+                    editor.isActive({ textAlign: 'left' }) ? 'bg-gray-700' : ''
+                  }`}
+                  type="button"
+                  title="Align Left"
+                >
+                  <AlignLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => editor.chain().focus().setTextAlign('center').run()}
+                  className={`px-3 py-1.5 rounded hover:bg-gray-700 transition-colors text-sm flex items-center ${
+                    editor.isActive({ textAlign: 'center' }) ? 'bg-gray-700' : ''
+                  }`}
+                  type="button"
+                  title="Align Center"
+                >
+                  <AlignCenter className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => editor.chain().focus().setTextAlign('right').run()}
+                  className={`px-3 py-1.5 rounded hover:bg-gray-700 transition-colors text-sm flex items-center ${
+                    editor.isActive({ textAlign: 'right' }) ? 'bg-gray-700' : ''
+                  }`}
+                  type="button"
+                  title="Align Right"
+                >
+                  <AlignRight className="w-4 h-4" />
                 </button>
               </div>
             )}

@@ -64,6 +64,28 @@ export async function generateMetadata({ params }) {
 export const revalidate = 1800
 
 /**
+ * Allow dynamic params for new authors
+ * Combined with ISR, new authors will be generated on-demand
+ */
+export const dynamicParams = true
+
+/**
+ * Generate static params for known authors
+ * This pre-renders author pages at build time for better SEO
+ */
+export async function generateStaticParams() {
+  const { getPublishedPosts } = await import('@/lib/firebase/posts')
+  const posts = await getPublishedPosts()
+  
+  // Get unique authors from all published posts
+  const uniqueAuthors = [...new Set(posts.map(post => post.author).filter(Boolean))]
+  
+  return uniqueAuthors.map((author) => ({
+    author: encodeURIComponent(author),
+  }))
+}
+
+/**
  * Author page - Shows all posts by a specific author
  */
 export default async function AuthorPage({ params }) {

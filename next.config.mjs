@@ -3,9 +3,6 @@ const nextConfig = {
   /* config options here */
   reactCompiler: true,
   
-  // Enable SWC minification
-  swcMinify: true,
-  
   // Optimize CSS
   experimental: {
     optimizeCss: true,

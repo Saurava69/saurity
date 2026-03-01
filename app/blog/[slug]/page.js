@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { getPostBySlug, getRelatedPosts, extractTextFromTiptap, calculateReadTime } from '@/lib/firebase/posts'
+import { getPostBySlug, getRelatedPosts, extractTextFromTiptap, calculateReadTime, getAllPublishedPosts } from '@/lib/firebase/posts'
 import ArticleHeader from '@/components/blog/ArticleHeader'
 import ArticleContent from '@/components/blog/ArticleContent'
 import ArticleFooter from '@/components/blog/ArticleFooter'
@@ -69,6 +69,25 @@ export async function generateMetadata({ params }) {
  * Regenerate page every hour
  */
 export const revalidate = 3600
+
+/**
+ * Allow dynamic params for new blog posts
+ * Combined with ISR, new posts will be generated on-demand
+ */
+export const dynamicParams = true
+
+/**
+ * Generate static params for all published blog posts
+ * This pre-renders all blog posts at build time for better SEO
+ * New posts will be generated on-demand with ISR
+ */
+export async function generateStaticParams() {
+  const posts = await getAllPublishedPosts()
+  
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
+}
 
 /**
  * Blog post page - Server Component
