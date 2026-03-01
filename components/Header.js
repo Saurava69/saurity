@@ -290,7 +290,7 @@ export default function Header() {
                   Login
                 </Link>
                 <Link href="/download" className="btn-primary text-sm">
-                  Download Free
+                  Download v1.1.0
                 </Link>
               </>
             )}
@@ -404,7 +404,7 @@ export default function Header() {
                     Login
                   </Link>
                   <Link href="/download" onClick={handleMobileNavClick} className="block mx-3 btn-primary text-center">
-                    Download Free
+                    Download v1.1.0
                   </Link>
                 </div>
               )}

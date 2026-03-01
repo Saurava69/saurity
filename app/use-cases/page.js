@@ -447,14 +447,14 @@ export default function UseCases() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-6">Ready for Your Use Case?</h2>
             <p className="text-xl mb-8 opacity-90">
-              Download Saurity and protect your WordPress site today - regardless of your industry or setup.
+              Download Saurity v1.1.0 with cloud integration and protect your WordPress site today.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/download"
                 className="px-8 py-4 bg-white text-blue-600 rounded-lg hover:bg-slate-100 transition-colors font-semibold text-lg"
               >
-                Download v1.0.0 Free
+                Download v1.1.0 Free
               </Link>
               <Link
                 href="/features"
@@ -464,7 +464,7 @@ export default function UseCases() {
               </Link>
             </div>
             <p className="mt-6 text-sm opacity-75">
-              No credit card required • 100% free forever • Open source MIT license
+              No credit card required • 100% free forever • Open source GPL v2 license
             </p>
           </div>
         </section>

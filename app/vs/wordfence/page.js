@@ -43,9 +43,11 @@ const comparisonData = {
     { feature: 'IP Blacklisting', saurity: '✓ Unlimited', wordfence: '✓ Included' },
     { feature: 'Real-time Monitoring', saurity: '✓ Full access', wordfence: '✓ Delayed in free' },
     { feature: 'Email Alerts', saurity: '✓ Configurable', wordfence: '✓ Limited in free' },
+    { feature: 'Country Blocking (GeoIP)', saurity: '✓ Included in v1.1.0', wordfence: '✓ Premium only' },
+    { feature: 'Cloudflare Integration', saurity: '✓ Included in v1.1.0', wordfence: '✗ Not available' },
+    { feature: 'Threat Intelligence Feeds', saurity: '✓ AbuseIPDB, Spamhaus', wordfence: '✓ Wordfence threat feed' },
     { feature: 'Two-Factor Auth', saurity: '⚠️ Planned', wordfence: '✓ Premium only' },
     { feature: 'Malware Scanning', saurity: '⚠️ Planned', wordfence: '✓ Premium only' },
-    { feature: 'Country Blocking', saurity: '⚠️ Planned', wordfence: '✓ Premium only' },
   ],
   pricing: [
     { tier: 'Free Version', saurity: '$0 - All features', wordfence: '$0 - Limited features' },
@@ -76,8 +78,7 @@ const prosAndCons = {
     cons: [
       'Newer plugin with smaller community',
       'No malware scanning (yet)',
-      'Limited country-level blocking options',
-      'Fewer integrations with third-party services',
+      'Fewer integrations than established alternatives',
     ],
   },
   wordfence: {
@@ -427,14 +428,14 @@ export default function SaurityVsWordfence() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-6">Ready to Switch to Saurity?</h2>
             <p className="text-xl mb-8 opacity-90">
-              Experience WordPress security without the frustration of lockouts. Download Saurity today.
+              Experience WordPress security with cloud integration and zero lockouts. Download Saurity v1.1.0 today.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/download"
                 className="px-8 py-4 bg-white text-blue-600 rounded-lg hover:bg-slate-100 transition-colors font-semibold text-lg"
               >
-                Download Saurity v1.0.0
+                Download Saurity v1.1.0
               </Link>
               <Link
                 href="/features"
@@ -444,7 +445,7 @@ export default function SaurityVsWordfence() {
               </Link>
             </div>
             <p className="mt-6 text-sm opacity-75">
-              No credit card required • 100% free forever • Open source MIT license
+              No credit card required • 100% free forever • Open source GPL v2 license
             </p>
           </div>
         </section>

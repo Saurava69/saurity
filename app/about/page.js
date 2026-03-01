@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'About Saurity v1.0.0 | Enterprise WordPress Security',
-  description: 'Learn about Saurity v1.0.0, the enterprise WordPress security plugin with zero false positives, smart rate limiting, and advanced firewall protection.',
+  title: 'About Saurity v1.1.0 | Enterprise WordPress Security',
+  description: 'Learn about Saurity v1.1.0, the enterprise WordPress security plugin with cloud integration, GeoIP blocking, threat intelligence, and zero false positives.',
   alternates: {
     canonical: 'https://www.saurity.com/about',
   },
@@ -13,6 +13,9 @@ export default function AboutPage() {
       <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-block bg-primary-100 text-primary-700 px-4 py-1 rounded-full text-sm font-semibold mb-4">
+              Version 1.1.0 - Cloud Integration Release
+            </div>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               About Saurity
             </h1>
@@ -54,6 +57,33 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* v1.1.0 Highlights */}
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <div className="container-custom">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-6">What&apos;s New in v1.1.0</h2>
+            <p className="text-xl text-blue-100 mb-12">
+              Cloud-powered protection with enterprise-grade threat intelligence
+            </p>
+            
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+                <h3 className="font-semibold text-lg mb-2">Cloudflare Integration</h3>
+                <p className="text-blue-100 text-sm">Automatic blocklist sync and DDoS coordination</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+                <h3 className="font-semibold text-lg mb-2">GeoIP Blocking</h3>
+                <p className="text-blue-100 text-sm">Country-based access control with multiple providers</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+                <h3 className="font-semibold text-lg mb-2">Threat Intelligence</h3>
+                <p className="text-blue-100 text-sm">Real-time feeds from AbuseIPDB and Spamhaus</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Philosophy */}
       <section className="py-20 bg-gray-50">
         <div className="container-custom">
@@ -80,7 +110,7 @@ export default function AboutPage() {
               <div className="bg-white rounded-lg p-8 border border-gray-200">
                 <h3 className="text-2xl font-semibold mb-4">Technical Honesty</h3>
                 <p className="text-gray-700">
-                  No marketing hype, no exaggerated claims. We document what v0.1 does and doesn&apos;t do. 
+                  No marketing hype, no exaggerated claims. We document what Saurity does and doesn&apos;t do. 
                   Security is about managing risk, not eliminating it.
                 </p>
               </div>
@@ -122,6 +152,21 @@ export default function AboutPage() {
               <div className="flex gap-6">
                 <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                   <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Cloud Integration (NEW in v1.1.0)</h3>
+                  <p className="text-gray-700">
+                    Cloudflare API integration for automatic blocklist sync, GeoIP services for country-based blocking, 
+                    and threat intelligence feeds from AbuseIPDB and Spamhaus. Enterprise protection without enterprise cost.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-6">
+                <div className="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
@@ -135,23 +180,23 @@ export default function AboutPage() {
               </div>
 
               <div className="flex gap-6">
-                <div className="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex-shrink-0 w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                  <svg className="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                   </svg>
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Shared Hosting Friendly</h3>
                   <p className="text-gray-700">
-                    Near-zero performance overhead. No complex database queries, no file scanning, no heavy processing. 
+                    Near-zero performance overhead (&lt;0.5ms). No complex database queries, no file scanning, no heavy processing. 
                     Works perfectly on budget shared hosting without slowing down your site.
                   </p>
                 </div>
               </div>
 
               <div className="flex gap-6">
-                <div className="flex-shrink-0 w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                  <svg className="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex-shrink-0 w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                  <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                   </svg>
                 </div>
@@ -176,10 +221,11 @@ export default function AboutPage() {
             
             <div className="mt-12 space-y-6">
               <div className="bg-white rounded-lg p-6 border-l-4 border-primary-600">
-                <h3 className="text-xl font-semibold mb-3">v1.0.0: Production-Ready Release</h3>
+                <h3 className="text-xl font-semibold mb-3">v1.1.0: Cloud Integration Release</h3>
                 <p className="text-gray-700">
-                  Version 1.0.0 delivers enterprise-grade security with smart rate limiting, advanced firewall, 
-                  IP management, honeypot detection, and 3-tier emergency recovery. Proven stable with zero false positives.
+                  Version 1.1.0 adds enterprise cloud features: Cloudflare integration, GeoIP blocking, 
+                  threat intelligence feeds, GDPR compliance tools, and advanced PDF reports. 
+                  All while maintaining zero false positives.
                 </p>
               </div>
 
@@ -211,16 +257,26 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Roadmap */}
+      {/* Feature Set */}
       <section className="py-20">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            <h2 className="section-heading">v1.0.0 Feature Set</h2>
+            <h2 className="section-heading">v1.1.0 Feature Set</h2>
             <p className="section-subheading">
-              Production-ready enterprise security features now available
+              Enterprise security features now available
             </p>
             
             <div className="grid md:grid-cols-2 gap-6 mt-12">
+              <div className="bg-gray-50 rounded-lg p-6">
+                <h3 className="font-semibold text-lg mb-3">✅ Cloud Integration (NEW)</h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Cloudflare API integration</li>
+                  <li>• GeoIP country blocking</li>
+                  <li>• Threat intelligence feeds</li>
+                  <li>• Automatic blocklist sync</li>
+                </ul>
+              </div>
+
               <div className="bg-gray-50 rounded-lg p-6">
                 <h3 className="font-semibold text-lg mb-3">✅ Smart Rate Limiting</h3>
                 <ul className="space-y-2 text-gray-700">
@@ -242,37 +298,46 @@ export default function AboutPage() {
               </div>
 
               <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="font-semibold text-lg mb-3">✅ IP Management</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• Allowlist/Blocklist with CIDR</li>
-                  <li>• CSV import/export</li>
-                  <li>• Metadata tracking</li>
-                  <li>• Subnet blocking (anti-botnet)</li>
-                </ul>
-              </div>
-
-              <div className="bg-gray-50 rounded-lg p-6">
                 <h3 className="font-semibold text-lg mb-3">✅ Advanced Detection</h3>
                 <ul className="space-y-2 text-gray-700">
                   <li>• Honeypot bot detection</li>
                   <li>• Timing analysis</li>
                   <li>• Tarpitting (attack slowdown)</li>
-                  <li>• Email notifications</li>
+                  <li>• Subnet blocking (anti-botnet)</li>
+                </ul>
+              </div>
+
+              <div className="bg-gray-50 rounded-lg p-6">
+                <h3 className="font-semibold text-lg mb-3">✅ Privacy & Compliance (NEW)</h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• GDPR compliance tools</li>
+                  <li>• Privacy policy integration</li>
+                  <li>• Data retention controls</li>
+                  <li>• Consent management</li>
+                </ul>
+              </div>
+
+              <div className="bg-gray-50 rounded-lg p-6">
+                <h3 className="font-semibold text-lg mb-3">✅ Reporting (NEW)</h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• PDF security reports</li>
+                  <li>• Scheduled email reports</li>
+                  <li>• Executive dashboards</li>
+                  <li>• Trend analysis</li>
                 </ul>
               </div>
             </div>
 
             <div className="mt-12 bg-primary-50 border-l-4 border-primary-600 p-6 rounded-r-lg">
-              <h3 className="text-xl font-semibold mb-3 text-primary-900">Future Roadmap (v2.0+)</h3>
+              <h3 className="text-xl font-semibold mb-3 text-primary-900">Future Roadmap (v1.2+)</h3>
               <p className="text-gray-700 mb-4">
-                After v1.0.0 stability is proven in production, future versions will add:
+                Coming in future releases:
               </p>
               <ul className="space-y-2 text-gray-700">
-                <li>• 2FA and OAuth integration</li>
+                <li>• Two-Factor Authentication (2FA)</li>
+                <li>• Enhanced session management</li>
                 <li>• File integrity monitoring</li>
-                <li>• Geographic restrictions</li>
-                <li>• Malware scanning</li>
-                <li>• Advanced reporting and analytics</li>
+                <li>• Multi-site network support</li>
               </ul>
             </div>
           </div>

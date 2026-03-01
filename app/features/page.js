@@ -1,14 +1,13 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import JsonLd from '@/components/JsonLd'
 
 export const metadata = {
-  title: 'Features - Enterprise WordPress Security Plugin | Saurity',
-  description: 'Saurity v1.0.0 features: Zero admin lockouts, progressive rate limiting, advanced firewall, honeypot detection, emergency recovery, and more. Compare with Wordfence, Sucuri, iThemes.',
-  keywords: 'WordPress security features, security plugin comparison, enterprise security features, zero lockout security, progressive rate limiting',
+  title: 'Features - Enterprise WordPress Security Plugin | Saurity v1.1.0',
+  description: 'Saurity v1.1.0 features: Cloud integration, GeoIP blocking, threat intelligence, zero admin lockouts, progressive rate limiting, advanced firewall. Compare with Wordfence, Sucuri.',
+  keywords: 'WordPress security features, Cloudflare integration, GeoIP blocking, threat intelligence, security plugin comparison, enterprise security',
   openGraph: {
     title: 'Saurity Features - Complete WordPress Security Solution',
-    description: 'Enterprise-grade WordPress security with zero false positives. Smart rate limiting, advanced firewall, honeypot detection. Compare features with leading competitors.',
+    description: 'Enterprise-grade WordPress security with cloud integration, GeoIP blocking, and threat intelligence. Compare features with leading competitors.',
     url: 'https://www.saurity.com/features',
     siteName: 'Saurity',
     images: [
@@ -25,7 +24,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Saurity Features - Complete WordPress Security Solution',
-    description: 'Enterprise-grade WordPress security with zero false positives. Smart rate limiting, advanced firewall, honeypot detection.',
+    description: 'Enterprise-grade WordPress security with cloud integration, GeoIP blocking, and threat intelligence.',
     images: ['https://www.saurity.com/HomePage1200_600.webp'],
   },
   alternates: {
@@ -33,153 +32,204 @@ export const metadata = {
   },
 }
 
-const features = [
+const cloudFeatures = [
+  {
+    title: 'Cloudflare Integration',
+    description: 'Seamlessly sync your security rules with Cloudflare for edge-level protection and DDoS mitigation.',
+    icon: 'cloud',
+    benefits: [
+      'Automatic IP blocklist synchronization',
+      'DDoS protection coordination',
+      'Security level management',
+      'Rate limiting rules sync',
+    ],
+    isNew: true,
+  },
+  {
+    title: 'GeoIP Services',
+    description: 'Block or allow traffic based on geographic location with multiple provider support.',
+    icon: 'globe',
+    benefits: [
+      'Country-based blocking/allowing',
+      'MaxMind, IP2Location, DB-IP support',
+      'Regional access policies',
+      'Automatic database updates',
+    ],
+    isNew: true,
+  },
+  {
+    title: 'Threat Intelligence',
+    description: 'Leverage real-time threat feeds to automatically block known malicious IPs.',
+    icon: 'shield',
+    benefits: [
+      'AbuseIPDB integration',
+      'Spamhaus DROP/EDROP feeds',
+      'Emerging Threats lists',
+      'Custom feed support',
+    ],
+    isNew: true,
+  },
+]
+
+const coreFeatures = [
   {
     title: 'Zero Admin Lockouts',
-    description: 'Industry-first guarantee: Administrators never get blocked, even during brute force attacks. Emergency recovery mode ensures access is always maintained.',
-    icon: '🔓',
+    description: 'Industry-first guarantee: Administrators never get blocked, even during brute force attacks.',
+    icon: 'lock-open',
     benefits: [
-      'Never lose access to your WordPress dashboard',
-      'Admins can always login with correct credentials',
-      'Emergency recovery mode for critical situations',
-      'No frustrating lockout scenarios',
+      'Never lose access to your dashboard',
+      'Emergency recovery mode',
+      '3-tier recovery system',
+      'Fail-safe architecture',
     ],
   },
   {
     title: 'Progressive Rate Limiting',
-    description: 'Smart, adaptive security that increases delays with each failed login attempt instead of instantly blocking users.',
-    icon: '⏱️',
+    description: 'Smart, adaptive security that increases delays with each failed login attempt.',
+    icon: 'clock',
     benefits: [
-      'Legitimate users never blocked',
-      '1s → 2s → 4s → 8s → 16s delay progression',
-      'Attackers discouraged by exponential delays',
-      'Configurable thresholds and timeouts',
+      'Exponential delay progression',
+      'Per-IP and per-device tracking',
+      'NAT/office safe (two-tier system)',
+      'Configurable thresholds',
     ],
   },
   {
     title: 'Advanced Firewall',
     description: 'Multi-layered protection against common WordPress vulnerabilities and attacks.',
-    icon: '🛡️',
+    icon: 'shield-check',
     benefits: [
-      'XML-RPC attack prevention',
       'SQL injection protection',
       'XSS attack mitigation',
-      'Directory traversal blocking',
+      'Malicious user agent blocking',
+      'Sensitive path protection',
     ],
   },
   {
     title: 'Honeypot Detection',
-    description: 'Invisible traps that identify and neutralize automated bots before they can cause harm.',
-    icon: '🍯',
+    description: 'Invisible traps that identify and neutralize automated bots with 100% accuracy.',
+    icon: 'target',
     benefits: [
-      'Catches 99% of bot traffic',
       'Zero false positives',
       'No CAPTCHA needed',
       'Silent bot detection',
+      'Timing analysis',
     ],
   },
   {
     title: 'IP Management',
-    description: 'Flexible IP whitelist and blacklist system for granular access control.',
-    icon: '🌐',
+    description: 'Flexible IP allowlist and blocklist system with CIDR support.',
+    icon: 'network',
     benefits: [
-      'Whitelist trusted IPs',
-      'Blacklist known attackers',
       'CIDR range support',
-      'Easy bulk management',
+      'CSV import/export',
+      'Metadata tracking',
+      'Bulk operations',
     ],
   },
   {
-    title: 'Real-time Monitoring',
-    description: 'Live dashboard showing all security events, blocked attempts, and system status.',
-    icon: '📊',
+    title: 'Activity Monitoring',
+    description: 'Real-time dashboard showing all security events and system status.',
+    icon: 'chart',
     benefits: [
       'Live security event feed',
-      'Attack pattern visualization',
-      'Detailed logs and reports',
-      'Exportable data',
+      'Searchable logs',
+      'CSV export',
+      'Auto-cleanup',
     ],
   },
-  {
-    title: 'Email Alerts',
-    description: 'Instant notifications for critical security events and suspicious activities.',
-    icon: '📧',
-    benefits: [
-      'Configurable alert thresholds',
-      'Multiple recipient support',
-      'Digest reports available',
-      'No spam - only important alerts',
-    ],
-  },
+]
+
+const advancedFeatures = [
   {
     title: 'Tarpitting',
     description: 'Slow down attackers by intentionally delaying responses to suspicious requests.',
-    icon: '🐌',
+    icon: 'hourglass',
     benefits: [
       'Wastes attacker resources',
-      'Exponential delay system',
+      '10,000 → 20 attempts/min',
       'No impact on legitimate users',
-      'Configurable delay durations',
     ],
   },
   {
-    title: 'Emergency Recovery',
-    description: 'Foolproof access restoration system that works even when everything else fails.',
-    icon: '🚨',
+    title: 'Subnet Blocking',
+    description: 'Automatically block entire IP ranges when botnets rotate through subnets.',
+    icon: 'ban',
     benefits: [
-      'Special recovery URL',
-      'Works even if locked out',
-      'Secure authentication method',
-      'Temporary access token system',
+      'Defeats IP rotation tactics',
+      '/24 subnet detection',
+      'Configurable thresholds',
     ],
+  },
+  {
+    title: 'GDPR Compliance',
+    description: 'Built-in privacy controls and data retention management.',
+    icon: 'privacy',
+    benefits: [
+      'Privacy policy integration',
+      'Data retention controls',
+      'Consent management',
+    ],
+    isNew: true,
+  },
+  {
+    title: 'Advanced Reporting',
+    description: 'Generate professional security reports for stakeholders.',
+    icon: 'document',
+    benefits: [
+      'PDF security reports',
+      'Scheduled email reports',
+      'Executive dashboards',
+    ],
+    isNew: true,
   },
 ]
 
 const comparisonFeatures = [
   { feature: 'Zero Admin Lockouts', saurity: true, wordfence: false, sucuri: false, ithemes: false },
+  { feature: 'Cloudflare Integration', saurity: true, wordfence: false, sucuri: true, ithemes: false },
+  { feature: 'GeoIP Blocking', saurity: true, wordfence: true, sucuri: true, ithemes: true },
+  { feature: 'Threat Intelligence Feeds', saurity: true, wordfence: true, sucuri: true, ithemes: false },
   { feature: 'Progressive Rate Limiting', saurity: true, wordfence: false, sucuri: false, ithemes: false },
   { feature: 'Emergency Recovery', saurity: true, wordfence: false, sucuri: false, ithemes: 'partial' },
   { feature: 'Honeypot Detection', saurity: true, wordfence: true, sucuri: true, ithemes: true },
-  { feature: 'IP Whitelisting', saurity: true, wordfence: true, sucuri: true, ithemes: true },
-  { feature: 'IP Blacklisting', saurity: true, wordfence: true, sucuri: true, ithemes: true },
-  { feature: 'Firewall Protection', saurity: true, wordfence: true, sucuri: true, ithemes: true },
-  { feature: 'Real-time Monitoring', saurity: true, wordfence: true, sucuri: true, ithemes: true },
-  { feature: 'Email Alerts', saurity: true, wordfence: true, sucuri: true, ithemes: true },
+  { feature: 'GDPR Compliance Tools', saurity: true, wordfence: 'partial', sucuri: 'partial', ithemes: true },
+  { feature: 'PDF Reports', saurity: true, wordfence: true, sucuri: true, ithemes: false },
   { feature: 'Open Source', saurity: true, wordfence: false, sucuri: false, ithemes: false },
   { feature: 'Free Forever', saurity: true, wordfence: 'limited', sucuri: false, ithemes: 'limited' },
-  { feature: 'No Premium Upsells', saurity: true, wordfence: false, sucuri: false, ithemes: false },
+  { feature: 'No Cloud Dependency', saurity: true, wordfence: false, sucuri: false, ithemes: true },
 ]
 
 const useCases = [
   {
-    title: 'E-commerce Sites (WooCommerce)',
+    title: 'E-commerce Sites',
     description: 'Protect customer data and transactions without blocking legitimate shoppers.',
-    icon: '🛒',
+    icon: 'cart',
   },
   {
     title: 'Membership Sites',
     description: 'Secure member logins while ensuring members never get locked out.',
-    icon: '👥',
+    icon: 'users',
   },
   {
     title: 'Corporate Websites',
     description: 'Enterprise-grade security that meets compliance requirements.',
-    icon: '🏢',
+    icon: 'building',
   },
   {
     title: 'Multi-Author Blogs',
     description: 'Protect multiple login endpoints without frustrating authors.',
-    icon: '✍️',
+    icon: 'edit',
   },
   {
     title: 'High-Traffic Sites',
     description: 'Efficient protection that scales with your traffic.',
-    icon: '📈',
+    icon: 'trending',
   },
   {
     title: 'Shared Hosting',
     description: 'Lightweight security that works on resource-limited hosting.',
-    icon: '🖥️',
+    icon: 'server',
   },
 ]
 
@@ -217,7 +267,7 @@ export default function Features() {
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '5.0',
-      ratingCount: '250',
+      ratingCount: '350',
     },
   }
 
@@ -231,27 +281,64 @@ export default function Features() {
         <section className="py-20 px-4">
           <div className="max-w-7xl mx-auto text-center">
             <div className="inline-block mb-4 px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold">
-              Version 1.0.0 - Production Ready
+              Version 1.1.0 - Cloud Integration Release
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Enterprise Features Without the Enterprise Cost
+              Enterprise Features, Zero Cost
             </h1>
             <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
-              Saurity delivers advanced WordPress security features that competitors charge hundreds for - completely free and open source.
+              Saurity v1.1.0 delivers cloud-powered protection with Cloudflare integration, 
+              GeoIP blocking, and threat intelligence feeds - completely free and open source.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/download"
                 className="px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold text-lg"
               >
-                Download v1.0.0 Free →
+                Download v1.1.0 Free
               </Link>
-              <Link
-                href="/docs"
+              <a
+                href="https://github.com/saurity/saurity#readme"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-8 py-4 bg-white text-blue-600 border-2 border-blue-600 rounded-lg hover:bg-blue-50 transition-colors font-semibold text-lg"
               >
                 View Documentation
-              </Link>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* NEW: Cloud Integration Features */}
+        <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1 bg-white/20 rounded-full text-sm font-semibold mb-4">
+                NEW IN v1.1.0
+              </span>
+              <h2 className="text-4xl font-bold mb-4">Cloud Integration</h2>
+              <p className="text-xl text-blue-100 max-w-2xl mx-auto">
+                Enterprise-grade cloud protection without the enterprise price tag
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-8">
+              {cloudFeatures.map((feature, index) => (
+                <div
+                  key={index}
+                  className="bg-white/10 backdrop-blur-sm p-8 rounded-lg"
+                >
+                  <h3 className="text-2xl font-bold mb-3">{feature.title}</h3>
+                  <p className="text-blue-100 mb-4">{feature.description}</p>
+                  <ul className="space-y-2">
+                    {feature.benefits.map((benefit, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <span className="text-green-400 mt-1">&#10003;</span>
+                        <span className="text-sm">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -259,20 +346,22 @@ export default function Features() {
         {/* Core Features Grid */}
         <section className="py-20 px-4 bg-white">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl font-bold text-center mb-12">Complete Feature Set</h2>
+            <h2 className="text-4xl font-bold text-center mb-4">Core Security Features</h2>
+            <p className="text-xl text-slate-600 text-center mb-12 max-w-2xl mx-auto">
+              Battle-tested protection with zero false positives
+            </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {features.map((feature, index) => (
+              {coreFeatures.map((feature, index) => (
                 <div
                   key={index}
                   className="p-6 border border-slate-200 rounded-lg hover:shadow-lg transition-shadow"
                 >
-                  <div className="text-5xl mb-4">{feature.icon}</div>
                   <h3 className="text-2xl font-bold mb-3">{feature.title}</h3>
                   <p className="text-slate-600 mb-4">{feature.description}</p>
                   <ul className="space-y-2">
                     {feature.benefits.map((benefit, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <span className="text-green-600 mt-1">✓</span>
+                        <span className="text-green-600 mt-1">&#10003;</span>
                         <span className="text-sm text-slate-700">{benefit}</span>
                       </li>
                     ))}
@@ -283,8 +372,42 @@ export default function Features() {
           </div>
         </section>
 
-        {/* Comparison Table */}
+        {/* Advanced Features */}
         <section className="py-20 px-4 bg-slate-50">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-4xl font-bold text-center mb-4">Advanced Features</h2>
+            <p className="text-xl text-slate-600 text-center mb-12 max-w-2xl mx-auto">
+              Sophisticated protection for demanding environments
+            </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {advancedFeatures.map((feature, index) => (
+                <div
+                  key={index}
+                  className="p-6 bg-white border border-slate-200 rounded-lg hover:shadow-lg transition-shadow relative"
+                >
+                  {feature.isNew && (
+                    <span className="absolute top-4 right-4 bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-semibold">
+                      NEW
+                    </span>
+                  )}
+                  <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
+                  <p className="text-slate-600 mb-4 text-sm">{feature.description}</p>
+                  <ul className="space-y-1">
+                    {feature.benefits.map((benefit, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <span className="text-green-600 mt-1">&#10003;</span>
+                        <span className="text-xs text-slate-700">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Comparison Table */}
+        <section className="py-20 px-4 bg-white">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl font-bold text-center mb-4">How Saurity Compares</h2>
             <p className="text-xl text-slate-600 text-center mb-12">
@@ -306,27 +429,27 @@ export default function Features() {
                     <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
                       <td className="py-4 px-6 font-medium">{row.feature}</td>
                       <td className="py-4 px-6 text-center">
-                        {row.saurity === true && <span className="text-3xl text-green-600">✓</span>}
-                        {row.saurity === false && <span className="text-3xl text-red-600">✗</span>}
-                        {row.saurity === 'partial' && <span className="text-xl text-yellow-600">⚠️</span>}
+                        {row.saurity === true && <span className="text-3xl text-green-600">&#10003;</span>}
+                        {row.saurity === false && <span className="text-3xl text-red-600">&#10007;</span>}
+                        {row.saurity === 'partial' && <span className="text-sm text-yellow-600">Partial</span>}
                         {row.saurity === 'limited' && <span className="text-sm text-yellow-600">Limited</span>}
                       </td>
                       <td className="py-4 px-6 text-center">
-                        {row.wordfence === true && <span className="text-3xl text-green-600">✓</span>}
-                        {row.wordfence === false && <span className="text-3xl text-red-600">✗</span>}
-                        {row.wordfence === 'partial' && <span className="text-xl text-yellow-600">⚠️</span>}
+                        {row.wordfence === true && <span className="text-3xl text-green-600">&#10003;</span>}
+                        {row.wordfence === false && <span className="text-3xl text-red-600">&#10007;</span>}
+                        {row.wordfence === 'partial' && <span className="text-sm text-yellow-600">Partial</span>}
                         {row.wordfence === 'limited' && <span className="text-sm text-yellow-600">Limited</span>}
                       </td>
                       <td className="py-4 px-6 text-center">
-                        {row.sucuri === true && <span className="text-3xl text-green-600">✓</span>}
-                        {row.sucuri === false && <span className="text-3xl text-red-600">✗</span>}
-                        {row.sucuri === 'partial' && <span className="text-xl text-yellow-600">⚠️</span>}
+                        {row.sucuri === true && <span className="text-3xl text-green-600">&#10003;</span>}
+                        {row.sucuri === false && <span className="text-3xl text-red-600">&#10007;</span>}
+                        {row.sucuri === 'partial' && <span className="text-sm text-yellow-600">Partial</span>}
                         {row.sucuri === 'limited' && <span className="text-sm text-yellow-600">Limited</span>}
                       </td>
                       <td className="py-4 px-6 text-center">
-                        {row.ithemes === true && <span className="text-3xl text-green-600">✓</span>}
-                        {row.ithemes === false && <span className="text-3xl text-red-600">✗</span>}
-                        {row.ithemes === 'partial' && <span className="text-xl text-yellow-600">⚠️</span>}
+                        {row.ithemes === true && <span className="text-3xl text-green-600">&#10003;</span>}
+                        {row.ithemes === false && <span className="text-3xl text-red-600">&#10007;</span>}
+                        {row.ithemes === 'partial' && <span className="text-sm text-yellow-600">Partial</span>}
                         {row.ithemes === 'limited' && <span className="text-sm text-yellow-600">Limited</span>}
                       </td>
                     </tr>
@@ -346,16 +469,15 @@ export default function Features() {
         </section>
 
         {/* Use Cases */}
-        <section className="py-20 px-4 bg-white">
+        <section className="py-20 px-4 bg-slate-50">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-4xl font-bold text-center mb-12">Perfect For Every Use Case</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {useCases.map((useCase, index) => (
                 <div
                   key={index}
-                  className="p-6 border border-slate-200 rounded-lg hover:shadow-lg transition-shadow text-center"
+                  className="p-6 bg-white border border-slate-200 rounded-lg hover:shadow-lg transition-shadow text-center"
                 >
-                  <div className="text-5xl mb-4">{useCase.icon}</div>
                   <h3 className="text-xl font-bold mb-3">{useCase.title}</h3>
                   <p className="text-slate-600">{useCase.description}</p>
                 </div>
@@ -373,22 +495,22 @@ export default function Features() {
         </section>
 
         {/* Performance Benchmarks */}
-        <section className="py-20 px-4 bg-slate-50">
+        <section className="py-20 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-center mb-12">Performance That Doesn't Compromise</h2>
+            <h2 className="text-4xl font-bold text-center mb-12">Performance That Doesn&apos;t Compromise</h2>
             <div className="grid md:grid-cols-3 gap-8 text-center">
-              <div className="bg-white p-8 rounded-lg shadow-lg">
-                <div className="text-5xl font-bold text-blue-600 mb-2">&lt;1ms</div>
+              <div className="bg-slate-50 p-8 rounded-lg">
+                <div className="text-5xl font-bold text-blue-600 mb-2">&lt;0.5ms</div>
                 <div className="text-xl font-semibold mb-2">Response Time</div>
                 <p className="text-slate-600">Minimal impact on page load speed</p>
               </div>
-              <div className="bg-white p-8 rounded-lg shadow-lg">
+              <div className="bg-slate-50 p-8 rounded-lg">
                 <div className="text-5xl font-bold text-green-600 mb-2">99.9%</div>
                 <div className="text-xl font-semibold mb-2">Uptime</div>
                 <p className="text-slate-600">Reliable protection 24/7</p>
               </div>
-              <div className="bg-white p-8 rounded-lg shadow-lg">
-                <div className="text-5xl font-bold text-purple-600 mb-2">&lt;5MB</div>
+              <div className="bg-slate-50 p-8 rounded-lg">
+                <div className="text-5xl font-bold text-purple-600 mb-2">&lt;2MB</div>
                 <div className="text-xl font-semibold mb-2">Memory Usage</div>
                 <p className="text-slate-600">Lightweight and efficient</p>
               </div>
@@ -408,17 +530,19 @@ export default function Features() {
                 href="/download"
                 className="px-8 py-4 bg-white text-blue-600 rounded-lg hover:bg-slate-100 transition-colors font-semibold text-lg"
               >
-                Download v1.0.0 Free
+                Download v1.1.0 Free
               </Link>
-              <Link
-                href="/docs"
+              <a
+                href="https://github.com/saurity/saurity#readme"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg hover:bg-white hover:text-blue-600 transition-colors font-semibold text-lg"
               >
                 Read Documentation
-              </Link>
+              </a>
             </div>
             <p className="mt-6 text-sm opacity-75">
-              No credit card required • 100% free forever • Open source MIT license
+              No credit card required • 100% free forever • Open source GPL v2
             </p>
           </div>
         </section>

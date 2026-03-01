@@ -38,7 +38,7 @@ const faqs = [
     questions: [
       {
         question: 'What is Saurity?',
-        answer: 'Saurity is a free, open-source WordPress security plugin that provides enterprise-grade protection without the risk of locking out administrators. It features progressive rate limiting, advanced firewall protection, honeypot detection, and emergency recovery systems.',
+        answer: 'Saurity is a free, open-source WordPress security plugin that provides enterprise-grade protection without the risk of locking out administrators. Version 1.1.0 adds cloud integration with Cloudflare, GeoIP blocking, threat intelligence feeds, plus progressive rate limiting, advanced firewall protection, honeypot detection, and emergency recovery systems.',
       },
       {
         question: 'Is Saurity really free?',
@@ -46,7 +46,7 @@ const faqs = [
       },
       {
         question: 'What makes Saurity different from other security plugins?',
-        answer: 'Saurity is the only WordPress security plugin that guarantees administrators will never be locked out. It uses progressive rate limiting instead of instant blocking, ensuring legitimate users can always access their sites while effectively deterring attackers.',
+        answer: 'Saurity is the only WordPress security plugin that guarantees administrators will never be locked out. It uses progressive rate limiting instead of instant blocking, plus offers cloud integration with Cloudflare, GeoIP country blocking, and threat intelligence feeds - all for free. No premium upsells, no hidden costs.',
       },
       {
         question: 'Is Saurity suitable for beginners?',
@@ -63,7 +63,7 @@ const faqs = [
       },
       {
         question: 'What are the system requirements?',
-        answer: 'Saurity requires WordPress 5.0 or higher and PHP 7.4 or higher. It works on all major hosting platforms including shared hosting, VPS, and dedicated servers.',
+        answer: 'Saurity requires WordPress 6.0 or higher and PHP 8.0 or higher. It works on all major hosting platforms including shared hosting, VPS, and dedicated servers.',
       },
       {
         question: 'Do I need to configure anything after installation?',
@@ -201,7 +201,7 @@ const faqs = [
       },
       {
         question: 'Can I integrate Saurity with external security services?',
-        answer: 'Saurity is designed to work standalone, but it can coexist with external security services like Cloudflare or Sucuri firewall.',
+        answer: 'Yes! Version 1.1.0 includes built-in Cloudflare integration for automatic blocklist sync, GeoIP services (MaxMind, IP2Location, DB-IP), and threat intelligence feeds from AbuseIPDB and Spamhaus. Configure these in the Cloud settings tab.',
       },
       {
         question: 'Does Saurity have an API?',
@@ -351,10 +351,10 @@ export default function FAQ() {
               href="/download"
               className="inline-block px-8 py-4 bg-white text-blue-600 rounded-lg hover:bg-slate-100 transition-colors font-semibold text-lg"
             >
-              Download v1.0.0 Free
+              Download v1.1.0 Free
             </Link>
             <p className="mt-6 text-sm opacity-75">
-              No credit card required • 100% free forever • Open source MIT license
+              No credit card required • 100% free forever • Open source GPL v2 license
             </p>
           </div>
         </section>

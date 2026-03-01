@@ -3,21 +3,21 @@ import Image from 'next/image'
 import JsonLd, { generateSoftwareSchema, generateOrganizationSchema } from '@/components/JsonLd'
 
 export const metadata = {
-  title: 'Saurity - Enterprise WordPress Security Plugin v1.0.0',
-  description: 'Saurity v1.0.0 - Enterprise WordPress security with zero false positives. Smart rate limiting, advanced firewall, honeypot detection. Download free → Never locks out admins.',
-  keywords: 'WordPress security, brute force protection, rate limiting, firewall, IP blocking, spam prevention, DDoS protection, XML-RPC protection, WordPress hardening',
+  title: 'Saurity - Enterprise WordPress Security Plugin v1.1.0',
+  description: 'Saurity v1.1.0 - Enterprise WordPress security with cloud integration, GeoIP blocking, threat intelligence feeds. Zero false positives. Download free.',
+  keywords: 'WordPress security, brute force protection, rate limiting, firewall, IP blocking, spam prevention, DDoS protection, Cloudflare integration, GeoIP blocking, threat intelligence',
   alternates: {
     canonical: 'https://www.saurity.com',
   },
   openGraph: {
-    title: 'Saurity v1.0.0 - Enterprise WordPress Security Plugin',
-    description: 'Enterprise-grade WordPress security with zero false positives. Smart rate limiting, advanced firewall, honeypot detection. Download free →',
+    title: 'Saurity v1.1.0 - Enterprise WordPress Security Plugin',
+    description: 'Enterprise-grade WordPress security with cloud integration, GeoIP blocking, and threat intelligence. Zero false positives. Download free.',
     images: ['/HomePage1200_600.webp'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Saurity v1.0.0 - Enterprise WordPress Security',
-    description: 'Enterprise-grade WordPress security with zero false positives. Smart rate limiting, advanced firewall, honeypot detection.',
+    title: 'Saurity v1.1.0 - Enterprise WordPress Security',
+    description: 'Enterprise-grade WordPress security with cloud integration, GeoIP blocking, and threat intelligence.',
     images: ['/HomePage1200_600.webp'],
   },
 }
@@ -35,14 +35,14 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <div className="inline-block bg-primary-100 text-primary-700 px-4 py-1 rounded-full text-sm font-semibold mb-4">
-                  🎉 NEW: Version 1.0.0 Released
+                  NEW: Version 1.1.0 - Cloud Integration
                 </div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                  Enterprise WordPress Security - Zero False Positives
+                  Enterprise WordPress Security - Cloud Powered
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-600 mb-8">
-                  Smart rate limiting, advanced firewall, honeypot detection, and 3-tier emergency recovery. 
-                  Production-ready. Never locks out admins.
+                  Cloud integration with Cloudflare, GeoIP blocking, threat intelligence feeds, 
+                  and 3-tier emergency recovery. Zero false positives.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a 
@@ -51,7 +51,7 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Download v1.0.0 Free
+                    Download v1.1.0 Free
                   </a>
                   <a 
                     href="https://github.com/saurity/saurity#readme" 
@@ -70,19 +70,19 @@ export default function Home() {
                     <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm font-medium text-gray-700">Zero Lockouts</span>
+                    <span className="text-sm font-medium text-gray-700">Cloud Integration</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm font-medium text-gray-700">&lt; 0.5ms Overhead</span>
+                    <span className="text-sm font-medium text-gray-700">GeoIP Blocking</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm font-medium text-gray-700">Shared Hosting</span>
+                    <span className="text-sm font-medium text-gray-700">Threat Intelligence</span>
                   </div>
                 </div>
               </div>
@@ -90,12 +90,62 @@ export default function Home() {
               <div className="relative">
                 <Image 
                   src="/HomePage1200_600.webp"
-                  alt="WordPress login security dashboard showing progressive rate limiting and zero lockout guarantee"
+                  alt="WordPress security dashboard with cloud integration and GeoIP blocking"
                   width={1200}
                   height={600}
                   priority
                   className="rounded-lg shadow-2xl"
                 />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* New in v1.1.0 Section */}
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <div className="container-custom">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">New in Version 1.1.0</h2>
+            <p className="text-xl text-blue-100 mb-12">
+              Cloud-powered protection with enterprise-grade threat intelligence
+            </p>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+                <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Cloudflare Integration</h3>
+                <p className="text-blue-100 text-sm">
+                  Automatic IP blocklist sync, DDoS coordination, and security level management
+                </p>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+                <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">GeoIP Services</h3>
+                <p className="text-blue-100 text-sm">
+                  Country-based blocking, geographic threat analysis, and regional access policies
+                </p>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+                <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Threat Intelligence</h3>
+                <p className="text-blue-100 text-sm">
+                  Real-time feeds from AbuseIPDB, Spamhaus, and automatic blocklist updates
+                </p>
               </div>
             </div>
           </div>
@@ -182,10 +232,10 @@ export default function Home() {
                   2
                 </div>
                 <div>
-                  <h3 className="text-2xl font-semibold mb-2">Fail-Safe Architecture</h3>
+                  <h3 className="text-2xl font-semibold mb-2">Cloud-Powered Intelligence</h3>
                   <p className="text-gray-600 text-lg">
-                    If something goes wrong, Saurity automatically disables itself rather than blocking access. 
-                    Your site stays accessible, always.
+                    NEW: Integrate with Cloudflare for automatic blocklist sync, use GeoIP to block entire countries, 
+                    and leverage threat intelligence feeds to block known malicious IPs automatically.
                   </p>
                 </div>
               </div>
@@ -197,7 +247,7 @@ export default function Home() {
                 <div>
                   <h3 className="text-2xl font-semibold mb-2">Emergency Recovery Built-In</h3>
                   <p className="text-gray-600 text-lg">
-                    Kill switch, emergency bypass URL, and automatic lockout detection ensure you're never locked out. 
+                    Kill switch, emergency bypass URL, and automatic lockout detection ensure you&apos;re never locked out. 
                     If all else fails, simply rename the plugin folder.
                   </p>
                 </div>
@@ -233,8 +283,8 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <div>
-                    <h4 className="font-semibold text-lg">Emergency Bypass URL</h4>
-                    <p className="text-gray-600">Secret URL to bypass all protection if needed.</p>
+                    <h4 className="font-semibold text-lg">Cloudflare Integration</h4>
+                    <p className="text-gray-600">Sync blocklists automatically with Cloudflare CDN.</p>
                   </div>
                 </div>
 
@@ -243,8 +293,8 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <div>
-                    <h4 className="font-semibold text-lg">Global Kill Switch</h4>
-                    <p className="text-gray-600">Disable all enforcement instantly from admin panel.</p>
+                    <h4 className="font-semibold text-lg">GeoIP Country Blocking</h4>
+                    <p className="text-gray-600">Block or allow access based on visitor location.</p>
                   </div>
                 </div>
 
@@ -253,8 +303,8 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <div>
-                    <h4 className="font-semibold text-lg">Auto-Disable Protection</h4>
-                    <p className="text-gray-600">Automatically disables if admin lockout detected.</p>
+                    <h4 className="font-semibold text-lg">Threat Intelligence Feeds</h4>
+                    <p className="text-gray-600">Auto-block known malicious IPs from multiple sources.</p>
                   </div>
                 </div>
               </div>
@@ -266,7 +316,7 @@ export default function Home() {
                   </svg>
                   <div>
                     <h4 className="font-semibold text-lg">Near-Zero Performance Overhead</h4>
-                    <p className="text-gray-600">Single database query, transient-based rate limiting.</p>
+                    <p className="text-gray-600">Less than 0.5ms overhead per request.</p>
                   </div>
                 </div>
 
@@ -275,8 +325,8 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <div>
-                    <h4 className="font-semibold text-lg">Shared Hosting Compatible</h4>
-                    <p className="text-gray-600">No special requirements, works everywhere.</p>
+                    <h4 className="font-semibold text-lg">GDPR Compliant</h4>
+                    <p className="text-gray-600">Privacy policy integration and data retention controls.</p>
                   </div>
                 </div>
 
@@ -285,8 +335,8 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <div>
-                    <h4 className="font-semibold text-lg">No Cloud Dependencies</h4>
-                    <p className="text-gray-600">Everything runs on your server, no external services.</p>
+                    <h4 className="font-semibold text-lg">Advanced Reporting</h4>
+                    <p className="text-gray-600">PDF security reports and trend analysis dashboards.</p>
                   </div>
                 </div>
 
@@ -318,8 +368,8 @@ export default function Home() {
               <div className="bg-white p-8 rounded-lg border border-gray-200">
                 <h3 className="text-xl font-semibold mb-3">WordPress Developers</h3>
                 <p className="text-gray-600">
-                  You need security that won't break client sites or lock out users. 
-                  Saurity's fail-safe design means you can sleep at night.
+                  You need security that won&apos;t break client sites or lock out users. 
+                  Saurity&apos;s fail-safe design means you can sleep at night.
                 </p>
               </div>
 
@@ -334,7 +384,7 @@ export default function Home() {
               <div className="bg-white p-8 rounded-lg border border-gray-200">
                 <h3 className="text-xl font-semibold mb-3">Shared Hosting Users</h3>
                 <p className="text-gray-600">
-                  Heavy security plugins slow down shared hosting. Saurity's minimal footprint 
+                  Heavy security plugins slow down shared hosting. Saurity&apos;s minimal footprint 
                   provides protection without performance penalties.
                 </p>
               </div>
@@ -342,7 +392,7 @@ export default function Home() {
               <div className="bg-white p-8 rounded-lg border border-gray-200">
                 <h3 className="text-xl font-semibold mb-3">Security-Conscious Site Owners</h3>
                 <p className="text-gray-600">
-                  Burned by aggressive plugins that locked you out? Saurity prioritizes 
+                  Burned by aggressive plugins that locked you out? Saurity prioritizes
                   accessibility over aggressive blocking.
                 </p>
               </div>
@@ -360,7 +410,7 @@ export default function Home() {
             </h2>
             <p className="text-xl mb-8 text-primary-100">
               Free, open source, and designed to never lock you out. 
-              Download, activate, and configure in minutes.
+              Now with cloud integration and threat intelligence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
@@ -369,7 +419,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Download v1.0.0
+                Download v1.1.0
               </a>
               <a 
                 href="https://github.com/saurity/saurity#installation" 
@@ -387,14 +437,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* v1.0.0 Features Section */}
+      {/* v1.1.0 Features Section */}
       <section className="py-20 bg-white">
         <div className="container-custom">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="section-heading">Enterprise Features in v1.0.0</h2>
+              <h2 className="section-heading">Enterprise Features in v1.1.0</h2>
               <p className="section-subheading mx-auto">
-                Production-ready security with advanced protection and zero false positives
+                Production-ready security with cloud integration and advanced protection
               </p>
             </div>
 
@@ -402,12 +452,24 @@ export default function Home() {
               <div className="feature-card">
                 <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
                   <svg className="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Smart Rate Limiting</h3>
+                <h3 className="text-xl font-semibold mb-2">Cloudflare Integration</h3>
                 <p className="text-gray-600">
-                  Login, POST, XML-RPC, and comment protection with two-tier system for NAT/office safety
+                  Automatic IP blocklist sync, DDoS coordination, security level management
+                </p>
+              </div>
+
+              <div className="feature-card">
+                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">GeoIP Blocking</h3>
+                <p className="text-gray-600">
+                  Country-based blocking, geographic threat analysis, regional access policies
                 </p>
               </div>
 
@@ -417,21 +479,45 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Advanced Firewall</h3>
+                <h3 className="text-xl font-semibold mb-2">Threat Intelligence</h3>
                 <p className="text-gray-600">
-                  SQL injection, XSS protection, malicious user agent blocking, and sensitive path protection
+                  Real-time feeds from AbuseIPDB, Spamhaus, automatic blocklist updates
                 </p>
               </div>
 
               <div className="feature-card">
                 <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
                   <svg className="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">IP Management</h3>
+                <h3 className="text-xl font-semibold mb-2">Smart Rate Limiting</h3>
                 <p className="text-gray-600">
-                  Allowlist/blocklist with CIDR support, CSV import/export, and metadata tracking
+                  Login, POST, XML-RPC, and comment protection with two-tier system
+                </p>
+              </div>
+
+              <div className="feature-card">
+                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Advanced Reporting</h3>
+                <p className="text-gray-600">
+                  PDF security reports, scheduled generation, executive dashboards
+                </p>
+              </div>
+
+              <div className="feature-card">
+                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">GDPR Compliance</h3>
+                <p className="text-gray-600">
+                  Privacy policy integration, data retention controls, consent management
                 </p>
               </div>
 
@@ -450,48 +536,12 @@ export default function Home() {
               <div className="feature-card">
                 <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
                   <svg className="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Activity Logging</h3>
-                <p className="text-gray-600">
-                  Real-time logging with search, filters, CSV export, and auto-cleanup
-                </p>
-              </div>
-
-              <div className="feature-card">
-                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Honeypot Detection</h3>
                 <p className="text-gray-600">
-                  Hidden fields catch form-filling bots with 100% accuracy - zero false positives
-                </p>
-              </div>
-
-              <div className="feature-card">
-                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Subnet Blocking</h3>
-                <p className="text-gray-600">
-                  Defeats botnets that rotate IPs - blocks entire /24 subnets automatically
-                </p>
-              </div>
-
-              <div className="feature-card">
-                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Email Notifications</h3>
-                <p className="text-gray-600">
-                  Instant alerts for critical security events with configurable thresholds
+                  Hidden fields catch form-filling bots with 100% accuracy
                 </p>
               </div>
 

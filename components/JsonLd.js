@@ -25,8 +25,8 @@ export function generateSoftwareSchema() {
       ratingValue: '5.0',
       ratingCount: '250',
     },
-    description: 'Enterprise WordPress security plugin with smart rate limiting, advanced firewall, honeypot detection, and zero false positives. Production-ready with 3-tier emergency recovery.',
-    softwareVersion: '1.0.0',
+    description: 'Enterprise WordPress security plugin with cloud integration, GeoIP blocking, threat intelligence, smart rate limiting, advanced firewall, and zero false positives. Production-ready with 3-tier emergency recovery.',
+    softwareVersion: '1.1.0',
     author: {
       '@type': 'Organization',
       name: 'Saurity',
@@ -36,6 +36,9 @@ export function generateSoftwareSchema() {
     screenshot: 'https://www.saurity.com/HomePage1200_600.webp',
     softwareRequirements: 'WordPress 6.0+, PHP 8.0+, MySQL 5.7+',
     featureList: [
+      'Cloudflare Integration',
+      'GeoIP Country Blocking',
+      'Threat Intelligence Feeds',
       'Smart Rate Limiting',
       'Advanced Firewall (SQL injection, XSS protection)',
       'IP Management with CIDR support',
@@ -44,6 +47,8 @@ export function generateSoftwareSchema() {
       'Subnet Blocking',
       'Activity Logging',
       'Email Notifications',
+      'GDPR Compliance Tools',
+      'PDF Security Reports',
       '3-Tier Emergency Recovery'
     ],
   }

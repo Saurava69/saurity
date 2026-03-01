@@ -56,6 +56,154 @@ export default function Changelog() {
         <section className="py-20 px-4">
           <div className="max-w-4xl mx-auto">
             
+            {/* Version 1.1.0 */}
+            <div className="mb-16">
+              <div className="flex items-center gap-4 mb-6">
+                <span className="bg-blue-600 text-white px-4 py-2 rounded-full font-bold text-lg">
+                  v1.1.0
+                </span>
+                <span className="text-slate-600">March 2, 2026</span>
+                <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                  Latest Release
+                </span>
+              </div>
+              
+              <div className="bg-white p-8 rounded-lg shadow-lg border-l-4 border-blue-600">
+                <h2 className="text-3xl font-bold mb-4 text-slate-900">
+                  Cloud Integration Release
+                </h2>
+                <p className="text-lg text-slate-700 mb-6">
+                  Major release introducing cloud-powered protection with Cloudflare integration, 
+                  GeoIP services, and threat intelligence feeds.
+                </p>
+
+                <div className="space-y-6">
+                  {/* Cloud Integration */}
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-blue-800">Cloud Integration</h3>
+                    <ul className="space-y-2 text-slate-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-600 mt-1">+</span>
+                        <span><strong>Cloudflare Integration</strong> - Automatic IP blocklist sync, DDoS coordination, security level management</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-600 mt-1">+</span>
+                        <span><strong>GeoIP Services</strong> - Country-based blocking with MaxMind, IP2Location, and DB-IP support</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-600 mt-1">+</span>
+                        <span><strong>Threat Intelligence</strong> - Real-time feeds from AbuseIPDB, Spamhaus DROP/EDROP, Emerging Threats</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-600 mt-1">+</span>
+                        <span><strong>Cloud Manager</strong> - Unified interface for managing all cloud integrations</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Enhanced UI */}
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-purple-800">Enhanced UI</h3>
+                    <ul className="space-y-2 text-slate-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-600 mt-1">+</span>
+                        <span><strong>Redesigned Admin Interface</strong> - Modern, responsive dashboard with improved UX</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-600 mt-1">+</span>
+                        <span><strong>Interactive Charts</strong> - Visual security metrics with Chart.js integration</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-600 mt-1">+</span>
+                        <span><strong>Improved Activity Logs</strong> - Better filtering, search, and pagination</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-600 mt-1">+</span>
+                        <span><strong>Mobile Responsiveness</strong> - Full functionality on tablets and phones</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Privacy & Compliance */}
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-green-800">Privacy & Compliance</h3>
+                    <ul className="space-y-2 text-slate-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-600 mt-1">+</span>
+                        <span><strong>GDPR Compliance</strong> - Data retention controls and consent management</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-600 mt-1">+</span>
+                        <span><strong>Privacy Policy Integration</strong> - Auto-generated privacy policy text</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-600 mt-1">+</span>
+                        <span><strong>Data Export</strong> - Export user security data on request</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Advanced Reporting */}
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-orange-800">Advanced Reporting</h3>
+                    <ul className="space-y-2 text-slate-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-orange-600 mt-1">+</span>
+                        <span><strong>PDF Security Reports</strong> - Professional reports for stakeholders</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-orange-600 mt-1">+</span>
+                        <span><strong>Scheduled Reports</strong> - Daily, weekly, or monthly email reports</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-orange-600 mt-1">+</span>
+                        <span><strong>Executive Dashboard</strong> - High-level security overview</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-orange-600 mt-1">+</span>
+                        <span><strong>Trend Analysis</strong> - Track security metrics over time</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Improvements */}
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-slate-800">Improvements</h3>
+                    <ul className="space-y-2 text-slate-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-slate-600 mt-1">↑</span>
+                        <span>3,084 lines of admin panel enhancements</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-slate-600 mt-1">↑</span>
+                        <span>1,197 lines of UI/UX improvements</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-slate-600 mt-1">↑</span>
+                        <span>Performance optimizations across all components</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-slate-600 mt-1">↑</span>
+                        <span>Better error handling and logging</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-slate-200">
+                  <Link
+                    href="/download"
+                    className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Download v1.1.0
+                  </Link>
+                </div>
+              </div>
+            </div>
+
             {/* Version 1.0.0 */}
             <div className="mb-16">
               <div className="flex items-center gap-4 mb-6">
@@ -63,14 +211,14 @@ export default function Changelog() {
                   v1.0.0
                 </span>
                 <span className="text-slate-600">January 11, 2026</span>
-                <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-                  Latest Release
+                <span className="bg-slate-200 text-slate-700 px-3 py-1 rounded-full text-sm font-medium">
+                  Production Release
                 </span>
               </div>
               
               <div className="bg-white p-8 rounded-lg shadow-lg border-l-4 border-green-600">
                 <h2 className="text-3xl font-bold mb-4 text-slate-900">
-                  🎉 Production Release - Enterprise Ready
+                  Production Release - Enterprise Ready
                 </h2>
                 <p className="text-lg text-slate-700 mb-6">
                   Major release with enterprise-grade features, advanced protection, and zero false positives.
@@ -80,7 +228,7 @@ export default function Changelog() {
                 <div className="space-y-6">
                   {/* New Features */}
                   <div>
-                    <h3 className="text-xl font-bold mb-3 text-green-800">✨ New Features</h3>
+                    <h3 className="text-xl font-bold mb-3 text-green-800">New Features</h3>
                     <ul className="space-y-2 text-slate-700">
                       <li className="flex items-start gap-2">
                         <span className="text-green-600 mt-1">+</span>
@@ -127,7 +275,7 @@ export default function Changelog() {
 
                   {/* Improvements */}
                   <div>
-                    <h3 className="text-xl font-bold mb-3 text-blue-800">🚀 Improvements</h3>
+                    <h3 className="text-xl font-bold mb-3 text-blue-800">Improvements</h3>
                     <ul className="space-y-2 text-slate-700">
                       <li className="flex items-start gap-2">
                         <span className="text-blue-600 mt-1">↑</span>
@@ -154,22 +302,22 @@ export default function Changelog() {
 
                   {/* Security */}
                   <div>
-                    <h3 className="text-xl font-bold mb-3 text-purple-800">🔒 Security</h3>
+                    <h3 className="text-xl font-bold mb-3 text-purple-800">Security</h3>
                     <ul className="space-y-2 text-slate-700">
                       <li className="flex items-start gap-2">
-                        <span className="text-purple-600 mt-1">🛡️</span>
+                        <span className="text-purple-600 mt-1">&#128737;</span>
                         <span>Zero admin lockout guarantee with fail-safe architecture</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-purple-600 mt-1">🛡️</span>
+                        <span className="text-purple-600 mt-1">&#128737;</span>
                         <span>Progressive rate limiting prevents false positives</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-purple-600 mt-1">🛡️</span>
+                        <span className="text-purple-600 mt-1">&#128737;</span>
                         <span>Input sanitization and validation throughout</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-purple-600 mt-1">🛡️</span>
+                        <span className="text-purple-600 mt-1">&#128737;</span>
                         <span>Database queries use prepared statements</span>
                       </li>
                     </ul>
@@ -177,38 +325,26 @@ export default function Changelog() {
 
                   {/* Testing */}
                   <div>
-                    <h3 className="text-xl font-bold mb-3 text-orange-800">✅ Testing</h3>
+                    <h3 className="text-xl font-bold mb-3 text-orange-800">Testing</h3>
                     <ul className="space-y-2 text-slate-700">
                       <li className="flex items-start gap-2">
-                        <span className="text-orange-600 mt-1">✓</span>
+                        <span className="text-orange-600 mt-1">&#10003;</span>
                         <span>Tested on WordPress 6.0, 6.1, 6.2, 6.3, 6.4</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-orange-600 mt-1">✓</span>
+                        <span className="text-orange-600 mt-1">&#10003;</span>
                         <span>Tested on PHP 8.0, 8.1, 8.2, 8.3</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-orange-600 mt-1">✓</span>
+                        <span className="text-orange-600 mt-1">&#10003;</span>
                         <span>Load tested with 10,000+ concurrent attacks</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-orange-600 mt-1">✓</span>
+                        <span className="text-orange-600 mt-1">&#10003;</span>
                         <span>Verified on shared hosting, VPS, and dedicated servers</span>
                       </li>
                     </ul>
                   </div>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-slate-200">
-                  <Link
-                    href="/download"
-                    className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors font-semibold"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
-                    Download v1.0.0
-                  </Link>
                 </div>
               </div>
             </div>
@@ -227,7 +363,7 @@ export default function Changelog() {
               
               <div className="bg-white p-8 rounded-lg shadow-lg border-l-4 border-slate-600">
                 <h2 className="text-3xl font-bold mb-4 text-slate-900">
-                  🎊 Initial Public Release
+                  Initial Public Release
                 </h2>
                 <p className="text-lg text-slate-700 mb-6">
                   First public release focusing on core brute force protection with zero admin lockouts.
@@ -238,27 +374,27 @@ export default function Changelog() {
                     <h3 className="text-xl font-bold mb-3 text-slate-800">Core Features</h3>
                     <ul className="space-y-2 text-slate-700">
                       <li className="flex items-start gap-2">
-                        <span className="text-slate-600 mt-1">•</span>
+                        <span className="text-slate-600 mt-1">&#8226;</span>
                         <span>Progressive rate limiting for login attempts</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-slate-600 mt-1">•</span>
+                        <span className="text-slate-600 mt-1">&#8226;</span>
                         <span>IP-based blocking with exponential delays</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-slate-600 mt-1">•</span>
+                        <span className="text-slate-600 mt-1">&#8226;</span>
                         <span>Emergency bypass URL for recovery</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-slate-600 mt-1">•</span>
+                        <span className="text-slate-600 mt-1">&#8226;</span>
                         <span>Global kill switch</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-slate-600 mt-1">•</span>
+                        <span className="text-slate-600 mt-1">&#8226;</span>
                         <span>Basic logging functionality</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-slate-600 mt-1">•</span>
+                        <span className="text-slate-600 mt-1">&#8226;</span>
                         <span>Clean uninstall with data removal</span>
                       </li>
                     </ul>
@@ -278,22 +414,22 @@ export default function Changelog() {
               
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-bold mb-3 text-blue-800">Coming in v1.1 (Q2 2026)</h3>
+                  <h3 className="text-xl font-bold mb-3 text-blue-800">Coming in v1.2 (Q2 2026)</h3>
                   <ul className="space-y-2 text-slate-700">
                     <li className="flex items-start gap-2">
-                      <span className="text-blue-600 mt-1">→</span>
+                      <span className="text-blue-600 mt-1">&#8594;</span>
                       <span>Two-Factor Authentication (2FA) support</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-blue-600 mt-1">→</span>
-                      <span>Geolocation-based restrictions</span>
+                      <span className="text-blue-600 mt-1">&#8594;</span>
+                      <span>Enhanced geolocation-based restrictions</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-blue-600 mt-1">→</span>
+                      <span className="text-blue-600 mt-1">&#8594;</span>
                       <span>Advanced user session management</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-blue-600 mt-1">→</span>
+                      <span className="text-blue-600 mt-1">&#8594;</span>
                       <span>Device fingerprinting improvements</span>
                     </li>
                   </ul>
@@ -303,20 +439,20 @@ export default function Changelog() {
                   <h3 className="text-xl font-bold mb-3 text-blue-800">Planned for v2.0 (Q4 2026)</h3>
                   <ul className="space-y-2 text-slate-700">
                     <li className="flex items-start gap-2">
-                      <span className="text-blue-600 mt-1">→</span>
+                      <span className="text-blue-600 mt-1">&#8594;</span>
                       <span>File integrity monitoring</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-blue-600 mt-1">→</span>
+                      <span className="text-blue-600 mt-1">&#8594;</span>
                       <span>Basic malware scanner</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-blue-600 mt-1">→</span>
+                      <span className="text-blue-600 mt-1">&#8594;</span>
                       <span>Security hardening recommendations</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-blue-600 mt-1">→</span>
-                      <span>Automated security reports</span>
+                      <span className="text-blue-600 mt-1">&#8594;</span>
+                      <span>Multi-site network support</span>
                     </li>
                   </ul>
                 </div>
@@ -349,7 +485,7 @@ export default function Changelog() {
                 className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow border-2 border-blue-600"
               >
                 <h3 className="font-bold text-lg mb-2">Features</h3>
-                <p className="text-slate-600 text-sm">See what's included</p>
+                <p className="text-slate-600 text-sm">See what&apos;s included</p>
               </Link>
               <a
                 href="https://github.com/saurity/saurity#readme"

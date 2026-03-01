@@ -472,7 +472,7 @@ export default function SaurityVsIThemes() {
                 href="/download"
                 className="px-8 py-4 bg-white text-blue-600 rounded-lg hover:bg-slate-100 transition-colors font-semibold text-lg"
               >
-                Download Saurity v1.0.0
+                Download Saurity v1.1.0
               </Link>
               <Link
                 href="/features"
@@ -482,7 +482,7 @@ export default function SaurityVsIThemes() {
               </Link>
             </div>
             <p className="mt-6 text-sm opacity-75">
-              No credit card required • 100% free forever • Open source MIT license
+              No credit card required • 100% free forever • Open source GPL v2 license
             </p>
           </div>
         </section>
