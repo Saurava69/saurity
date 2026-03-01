@@ -134,11 +134,11 @@ export default function BlogPostLoading() {
               <div className="p-4 bg-gray-50 rounded-lg">
                 <div className="h-5 w-32 bg-gray-200 rounded mb-4 animate-pulse" />
                 <div className="space-y-3">
-                  {[...Array(6)].map((_, i) => (
+                  {[85, 70, 90, 75, 95, 80].map((width, i) => (
                     <div 
                       key={i} 
                       className="h-4 bg-gray-200 rounded animate-pulse" 
-                      style={{ width: `${70 + Math.random() * 30}%` }}
+                      style={{ width: `${width}%` }}
                     />
                   ))}
                 </div>
