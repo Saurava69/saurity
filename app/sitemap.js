@@ -11,6 +11,7 @@ export default async function sitemap() {
     '/use-cases',
     '/faq',
     '/about',
+    '/contact',
     '/download',
     '/changelog',
     '/firewall',

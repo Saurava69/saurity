@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export const metadata = {
   title: 'About Saurity v1.1.0 | Enterprise WordPress Security',
   description: 'Learn about Saurity v1.1.0, the enterprise WordPress security plugin with cloud integration, GeoIP blocking, threat intelligence, and zero false positives.',
@@ -386,7 +388,15 @@ export default function AboutPage() {
               Questions, feedback, or security concerns? We&apos;re here to help.
             </p>
             
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-4 gap-6">
+              <Link href="/contact" className="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+                <h3 className="font-semibold text-lg mb-2">Contact Us</h3>
+                <p className="text-gray-600 mb-4 text-sm">Get in touch via email</p>
+                <span className="text-primary-600 hover:text-primary-700 font-medium">
+                  Contact Page →
+                </span>
+              </Link>
+
               <div className="bg-white rounded-lg p-6 border border-gray-200">
                 <h3 className="font-semibold text-lg mb-2">Bug Reports</h3>
                 <p className="text-gray-600 mb-4 text-sm">Found a bug or security issue?</p>
@@ -414,15 +424,15 @@ export default function AboutPage() {
               </div>
 
               <div className="bg-white rounded-lg p-6 border border-gray-200">
-                <h3 className="font-semibold text-lg mb-2">Documentation</h3>
-                <p className="text-gray-600 mb-4 text-sm">Need help getting started?</p>
+                <h3 className="font-semibold text-lg mb-2">GitHub</h3>
+                <p className="text-gray-600 mb-4 text-sm">View source and contribute</p>
                 <a 
-                  href="https://github.com/saurity/saurity#readme" 
+                  href="https://github.com/saurity/saurity" 
                   className="text-primary-600 hover:text-primary-700 font-medium"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Read the Docs →
+                  View on GitHub →
                 </a>
               </div>
             </div>

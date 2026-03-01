@@ -16,7 +16,7 @@ export default function TermsPage() {
           </h1>
           
           <p className="text-gray-600 mb-8">
-            Last Updated: January 11, 2026 • Version 1.0.0
+            Last Updated: March 1, 2026 • Version 1.1.0
           </p>
 
           <div className="prose prose-lg max-w-none">
@@ -28,7 +28,7 @@ export default function TermsPage() {
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">Warranty Disclaimer</h2>
             <p className="text-gray-700 mb-4">
-              THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
+              THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
               INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR 
               PURPOSE AND NONINFRINGEMENT.
             </p>
@@ -59,7 +59,7 @@ export default function TermsPage() {
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">Security Limitations</h2>
             <p className="text-gray-700 mb-4">
-              Saurity v1.0.0 provides comprehensive security features including rate limiting, firewall, IP management, and bot detection. Future versions will add:
+              Saurity v1.1.0 provides comprehensive security features including rate limiting, firewall, IP management, and bot detection. Future versions will add:
             </p>
             <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-2">
               <li>Malware scanning (planned for v2.0+)</li>

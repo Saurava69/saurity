@@ -124,6 +124,19 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/contact" className="text-gray-600 hover:text-primary-600 transition-colors">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <a 
+                  href="mailto:sauravx25@gmail.com" 
+                  className="text-gray-600 hover:text-primary-600 transition-colors"
+                >
+                  Email Us
+                </a>
+              </li>
+              <li>
                 <Link href="/privacy" className="text-gray-600 hover:text-primary-600 transition-colors">
                   Privacy Policy
                 </Link>

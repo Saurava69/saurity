@@ -20,7 +20,7 @@ export default function PrivacyPage() {
           </h1>
           
           <p className="text-gray-600 mb-8">
-            Last Updated: January 11, 2026 • Version 1.0.0
+            Last Updated: March 1, 2026 • Version 1.1.0
           </p>
 
           <div className="prose prose-lg max-w-none">
@@ -32,7 +32,7 @@ export default function PrivacyPage() {
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">Data Collection</h2>
             <p className="text-gray-700 mb-4">
-              <strong>Saurity Plugin (v1.0.0):</strong>
+              <strong>Saurity Plugin (v1.1.0):</strong>
             </p>
             <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-2">
               <li>Does NOT send any data to external servers</li>
