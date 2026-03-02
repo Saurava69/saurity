@@ -3,13 +3,13 @@ import Image from 'next/image'
 import JsonLd, { generateBreadcrumbSchema, generateFAQSchema } from '@/components/JsonLd'
 
 export const metadata = {
-  title: 'WordPress Login Security & Brute Force Protection | Saurity v1.0.0',
+  title: 'WordPress Login Security & Brute Force Protection | Saurity v1.1.0',
   description: 'Protect WordPress logins with progressive rate limiting, honeypot detection, and 3-tier emergency recovery. Enterprise security that never locks out admins.',
   alternates: {
     canonical: 'https://www.saurity.com/login-security',
   },
   openGraph: {
-    title: 'WordPress Login Security Without Admin Lockouts | Saurity v1.0.0',
+    title: 'WordPress Login Security Without Admin Lockouts | Saurity v1.1.0',
     description: 'Progressive rate limiting for WordPress login protection. Stops brute force attacks while protecting legitimate users.',
     url: 'https://www.saurity.com/login-security',
     images: ['/recovery1000_700.webp'],

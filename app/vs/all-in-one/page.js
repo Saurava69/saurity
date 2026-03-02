@@ -54,7 +54,7 @@ const prosAndCons = {
       'Progressive rate limiting',
       'Advanced honeypot detection',
       'Minimal performance impact (<1ms)',
-      'Active development with v1.0.0',
+      'Active development with v1.1.0',
       'Open source with MIT license',
       'Simple configuration',
     ],

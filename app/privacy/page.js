@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Privacy Policy | Saurity v1.0.0',
-  description: 'Saurity v1.0.0 privacy policy. Learn how we handle data for our WordPress security plugin - no external data collection, everything stays on your server.',
+  title: 'Privacy Policy | Saurity v1.1.0',
+  description: 'Saurity v1.1.0 privacy policy. Learn how we handle data for our WordPress security plugin - no external data collection, everything stays on your server.',
   alternates: {
     canonical: 'https://www.saurity.com/privacy',
   },

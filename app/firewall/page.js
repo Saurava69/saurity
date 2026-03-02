@@ -2,13 +2,13 @@ import Link from 'next/link'
 import JsonLd, { generateBreadcrumbSchema, generateFAQSchema } from '@/components/JsonLd'
 
 export const metadata = {
-  title: 'WordPress Firewall Protection | Web Application Firewall | Saurity v1.0.0',
+  title: 'WordPress Firewall Protection | Web Application Firewall | Saurity v1.1.0',
   description: 'Enterprise-grade WordPress firewall with SQL injection detection, XSS protection, XML-RPC blocking, and multi-layer attack prevention. Lightweight and fail-safe.',
   alternates: {
     canonical: 'https://www.saurity.com/firewall',
   },
   openGraph: {
-    title: 'WordPress Web Application Firewall (WAF) | Saurity v1.0.0',
+    title: 'WordPress Web Application Firewall (WAF) | Saurity v1.1.0',
     description: 'Lightweight firewall blocks SQL injection, XSS, XML-RPC attacks, and malicious bots without slowing down your WordPress site.',
     url: 'https://www.saurity.com/firewall',
     images: ['/HomePage1200_600.webp'],

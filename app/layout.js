@@ -40,7 +40,7 @@ export const metadata = {
     locale: 'en_US',
     url: 'https://www.saurity.com',
     siteName: 'Saurity',
-    title: 'Saurity v1.0.0 - Enterprise WordPress Security Plugin',
+    title: 'Saurity v1.1.0 - Enterprise WordPress Security Plugin',
     description: 'Zero false positives. Production-ready WordPress security with smart rate limiting, advanced firewall, honeypot detection, and 3-tier emergency recovery.',
     images: [
       {
@@ -54,7 +54,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Saurity v1.0.0 - Enterprise WordPress Security Plugin',
+    title: 'Saurity v1.1.0 - Enterprise WordPress Security Plugin',
     description: 'Zero false positives. Production-ready WordPress security with smart rate limiting, advanced firewall, and emergency recovery.',
     images: ['https://www.saurity.com/HomePage1200_600.webp'],
     creator: '@saurity',

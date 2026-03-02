@@ -3,13 +3,13 @@ import Image from 'next/image'
 import JsonLd, { generateBreadcrumbSchema, generateFAQSchema } from '@/components/JsonLd'
 
 export const metadata = {
-  title: 'WordPress Rate Limiting | Progressive Throttling | Saurity v1.0.0',
-  description: 'Learn how Saurity v1.0.0 uses file-based rate limiting with two-tier protection and sliding windows to stop WordPress brute force attacks without false positives.',
+  title: 'WordPress Rate Limiting | Progressive Throttling | Saurity v1.1.0',
+  description: 'Learn how Saurity v1.1.0 uses file-based rate limiting with two-tier protection and sliding windows to stop WordPress brute force attacks without false positives.',
   alternates: {
     canonical: 'https://www.saurity.com/rate-limiting',
   },
   openGraph: {
-    title: 'WordPress Rate Limiting Done Right | Saurity v1.0.0',
+    title: 'WordPress Rate Limiting Done Right | Saurity v1.1.0',
     description: 'Progressive throttling with sliding windows stops brute force attacks while protecting legitimate users.',
     url: 'https://www.saurity.com/rate-limiting',
     images: ['/ratelimiting800_800.webp'],
