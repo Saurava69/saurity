@@ -214,11 +214,11 @@ export default function RateLimitingPage() {
                       Every failed login is tracked by IP address using WordPress transients with automatic expiration.
                     </p>
                     <div className="bg-white border border-gray-200 rounded p-4 font-mono text-sm">
-                      <div className="text-gray-600">// Transient key structure</div>
+                      <div className="text-gray-600">{`// Transient key structure`}</div>
                       <div className="text-blue-600">saurity_login_attempts_192.168.1.1</div>
-                      <div className="text-gray-600 mt-2">// Value: array of timestamps</div>
+                      <div className="text-gray-600 mt-2">{`// Value: array of timestamps`}</div>
                       <div className="text-green-600">[1704628800, 1704628860, 1704628920, ...]</div>
-                      <div className="text-gray-600 mt-2">// Auto-expires after window (600 seconds)</div>
+                      <div className="text-gray-600 mt-2">{`// Auto-expires after window (600 seconds)`}</div>
                     </div>
                   </div>
                 </div>

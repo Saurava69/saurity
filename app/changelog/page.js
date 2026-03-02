@@ -56,11 +56,11 @@ export default function Changelog() {
         <section className="py-20 px-4">
           <div className="max-w-4xl mx-auto">
             
-            {/* Version 1.1.0 */}
+            {/* Version 1.1.2 */}
             <div className="mb-16">
               <div className="flex items-center gap-4 mb-6">
                 <span className="bg-blue-600 text-white px-4 py-2 rounded-full font-bold text-lg">
-                  v1.1.0
+                  v1.1.2
                 </span>
                 <span className="text-slate-600">March 2, 2026</span>
                 <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
@@ -69,6 +69,85 @@ export default function Changelog() {
               </div>
               
               <div className="bg-white p-8 rounded-lg shadow-lg border-l-4 border-blue-600">
+                <h2 className="text-3xl font-bold mb-4 text-slate-900">
+                  Bug Fix Release
+                </h2>
+                <p className="text-lg text-slate-700 mb-6">
+                  Critical bug fixes for REST API compatibility and threat feed processing.
+                </p>
+
+                <div className="space-y-6">
+                  {/* Bug Fixes */}
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-red-800">Bug Fixes</h3>
+                    <ul className="space-y-2 text-slate-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-red-600 mt-1">&#10003;</span>
+                        <span><strong>Fixed:</strong> PHP session warning interfering with REST API and loopback requests</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-red-600 mt-1">&#10003;</span>
+                        <span><strong>Fixed:</strong> Large threat feed processing (Blocklist.de) now properly stores all IPs</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Improvements */}
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-blue-800">Improvements</h3>
+                    <ul className="space-y-2 text-slate-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-600 mt-1">+</span>
+                        <span><strong>Added:</strong> session_write_close() calls to properly close sessions</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-600 mt-1">+</span>
+                        <span><strong>Added:</strong> Incremental saves during threat feed updates</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-600 mt-1">+</span>
+                        <span><strong>Added:</strong> Overflow storage for large blocklists exceeding database limits</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-600 mt-1">↑</span>
+                        <span><strong>Improved:</strong> Skip session handling for REST API, AJAX, and cron requests</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-600 mt-1">↑</span>
+                        <span><strong>Improved:</strong> IPManager now checks overflow storage</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-600 mt-1">↑</span>
+                        <span><strong>Improved:</strong> UI shows overflow indicator when database limits reached</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-slate-200">
+                  <Link
+                    href="/download"
+                    className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Download v1.1.2
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Version 1.1.0 */}
+            <div className="mb-16">
+              <div className="flex items-center gap-4 mb-6">
+                <span className="bg-purple-600 text-white px-4 py-2 rounded-full font-bold text-lg">
+                  v1.1.0
+                </span>
+                <span className="text-slate-600">March 1, 2026</span>
+              </div>
+              
+              <div className="bg-white p-8 rounded-lg shadow-lg border-l-4 border-purple-600">
                 <h2 className="text-3xl font-bold mb-4 text-slate-900">
                   Cloud Integration Release
                 </h2>
@@ -165,41 +244,6 @@ export default function Changelog() {
                       </li>
                     </ul>
                   </div>
-
-                  {/* Improvements */}
-                  <div>
-                    <h3 className="text-xl font-bold mb-3 text-slate-800">Improvements</h3>
-                    <ul className="space-y-2 text-slate-700">
-                      <li className="flex items-start gap-2">
-                        <span className="text-slate-600 mt-1">↑</span>
-                        <span>3,084 lines of admin panel enhancements</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-slate-600 mt-1">↑</span>
-                        <span>1,197 lines of UI/UX improvements</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-slate-600 mt-1">↑</span>
-                        <span>Performance optimizations across all components</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-slate-600 mt-1">↑</span>
-                        <span>Better error handling and logging</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-slate-200">
-                  <Link
-                    href="/download"
-                    className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
-                    Download v1.1.0
-                  </Link>
                 </div>
               </div>
             </div>
