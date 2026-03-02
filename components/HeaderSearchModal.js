@@ -2,8 +2,141 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { collection, query, where, getDocs } from 'firebase/firestore'
 import { db } from '@/lib/firebase/config'
+
+// Static pages data for search
+const staticPages = [
+  {
+    id: 'features',
+    title: 'Features',
+    excerpt: 'Smart Rate Limiting, Advanced Firewall, IP Management, Bot Detection, Email Notifications, Activity Logging',
+    url: '/features',
+    category: 'Product',
+    keywords: ['security', 'firewall', 'rate limiting', 'brute force', 'login protection', 'ip blocking', 'honeypot', 'tarpitting']
+  },
+  {
+    id: 'download',
+    title: 'Download Saurity',
+    excerpt: 'Download Saurity WordPress Security Plugin for free. Enterprise-grade protection with zero false positives.',
+    url: '/download',
+    category: 'Product',
+    keywords: ['download', 'install', 'plugin', 'wordpress', 'free', 'github']
+  },
+  {
+    id: 'changelog',
+    title: 'Changelog',
+    excerpt: 'Complete version history and updates for Saurity WordPress Security Plugin. Track new features and bug fixes.',
+    url: '/changelog',
+    category: 'Product',
+    keywords: ['changelog', 'version', 'updates', 'release', 'history', 'bug fixes', '1.0', '1.1', '1.1.0', '1.1.1', '1.1.2', 'v1', 'v1.0', 'v1.1', 'v1.1.0', 'v1.1.1', 'v1.1.2', 'what\'s new', 'new version', 'latest version']
+  },
+  {
+    id: 'faq',
+    title: 'Frequently Asked Questions',
+    excerpt: 'Get answers to common questions about Saurity WordPress security plugin. Installation, configuration, and troubleshooting.',
+    url: '/faq',
+    category: 'Support',
+    keywords: ['faq', 'help', 'questions', 'support', 'troubleshooting', 'lockout', 'recovery']
+  },
+  {
+    id: 'about',
+    title: 'About Saurity',
+    excerpt: 'Learn about Saurity - the WordPress security plugin built for developers who demand reliability and performance.',
+    url: '/about',
+    category: 'Company',
+    keywords: ['about', 'company', 'team', 'mission', 'story']
+  },
+  {
+    id: 'contact',
+    title: 'Contact Us',
+    excerpt: 'Get in touch with the Saurity team. Support, feedback, and partnership inquiries.',
+    url: '/contact',
+    category: 'Support',
+    keywords: ['contact', 'support', 'help', 'email', 'feedback']
+  },
+  {
+    id: 'privacy',
+    title: 'Privacy Policy',
+    excerpt: 'Saurity privacy policy. Learn how we handle and protect your data with GDPR compliance.',
+    url: '/privacy',
+    category: 'Legal',
+    keywords: ['privacy', 'data', 'gdpr', 'policy', 'compliance']
+  },
+  {
+    id: 'terms',
+    title: 'Terms of Service',
+    excerpt: 'Terms of service for using Saurity WordPress security plugin and website.',
+    url: '/terms',
+    category: 'Legal',
+    keywords: ['terms', 'service', 'legal', 'agreement', 'conditions']
+  },
+  {
+    id: 'use-cases',
+    title: 'Use Cases',
+    excerpt: 'Discover how Saurity protects different WordPress sites - blogs, WooCommerce, membership sites, and more.',
+    url: '/use-cases',
+    category: 'Product',
+    keywords: ['use cases', 'examples', 'woocommerce', 'membership', 'blog', 'ecommerce']
+  },
+  {
+    id: 'login-security',
+    title: 'Login Security',
+    excerpt: 'Protect your WordPress login with progressive rate limiting, honeypot detection, and timing analysis.',
+    url: '/login-security',
+    category: 'Features',
+    keywords: ['login', 'brute force', 'password', 'authentication', 'rate limiting', 'lockout']
+  },
+  {
+    id: 'firewall',
+    title: 'WordPress Firewall',
+    excerpt: 'Advanced firewall protection against SQL injection, XSS attacks, and malicious bots.',
+    url: '/firewall',
+    category: 'Features',
+    keywords: ['firewall', 'sql injection', 'xss', 'security', 'waf', 'protection']
+  },
+  {
+    id: 'rate-limiting',
+    title: 'Rate Limiting',
+    excerpt: 'Smart rate limiting for login, comments, XML-RPC, and POST requests with zero false positives.',
+    url: '/rate-limiting',
+    category: 'Features',
+    keywords: ['rate limiting', 'throttle', 'dos', 'ddos', 'flood', 'spam']
+  },
+  {
+    id: 'vs-wordfence',
+    title: 'Saurity vs Wordfence',
+    excerpt: 'Compare Saurity with Wordfence. See why Saurity offers better performance and zero false positives.',
+    url: '/vs/wordfence',
+    category: 'Comparison',
+    keywords: ['wordfence', 'comparison', 'alternative', 'vs', 'better']
+  },
+  {
+    id: 'vs-sucuri',
+    title: 'Saurity vs Sucuri',
+    excerpt: 'Compare Saurity with Sucuri. Free vs paid, performance, and feature comparison.',
+    url: '/vs/sucuri',
+    category: 'Comparison',
+    keywords: ['sucuri', 'comparison', 'alternative', 'vs', 'better']
+  },
+  {
+    id: 'vs-ithemes',
+    title: 'Saurity vs iThemes Security',
+    excerpt: 'Compare Saurity with iThemes Security (Solid Security). Modern approach vs legacy solution.',
+    url: '/vs/ithemes',
+    category: 'Comparison',
+    keywords: ['ithemes', 'solid security', 'comparison', 'alternative', 'vs']
+  },
+  {
+    id: 'vs-all-in-one',
+    title: 'Saurity vs All In One WP Security',
+    excerpt: 'Compare Saurity with All In One WP Security. Professional protection vs basic security.',
+    url: '/vs/all-in-one',
+    category: 'Comparison',
+    keywords: ['all in one', 'aios', 'comparison', 'alternative', 'vs']
+  }
+]
 
 export default function HeaderSearchModal({ isOpen, onClose }) {
   const [searchQuery, setSearchQuery] = useState('')
@@ -53,6 +186,20 @@ export default function HeaderSearchModal({ isOpen, onClose }) {
       if (searchQuery.trim().length >= 2) {
         setLoading(true)
         try {
+          const searchLower = searchQuery.toLowerCase()
+          
+          // Search static pages first
+          const staticResults = staticPages.filter(page =>
+            page.title.toLowerCase().includes(searchLower) ||
+            page.excerpt.toLowerCase().includes(searchLower) ||
+            page.category.toLowerCase().includes(searchLower) ||
+            page.keywords.some(keyword => keyword.toLowerCase().includes(searchLower))
+          ).map(page => ({
+            ...page,
+            isStatic: true
+          }))
+          
+          // Search blog posts from Firebase
           const q = query(
             collection(db, 'blogPosts'),
             where('status', '==', 'published')
@@ -61,19 +208,34 @@ export default function HeaderSearchModal({ isOpen, onClose }) {
           const posts = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
           
           // Filter posts based on search query
-          const searchLower = searchQuery.toLowerCase()
-          const filtered = posts.filter(post => 
+          const blogResults = posts.filter(post => 
             post.title?.toLowerCase().includes(searchLower) ||
             post.excerpt?.toLowerCase().includes(searchLower) ||
             post.category?.toLowerCase().includes(searchLower) ||
             post.tags?.some(tag => tag.toLowerCase().includes(searchLower)) ||
             post.author?.toLowerCase().includes(searchLower)
-          )
+          ).map(post => ({
+            ...post,
+            isStatic: false
+          }))
           
-          setResults(filtered.slice(0, 8))
+          // Combine results - static pages first, then blog posts
+          const combinedResults = [...staticResults, ...blogResults]
+          setResults(combinedResults.slice(0, 10))
         } catch (error) {
           console.error('Search error:', error)
-          setResults([])
+          // Still show static page results even if Firebase fails
+          const searchLower = searchQuery.toLowerCase()
+          const staticResults = staticPages.filter(page =>
+            page.title.toLowerCase().includes(searchLower) ||
+            page.excerpt.toLowerCase().includes(searchLower) ||
+            page.category.toLowerCase().includes(searchLower) ||
+            page.keywords.some(keyword => keyword.toLowerCase().includes(searchLower))
+          ).map(page => ({
+            ...page,
+            isStatic: true
+          }))
+          setResults(staticResults.slice(0, 10))
         } finally {
           setLoading(false)
         }
@@ -85,8 +247,12 @@ export default function HeaderSearchModal({ isOpen, onClose }) {
     return () => clearTimeout(delayDebounceFn)
   }, [searchQuery])
 
-  const handleResultClick = (slug) => {
-    router.push(`/blog/${slug}`)
+  const handleResultClick = (result) => {
+    if (result.isStatic) {
+      router.push(result.url)
+    } else {
+      router.push(`/blog/${result.slug}`)
+    }
     onClose()
     setSearchQuery('')
     setResults([])
@@ -124,7 +290,7 @@ export default function HeaderSearchModal({ isOpen, onClose }) {
             <input
               ref={searchInputRef}
               type="text"
-              placeholder="Search blog posts..."
+              placeholder="Search pages and blog posts..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-12 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-base"
@@ -170,41 +336,61 @@ export default function HeaderSearchModal({ isOpen, onClose }) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
               <p className="text-gray-600">Start typing to search</p>
-              <p className="text-sm text-gray-500 mt-1">Search across titles, categories, tags, and more</p>
+              <p className="text-sm text-gray-500 mt-1">Search pages, features, and blog posts</p>
             </div>
           )}
 
           {!loading && results.length > 0 && (
             <div className="divide-y divide-gray-100">
-              {results.map((post) => (
+              {results.map((result) => (
                 <button
-                  key={post.id}
-                  onClick={() => handleResultClick(post.slug)}
+                  key={result.id}
+                  onClick={() => handleResultClick(result)}
                   className="w-full p-4 hover:bg-gray-50 transition-colors text-left flex gap-3 group"
                 >
-                  {post.featuredImage && (
-                    <div className="flex-shrink-0 w-16 h-16 rounded overflow-hidden bg-gray-100">
-                      <img 
-                        src={post.featuredImage} 
-                        alt={post.title}
-                        className="w-full h-full object-cover"
+                  {result.featuredImage && !result.isStatic && (
+                    <div className="flex-shrink-0 w-16 h-16 rounded overflow-hidden bg-gray-100 relative">
+                      <Image 
+                        src={result.featuredImage} 
+                        alt={result.title}
+                        fill
+                        sizes="64px"
+                        className="object-cover"
                       />
+                    </div>
+                  )}
+                  {result.isStatic && (
+                    <div className="flex-shrink-0 w-10 h-10 rounded bg-primary-100 flex items-center justify-center">
+                      <svg className="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
                     </div>
                   )}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xs font-medium text-primary-600 bg-primary-50 px-2 py-0.5 rounded-full">
-                        {post.category}
+                      <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                        result.isStatic 
+                          ? 'text-green-700 bg-green-100' 
+                          : 'text-primary-600 bg-primary-50'
+                      }`}>
+                        {result.category}
                       </span>
-                      <span className="text-xs text-gray-500">
-                        {post.readTime} min read
-                      </span>
+                      {!result.isStatic && result.readTime && (
+                        <span className="text-xs text-gray-500">
+                          {result.readTime} min read
+                        </span>
+                      )}
+                      {result.isStatic && (
+                        <span className="text-xs text-gray-500">
+                          Page
+                        </span>
+                      )}
                     </div>
                     <h3 className="text-base font-semibold text-gray-900 group-hover:text-primary-600 transition-colors mb-1 line-clamp-1">
-                      {highlightText(post.title, searchQuery)}
+                      {highlightText(result.title, searchQuery)}
                     </h3>
                     <p className="text-sm text-gray-600 line-clamp-2">
-                      {highlightText(post.excerpt, searchQuery)}
+                      {highlightText(result.excerpt || '', searchQuery)}
                     </p>
                   </div>
                   <div className="flex-shrink-0 text-gray-400 group-hover:text-primary-600 transition-colors">
